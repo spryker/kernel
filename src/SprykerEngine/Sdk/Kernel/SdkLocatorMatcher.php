@@ -3,14 +3,18 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Kernel;
+namespace SprykerEngine\Sdk\Kernel;
 
 use SprykerEngine\Shared\Kernel\Locator\LocatorMatcherInterface;
 
-class ClientLocatorMatcher implements LocatorMatcherInterface
+/**
+ * Class SdkLocatorMatcher
+ * @package SprykerEngine\Yves\Kernel
+ */
+class SdkLocatorMatcher implements LocatorMatcherInterface
 {
 
-    const METHOD_PREFIX = 'client';
+    const METHOD_PREFIX = 'sdk';
 
     /**
      * @param string $method

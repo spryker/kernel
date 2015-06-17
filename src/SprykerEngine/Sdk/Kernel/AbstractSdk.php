@@ -3,13 +3,13 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Kernel;
+namespace SprykerEngine\Sdk\Kernel;
 
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 use SprykerEngine\Shared\Kernel\Factory\FactoryInterface;
-use SprykerEngine\Client\Kernel\DependencyContainer\DependencyContainerInterface;
+use SprykerEngine\Sdk\Kernel\DependencyContainer\DependencyContainerInterface;
 
-abstract class AbstractClient
+abstract class AbstractSdk
 {
 
     /**
