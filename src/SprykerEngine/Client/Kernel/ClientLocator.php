@@ -1,23 +1,19 @@
 <?php
 
-namespace SprykerEngine\Sdk\Kernel;
+namespace SprykerEngine\Client\Kernel;
 
 use SprykerEngine\Shared\Kernel\AbstractLocator;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 
-/**
- * Class SdkLocator
- * @package SprykerEngine\Sdk\Kernel
- */
-class SdkLocator extends AbstractLocator
+class ClientLocator extends AbstractLocator
 {
 
-    const SDK_SUFFIX = 'Sdk';
+    const CLIENT_SUFFIX = 'Client';
 
     /**
      * @var string
      */
-    protected $factoryClassNamePattern = '\\{{namespace}}\\Sdk\\Kernel\\Factory';
+    protected $factoryClassNamePattern = '\\{{namespace}}\\Client\\Kernel\\Factory';
 
     /**
      * @param string                 $bundle
@@ -31,7 +27,7 @@ class SdkLocator extends AbstractLocator
     {
         $factory = $this->getFactory($bundle);
 
-        return $factory->create($bundle . self::SDK_SUFFIX, $factory, $locator);
+        return $factory->create($bundle . self::CLIENT_SUFFIX, $factory, $locator);
     }
 
 }
