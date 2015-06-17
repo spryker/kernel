@@ -7,12 +7,12 @@ namespace SprykerEngine\Zed\Kernel\IdeAutoCompletion\MethodTagBuilder;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SdkClientMethodTagBuilder extends AbstractSingleFileMethodTagBuilder
+class SdkMethodTagBuilder extends AbstractSingleFileMethodTagBuilder
 {
 
-    const METHOD_STRING_PATTERN = '@method {{className}} client()';
-    const APPLICATION_CLIENT = 'Client';
-    const FILE_NAME_SUFFIX = 'Client.php';
+    const METHOD_STRING_PATTERN = '@method {{className}} sdk()';
+    const APPLICATION_SDK = 'Sdk';
+    const FILE_NAME_SUFFIX = 'Sdk.php';
     const PATH_PATTERN = '';
 
     /**
@@ -23,7 +23,7 @@ class SdkClientMethodTagBuilder extends AbstractSingleFileMethodTagBuilder
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
-            self::OPTION_KEY_APPLICATION => self::APPLICATION_CLIENT,
+            self::OPTION_KEY_APPLICATION => self::APPLICATION_SDK,
             self::OPTION_KEY_METHOD_STRING_PATTERN => self::METHOD_STRING_PATTERN,
             self::OPTION_KEY_PATH_PATTERN => self::PATH_PATTERN,
             self::OPTION_KEY_FILE_NAME_SUFFIX => self::FILE_NAME_SUFFIX,
