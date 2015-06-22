@@ -7,7 +7,7 @@ namespace SprykerEngine\Yves\Kernel;
 
 use SprykerEngine\Shared\Kernel\AbstractClientLocator;
 
-class StubLocator extends AbstractClientLocator
+class ClientLocator extends AbstractClientLocator
 {
 
     /**

@@ -9,7 +9,7 @@ use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 use SprykerEngine\Shared\Kernel\Factory\FactoryInterface;
 use SprykerEngine\Client\Kernel\DependencyContainer\DependencyContainerInterface;
 
-abstract class AbstractStub
+abstract class AbstractClient
 {
 
     /**
@@ -35,4 +35,5 @@ abstract class AbstractStub
     {
         return $this->dependencyContainer;
     }
+
 }
