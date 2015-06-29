@@ -1,15 +1,19 @@
 <?php
+/**
+ * (c) Spryker Systems GmbH copyright protected
+ */
 
 namespace SprykerEngine\Client\Kernel;
 
-use SprykerEngine\Shared\Kernel\AbstractLocator;
+use SprykerEngine\Shared\Config;
 use SprykerEngine\Shared\Kernel\Locator\LocatorException;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
+use SprykerEngine\Shared\Kernel\AbstractLocator;
 
-class ClientLocator extends AbstractLocator
+class BundleDependencyProviderLocator extends AbstractLocator
 {
 
-    const LOCATABLE_SUFFIX = 'Client';
+    const CLASS_NAME_SUFFIX = 'DependencyProvider';
 
     /**
      * @var string
@@ -19,16 +23,16 @@ class ClientLocator extends AbstractLocator
     /**
      * @param string $bundle
      * @param LocatorLocatorInterface $locator
-     * @param null $className
+     * @param string|null $className
      *
+     * @return BundleDependencyProviderInterface
      * @throws LocatorException
-     * @return object
      */
     public function locate($bundle, LocatorLocatorInterface $locator, $className = null)
     {
         $factory = $this->getFactory($bundle);
+        $className = $bundle . self::CLASS_NAME_SUFFIX;
 
-        return $factory->create($bundle . self::LOCATABLE_SUFFIX, $factory, $locator);
+        return $factory->create($className);
     }
-
 }
