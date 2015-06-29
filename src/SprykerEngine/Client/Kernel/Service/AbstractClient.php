@@ -3,8 +3,9 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Kernel;
+namespace SprykerEngine\Client\Kernel\Service;
 
+use SprykerEngine\Client\Kernel\Container;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 use SprykerEngine\Shared\Kernel\Factory\FactoryInterface;
 use SprykerEngine\Client\Kernel\DependencyContainer\DependencyContainerInterface;
@@ -25,6 +26,17 @@ abstract class AbstractClient
     {
         if ($factory->exists('DependencyContainer')) {
             $this->dependencyContainer = $factory->create('DependencyContainer', $factory, $locator);
+        }
+    }
+
+    /**
+     * @param Container $container
+     */
+    public function setExternalDependencies(Container $container)
+    {
+        $dependencyContainer = $this->getDependencyContainer();
+        if (isset($dependencyContainer)) {
+            $this->getDependencyContainer()->setContainer($container);
         }
     }
 

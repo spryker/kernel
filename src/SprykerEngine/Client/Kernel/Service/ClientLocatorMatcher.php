@@ -3,7 +3,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Client\Kernel;
+namespace SprykerEngine\Client\Kernel\Service;
 
 use SprykerEngine\Shared\Kernel\Locator\LocatorMatcherInterface;
 

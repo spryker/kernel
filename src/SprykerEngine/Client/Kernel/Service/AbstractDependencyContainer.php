@@ -1,8 +1,9 @@
 <?php
 
-namespace SprykerEngine\Client\Kernel;
+namespace SprykerEngine\Client\Kernel\Service;
 
 use Generated\Client\Ide\AutoCompletion;
+use SprykerEngine\Client\Kernel\Container;
 use SprykerEngine\Client\Kernel\DependencyContainer\DependencyContainerInterface;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 
