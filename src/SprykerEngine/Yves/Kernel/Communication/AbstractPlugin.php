@@ -4,13 +4,15 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Yves\Kernel;
+namespace SprykerEngine\Yves\Kernel\Communication;
 
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
 use SprykerEngine\Yves\Kernel\DependencyContainer\DependencyContainerInterface;
 
 abstract class AbstractPlugin
 {
+
+    const DEPENDENCY_CONTAINER = 'DependencyContainer';
 
     /**
      * @var DependencyContainerInterface
@@ -23,8 +25,8 @@ abstract class AbstractPlugin
      */
     public function __construct(Factory $factory, LocatorLocatorInterface $locator)
     {
-        if ($factory->exists('DependencyContainer')) {
-            $this->dependencyContainer = $factory->create('DependencyContainer', $factory, $locator);
+        if ($factory->exists(self::DEPENDENCY_CONTAINER)) {
+            $this->dependencyContainer = $factory->create(self::DEPENDENCY_CONTAINER, $factory, $locator);
         }
     }
 
