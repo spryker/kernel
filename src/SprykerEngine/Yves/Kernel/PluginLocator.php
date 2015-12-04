@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Yves\Kernel\Communication;
+namespace SprykerEngine\Yves\Kernel;
 
 use SprykerEngine\Shared\Kernel\AbstractLocator;
 use SprykerEngine\Shared\Kernel\Locator\LocatorException;
@@ -16,7 +16,7 @@ class PluginLocator extends AbstractLocator
     /**
      * @var string
      */
-    protected $factoryClassNamePattern = '\\{{namespace}}\\Yves\\Kernel\\Communication\\Factory';
+    protected $factoryClassNamePattern = '\\{{namespace}}\\Yves\\Kernel\\\Factory';
 
     /**
      * @var string
@@ -26,7 +26,7 @@ class PluginLocator extends AbstractLocator
     /**
      * @var string
      */
-    protected $layer = 'Communication';
+    protected $layer = null;
 
     /**
      * @var string

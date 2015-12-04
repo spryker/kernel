@@ -4,16 +4,15 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace YvesUnit\SprykerEngine\Yves\Kernel\Communication;
+namespace YvesUnit\SprykerEngine\Yves\Kernel;
 
-use SprykerEngine\Yves\Kernel\Communication\BundleControllerAction;
-use SprykerEngine\Yves\Kernel\Communication\Controller\BundleControllerActionRouteNameResolver;
+use SprykerEngine\Yves\Kernel\BundleControllerAction;
+use SprykerEngine\Yves\Kernel\Controller\BundleControllerActionRouteNameResolver;
 
 /**
  * @group SprykerEngine
  * @group Yves
  * @group Kernel
- * @group Communication
  * @group BundleControllerActionRouteNameResolver
  */
 class BundleControllerActionRouteNameResolverTest extends \PHPUnit_Framework_TestCase

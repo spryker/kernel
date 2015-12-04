@@ -4,15 +4,14 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace YvesUnit\SprykerEngine\Yves\Kernel\Communication;
+namespace YvesUnit\SprykerEngine\Yves\Kernel;
 
-use SprykerEngine\Yves\Kernel\Communication\BundleControllerAction;
+use SprykerEngine\Yves\Kernel\BundleControllerAction;
 
 /**
  * @group SprykerEngine
  * @group Yves
  * @group Kernel
- * @group Communication
  * @group BundleControllerAction
  */
 class BundleControllerActionTest extends \PHPUnit_Framework_TestCase

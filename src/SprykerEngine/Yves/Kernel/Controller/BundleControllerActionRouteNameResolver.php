@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Yves\Kernel\Communication\Controller;
+namespace SprykerEngine\Yves\Kernel\Controller;
 
 use SprykerEngine\Shared\Kernel\Communication\BundleControllerActionInterface;
 use SprykerEngine\Shared\Kernel\Communication\RouteNameResolverInterface;

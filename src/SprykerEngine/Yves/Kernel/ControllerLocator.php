@@ -4,12 +4,13 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Yves\Kernel\Communication;
+namespace SprykerEngine\Yves\Kernel;
 
 use SprykerEngine\Shared\Kernel\ClassMapFactory;
 use SprykerEngine\Shared\Kernel\Communication\BundleControllerActionInterface;
 use SprykerEngine\Shared\Kernel\Communication\ControllerLocatorInterface;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
+use SprykerEngine\Yves\Kernel\Factory;
 
 class ControllerLocator implements ControllerLocatorInterface
 {
@@ -18,6 +19,16 @@ class ControllerLocator implements ControllerLocatorInterface
      * @var BundleControllerActionInterface
      */
     private $bundleControllerAction;
+
+    /**
+     * @var string
+     */
+    protected $application = 'Yves';
+
+    /**
+     * @var string
+     */
+    protected $layer = null;
 
     /**
      * @param BundleControllerActionInterface $bundleControllerAction
@@ -38,10 +49,10 @@ class ControllerLocator implements ControllerLocatorInterface
         $factory = new Factory($this->bundleControllerAction->getBundle());
 
         $resolvedController = ClassMapFactory::getInstance()->create(
-            'Yves',
+            $this->application,
             $this->bundleControllerAction->getBundle(),
             'Controller' . $this->bundleControllerAction->getController() . 'Controller',
-            'Communication',
+            $this->layer,
             [$application, $factory, $locator]
         );
 
@@ -54,10 +65,10 @@ class ControllerLocator implements ControllerLocatorInterface
     public function canLocate()
     {
         return ClassMapFactory::getInstance()->has(
-            'Yves',
+            $this->application,
             $this->bundleControllerAction->getBundle(),
             'Controller' . $this->bundleControllerAction->getController() . 'Controller',
-            'Communication'
+            $this->layer
         );
     }
 
