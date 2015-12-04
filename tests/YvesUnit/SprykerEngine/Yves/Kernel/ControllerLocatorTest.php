@@ -4,17 +4,16 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace YvesUnit\SprykerEngine\Yves\Kernel\Communication;
+namespace YvesUnit\SprykerEngine\Yves\Kernel;
 
-use SprykerEngine\Yves\Kernel\Communication\BundleControllerAction;
-use SprykerEngine\Yves\Kernel\Communication\ControllerLocator;
+use SprykerEngine\Yves\Kernel\BundleControllerAction;
+use SprykerEngine\Yves\Kernel\ControllerLocator;
 use SprykerEngine\Yves\Kernel\Locator;
 
 /**
  * @group SprykerEngine
  * @group Yves
  * @group Kernel
- * @group Communication
  * @group Locator
  * @group ControllerLocator
  */

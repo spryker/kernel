@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace YvesUnit\SprykerEngine\Yves\Kernel\Communication\Fixtures;
+namespace YvesUnit\SprykerEngine\Yves\Kernel\Fixtures;
 
 class FooController
 {

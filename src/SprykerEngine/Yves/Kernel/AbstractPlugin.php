@@ -4,7 +4,7 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace SprykerEngine\Yves\Kernel\Communication;
+namespace SprykerEngine\Yves\Kernel;
 
 use SprykerEngine\Client\Kernel\Service\AbstractClient;
 use SprykerEngine\Shared\Kernel\Locator\LocatorInterface;
