@@ -1,8 +1,8 @@
 <?php
 
-namespace Unit\SprykerEngine\Client\Kernel\Service;
+namespace Unit\SprykerEngine\Client\Kernel;
 
-use SprykerEngine\Client\Kernel\Service\ClientLocatorMatcher;
+use SprykerEngine\Client\Kernel\ClientLocatorMatcher;
 
 /**
  * @group SprykerEngine

@@ -1,18 +1,16 @@
 <?php
 
-namespace SprykerEngine\Client\Kernel\Service;
+namespace SprykerEngine\Client\Kernel;
 
 use Generated\Client\Ide\AutoCompletion;
-use SprykerEngine\Client\Kernel\Container;
 use SprykerEngine\Client\Kernel\DependencyContainer\DependencyContainerInterface;
 use SprykerEngine\Shared\Kernel\LocatorLocatorInterface;
-use SprykerEngine\Client\Kernel\AbstractDependencyProvider;
-use SprykerFeature\Client\Session\Service\SessionClient;
-use SprykerFeature\Client\ZedRequest\Service\ZedRequestClient;
-use SprykerFeature\Client\Storage\Service\StorageClient;
-use SprykerFeature\Client\Search\Service\SearchClient;
+use SprykerFeature\Client\Session\SessionClient;
+use SprykerFeature\Client\ZedRequest\ZedRequestClient;
+use SprykerFeature\Client\Storage\StorageClient;
+use SprykerFeature\Client\Search\SearchClient;
 
-abstract class AbstractServiceDependencyContainer implements DependencyContainerInterface
+abstract class AbstractDependencyContainer implements DependencyContainerInterface
 {
 
     /**

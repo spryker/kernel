@@ -1,9 +1,7 @@
 <?php
 
-namespace SprykerEngine\Client\Kernel\Service;
+namespace SprykerEngine\Client\Kernel;
 
-use SprykerEngine\Client\Kernel\BundleDependencyProviderLocator;
-use SprykerEngine\Client\Kernel\Container;
 use SprykerEngine\Shared\Kernel\AbstractLocator;
 use SprykerEngine\Shared\Kernel\ClassResolver\ClassNotFoundException;
 use SprykerEngine\Shared\Kernel\Locator\LocatorException;
@@ -19,11 +17,6 @@ class ClientLocator extends AbstractLocator
      * @var string
      */
     protected $bundle = 'Kernel';
-
-    /**
-     * @var string
-     */
-    protected $layer = 'Service';
 
     /**
      * @var string
