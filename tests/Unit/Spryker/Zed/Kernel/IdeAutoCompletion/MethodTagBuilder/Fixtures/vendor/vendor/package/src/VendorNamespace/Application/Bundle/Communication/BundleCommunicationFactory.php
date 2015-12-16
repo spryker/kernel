@@ -5,7 +5,7 @@
 
 namespace VendorNamespace\Application\Bundle\Communication;
 
-class BundleDependencyContainer
+class BundleCommunicationFactory
 {
 
 }

@@ -4,11 +4,11 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace Spryker\Zed\Kernel\Persistence\DependencyContainer;
+namespace Spryker\Zed\Kernel\Persistence;
 
 use Spryker\Zed\Kernel\Container;
 
-interface DependencyContainerInterface
+interface PersistenceFactoryInterface
 {
 
     /**

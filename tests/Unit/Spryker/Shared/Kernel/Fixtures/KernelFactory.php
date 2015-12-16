@@ -6,6 +6,6 @@
 
 namespace Unit\Spryker\Shared\Kernel\Fixtures;
 
-class KernelDependencyContainer
+class KernelFactory
 {
 }

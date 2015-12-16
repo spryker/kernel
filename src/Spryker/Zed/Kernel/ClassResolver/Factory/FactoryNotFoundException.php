@@ -4,14 +4,14 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace Spryker\Yves\Kernel\ClassResolver\DependencyContainer;
+namespace Spryker\Zed\Kernel\ClassResolver\Factory;
 
-use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config;
-use Spryker\Shared\Kernel\ClassResolver\ClassInfo;
+use Spryker\Zed\Kernel\ClassResolver\ClassInfo;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Kernel\Exception\Backtrace;
 
-class DependencyContainerNotFoundException extends \Exception
+class FactoryNotFoundException extends \Exception
 {
 
     /**
@@ -31,16 +31,18 @@ class DependencyContainerNotFoundException extends \Exception
     {
         $message = 'Spryker Kernel Exception' . PHP_EOL;
         $message .= sprintf(
-            'Can not resolve %1$sDependencyContainer for your bundle "%1$s"',
+            'Can not resolve %2$s%1$sFactory in %s layer for your bundle "%s"',
+            $callerClassInfo->getLayer(),
             $callerClassInfo->getBundle()
         ) . PHP_EOL;
 
-        $message .= 'You can fix this by adding the missing DependencyContainer to your bundle.' . PHP_EOL;
+        $message .= 'You can fix this by adding the missing Factory to your bundle.' . PHP_EOL;
 
         $message .= sprintf(
-            'E.g. %s\\Yves\\%2$s\\%2$sDependencyContainer',
+            'E.g. %1$s\\Zed\\%2$s\\%3$s\\%2$s%3$sFactory' . PHP_EOL . PHP_EOL,
             Config::getInstance()->get(ApplicationConstants::PROJECT_NAMESPACE),
-            $callerClassInfo->getBundle()
+            $callerClassInfo->getBundle(),
+            $callerClassInfo->getLayer()
         );
 
         $message .= new Backtrace();

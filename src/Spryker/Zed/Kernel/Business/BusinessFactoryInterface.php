@@ -4,12 +4,12 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace Spryker\Zed\Kernel\Business\DependencyContainer;
+namespace Spryker\Zed\Kernel\Business;
 
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
-interface DependencyContainerInterface
+interface BusinessFactoryInterface
 {
 
     /**
