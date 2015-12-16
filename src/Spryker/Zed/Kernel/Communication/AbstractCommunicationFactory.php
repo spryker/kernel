@@ -7,14 +7,13 @@
 namespace Spryker\Zed\Kernel\Communication;
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Zed\Kernel\AbstractDependencyContainer as BaseDependencyContainer;
-use Spryker\Zed\Kernel\Communication\DependencyContainer\DependencyContainerInterface;
+use Spryker\Zed\Kernel\AbstractFactory;
 use Spryker\Zed\Kernel\Container;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormTypeInterface;
 
-abstract class AbstractCommunicationDependencyContainer extends BaseDependencyContainer implements DependencyContainerInterface
+abstract class AbstractCommunicationFactory extends AbstractFactory implements CommunicationFactoryInterface
 {
 
     const FORM_FACTORY = 'form.factory';

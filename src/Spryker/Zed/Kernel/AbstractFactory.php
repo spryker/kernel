@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\ClassResolver\QueryContainer\QueryContainerResolver;
 use Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
-abstract class AbstractDependencyContainer
+abstract class AbstractFactory
 {
 
     /**

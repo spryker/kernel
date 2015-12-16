@@ -7,10 +7,10 @@
 namespace Spryker\Zed\Kernel\Communication;
 
 use Spryker\Zed\Messenger\Business\MessengerFacade;
-use Spryker\Zed\Kernel\Communication\AbstractCommunicationDependencyContainer;
+use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\Kernel\KernelDependencyProvider;
 
-class KernelDependencyContainer extends AbstractCommunicationDependencyContainer
+class KernelCommunicationFactory extends AbstractCommunicationFactory
 {
 
     /**

@@ -6,6 +6,6 @@
 
 namespace Unit\Spryker\Zed\Kernel\Communication\Fixtures;
 
-class KernelDependencyContainer
+class KernelCommunicationFactory
 {
 }

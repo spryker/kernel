@@ -4,22 +4,22 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace Spryker\Zed\Kernel\ClassResolver\DependencyContainer;
+namespace Spryker\Zed\Kernel\ClassResolver\Factory;
 
-use Spryker\Zed\Kernel\AbstractDependencyContainer;
+use Spryker\Zed\Kernel\AbstractFactory;
 use Spryker\Zed\Kernel\ClassResolver\AbstractClassResolver;
 
-class DependencyContainerResolver extends AbstractClassResolver
+class FactoryResolver extends AbstractClassResolver
 {
 
-    const CLASS_NAME_PATTERN = '\\%1$s\\Zed\\%2$s%4$s\\%3$s\\%2$sDependencyContainer';
+    const CLASS_NAME_PATTERN = '\\%1$s\\Zed\\%2$s%4$s\\%3$s\\%2$s%3$sFactory';
 
     /**
      * @param object|string $callerClass
      *
-     * @throws DependencyContainerNotFoundException
+     * @throws FactoryNotFoundException
      *
-     * @return AbstractDependencyContainer
+     * @return AbstractFactory
      */
     public function resolve($callerClass)
     {
@@ -28,7 +28,7 @@ class DependencyContainerResolver extends AbstractClassResolver
             return $this->getResolvedClassInstance();
         }
 
-        throw new DependencyContainerNotFoundException($this->getClassInfo());
+        throw new FactoryNotFoundException($this->getClassInfo());
     }
 
     /**

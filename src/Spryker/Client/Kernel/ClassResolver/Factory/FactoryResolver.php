@@ -4,22 +4,22 @@
  * (c) Spryker Systems GmbH copyright protected
  */
 
-namespace Spryker\Client\Kernel\ClassResolver\DependencyContainer;
+namespace Spryker\Client\Kernel\ClassResolver\Factory;
 
 use Spryker\Client\Kernel\ClassResolver\AbstractClassResolver;
-use Spryker\Client\Kernel\DependencyContainer\DependencyContainerInterface;
+use Spryker\Client\Kernel\FactoryInterface;
 
-class DependencyContainerResolver extends AbstractClassResolver
+class FactoryResolver extends AbstractClassResolver
 {
 
-    const CLASS_NAME_PATTERN = '\\%1$s\\Client\\%2$s%3$s\\%2$sDependencyContainer';
+    const CLASS_NAME_PATTERN = '\\%1$s\\Client\\%2$s%3$s\\%2$sFactory';
 
     /**
      * @param object|string $callerClass
      *
-     * @throws DependencyContainerNotFoundException
+     * @throws FactoryNotFoundException
      *
-     * @return DependencyContainerInterface
+     * @return FactoryInterface
      */
     public function resolve($callerClass)
     {
@@ -28,7 +28,7 @@ class DependencyContainerResolver extends AbstractClassResolver
             return $this->getResolvedClassInstance();
         }
 
-        throw new DependencyContainerNotFoundException($this->getClassInfo());
+        throw new FactoryNotFoundException($this->getClassInfo());
     }
 
     /**
