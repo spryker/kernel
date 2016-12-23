@@ -9,7 +9,7 @@ namespace Spryker\Zed\Kernel\Dependency\Facade;
 
 use Generated\Shared\Transfer\MessageTransfer;
 
-interface KernelToMessengerInterface
+class NullMessenger implements KernelToMessengerInterface
 {
 
     /**
@@ -17,20 +17,26 @@ interface KernelToMessengerInterface
      *
      * @return void
      */
-    public function addSuccessMessage(MessageTransfer $message);
+    public function addSuccessMessage(MessageTransfer $message)
+    {
+    }
 
     /**
      * @param \Generated\Shared\Transfer\MessageTransfer $message
      *
      * @return void
      */
-    public function addInfoMessage(MessageTransfer $message);
+    public function addInfoMessage(MessageTransfer $message)
+    {
+    }
 
     /**
      * @param \Generated\Shared\Transfer\MessageTransfer $message
      *
      * @return void
      */
-    public function addErrorMessage(MessageTransfer $message);
+    public function addErrorMessage(MessageTransfer $message)
+    {
+    }
 
 }
