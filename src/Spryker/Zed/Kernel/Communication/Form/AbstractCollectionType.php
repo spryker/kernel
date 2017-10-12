@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Kernel\Communication;
+namespace Spryker\Zed\Kernel\Communication\Form;
 
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 use Spryker\Zed\Kernel\ClassResolver\Config\BundleConfigResolver;
@@ -13,8 +13,9 @@ use Spryker\Zed\Kernel\ClassResolver\Facade\FacadeResolver;
 use Spryker\Zed\Kernel\ClassResolver\Factory\FactoryResolver;
 use Spryker\Zed\Kernel\ClassResolver\QueryContainer\QueryContainerResolver;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-abstract class AbstractPlugin
+abstract class AbstractCollectionType extends CollectionType
 {
     /**
      * @var \Spryker\Zed\Kernel\Business\AbstractFacade
@@ -89,7 +90,7 @@ abstract class AbstractPlugin
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\AbstractFactory|\Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
+     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
      */
     private function resolveFactory()
     {
