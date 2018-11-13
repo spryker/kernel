@@ -27,12 +27,12 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
     /**
      * @var array
      */
-    protected $transferMetadata = [];
+    protected static $transferMetadata = [];
 
     /**
      * @var array
      */
-    protected $transferPropertyNameMap = [];
+    protected static $transferPropertyNameMap = [];
 
     public function __construct()
     {
@@ -101,13 +101,13 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
             if ($camelCasedKeys) {
                 $arrayKey = $property;
             } else {
-                $arrayKey = $this->transferMetadata[$property]['name_underscore'];
+                $arrayKey = static::$transferMetadata[$property]['name_underscore'];
             }
 
             if (is_object($value)) {
                 if ($isRecursive && $value instanceof TransferInterface) {
                     $values[$arrayKey] = $value->$childConvertMethodName($isRecursive, $camelCasedKeys);
-                } elseif ($isRecursive && $this->transferMetadata[$property]['is_collection'] && count($value) >= 1) {
+                } elseif ($isRecursive && static::$transferMetadata[$property]['is_collection'] && count($value) >= 1) {
                     $values = $this->addValuesToCollection($value, $values, $arrayKey, $isRecursive, $childConvertMethodName, $camelCasedKeys);
                 } else {
                     $values[$arrayKey] = $value;
@@ -126,7 +126,7 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
      */
     private function getPropertyNames()
     {
-        return array_keys($this->transferMetadata);
+        return array_keys(static::$transferMetadata);
     }
 
     /**
@@ -142,12 +142,12 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
                 continue;
             }
 
-            $property = $this->transferPropertyNameMap[$property];
+            $property = static::$transferPropertyNameMap[$property];
 
-            if ($this->transferMetadata[$property]['is_collection']) {
-                $elementType = $this->transferMetadata[$property]['type'];
+            if (static::$transferMetadata[$property]['is_collection']) {
+                $elementType = static::$transferMetadata[$property]['type'];
                 $value = $this->processArrayObject($elementType, $value, $ignoreMissingProperty);
-            } elseif ($this->transferMetadata[$property]['is_transfer']) {
+            } elseif (static::$transferMetadata[$property]['is_transfer']) {
                 $value = $this->initializeNestedTransferObject($property, $value, $ignoreMissingProperty);
             }
 
@@ -241,7 +241,7 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
      */
     protected function initializeNestedTransferObject($property, $value, $ignoreMissingProperty = false)
     {
-        $type = $this->transferMetadata[$property]['type'];
+        $type = static::$transferMetadata[$property]['type'];
 
         /** @var \Spryker\Shared\Kernel\Transfer\TransferInterface $transferObject */
         $transferObject = new $type();
@@ -264,7 +264,7 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
      */
     protected function hasProperty($property, $ignoreMissingProperty)
     {
-        if (isset($this->transferPropertyNameMap[$property])) {
+        if (isset(static::$transferPropertyNameMap[$property])) {
             return true;
         }
 
@@ -352,7 +352,7 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
      */
     public function offsetExists($offset)
     {
-        return isset($this->transferMetadata[$offset]);
+        return isset(static::$transferMetadata[$offset]);
     }
 
     /**

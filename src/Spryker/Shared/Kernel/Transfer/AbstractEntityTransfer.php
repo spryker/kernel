@@ -15,14 +15,14 @@ class AbstractEntityTransfer extends AbstractTransfer implements EntityTransferI
      *
      * @var array
      */
-    protected $virtualProperties = [];
+    protected static $virtualProperties = [];
 
     /**
      * @return array
      */
     public function virtualProperties()
     {
-        return $this->virtualProperties;
+        return static::$virtualProperties;
     }
 
     /**
@@ -35,16 +35,16 @@ class AbstractEntityTransfer extends AbstractTransfer implements EntityTransferI
     {
         foreach ($data as $property => $value) {
             if ($this->hasProperty($property, $acceptVirtualProperties) === false) {
-                $this->virtualProperties[$property] = $value;
+                static::$virtualProperties[$property] = $value;
                 continue;
             }
 
-            $property = $this->transferPropertyNameMap[$property];
+            $property = static::$transferPropertyNameMap[$property];
 
-            if ($this->transferMetadata[$property]['is_collection']) {
-                $elementType = $this->transferMetadata[$property]['type'];
+            if (static::$transferMetadata[$property]['is_collection']) {
+                $elementType = static::$transferMetadata[$property]['type'];
                 $value = $this->processArrayObject($elementType, $value, $acceptVirtualProperties);
-            } elseif ($this->transferMetadata[$property]['is_transfer']) {
+            } elseif (static::$transferMetadata[$property]['is_transfer']) {
                 $value = $this->initializeNestedTransferObject($property, $value, $acceptVirtualProperties);
             }
 
