@@ -5,27 +5,28 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Kernel;
+namespace Spryker\Yves\Kernel;
 
 use Spryker\Shared\Kernel\ContainerGlobals;
 use Spryker\Shared\Kernel\ContainerMocker\ContainerMocker;
-use Spryker\Zed\Kernel\ClassResolver\DependencyInjector\DependencyInjectorResolver;
-use Spryker\Zed\Kernel\ClassResolver\DependencyProvider\DependencyProviderResolver;
-use Spryker\Zed\Kernel\Dependency\Injector\DependencyInjector;
-use Spryker\Zed\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface;
-use Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException;
+use Spryker\Yves\Kernel\ClassResolver\DependencyInjector\DependencyInjectorResolver;
+use Spryker\Yves\Kernel\ClassResolver\DependencyProvider\DependencyProviderResolver;
+use Spryker\Yves\Kernel\Dependency\Injector\DependencyInjector;
+use Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface;
+use Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorInterface;
+use Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException;
 
 trait BundleDependencyProviderResolverAwareTrait
 {
     use ContainerMocker;
 
     /**
-     * @var \Spryker\Zed\Kernel\Container
+     * @var \Spryker\Yves\Kernel\Container
      */
     private $container;
 
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return $this
      */
@@ -39,11 +40,11 @@ trait BundleDependencyProviderResolverAwareTrait
     /**
      * @param string $key
      *
-     * @throws \Spryker\Zed\Kernel\Exception\Container\ContainerKeyNotFoundException
+     * @throws \Spryker\Yves\Kernel\Exception\Container\ContainerKeyNotFoundException
      *
      * @return mixed
      */
-    public function getProvidedDependency($key)
+    public function getProvidedDependency(string $key)
     {
         if ($this->container === null) {
             $this->container = $this->createContainerWithProvidedDependencies();
@@ -57,9 +58,9 @@ trait BundleDependencyProviderResolverAwareTrait
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
-    protected function createContainerWithProvidedDependencies()
+    protected function createContainerWithProvidedDependencies(): Container
     {
         $container = $this->createContainer();
         $dependencyInjectorCollection = $this->resolveDependencyInjectorCollection();
@@ -69,64 +70,64 @@ trait BundleDependencyProviderResolverAwareTrait
         $this->provideExternalDependencies($dependencyProvider, $container);
         $this->injectExternalDependencies($dependencyInjector, $container);
 
-        /** @var \Spryker\Zed\Kernel\Container $container */
+        /** @var \Spryker\Yves\Kernel\Container $container */
         $container = $this->overwriteForTesting($container);
 
         return $container;
     }
 
     /**
-     * @param \Spryker\Zed\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface $dependencyInjectorCollection
+     * @param \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface $dependencyInjectorCollection
      *
-     * @return \Spryker\Zed\Kernel\Dependency\Injector\DependencyInjector
+     * @return \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorInterface
      */
-    protected function createDependencyInjector(DependencyInjectorCollectionInterface $dependencyInjectorCollection)
+    protected function createDependencyInjector(DependencyInjectorCollectionInterface $dependencyInjectorCollection): DependencyInjectorInterface
     {
         return new DependencyInjector($dependencyInjectorCollection);
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\AbstractBundleDependencyProvider
+     * @return \Spryker\Yves\Kernel\AbstractBundleDependencyProvider
      */
-    protected function resolveDependencyProvider()
+    protected function resolveDependencyProvider(): AbstractBundleDependencyProvider
     {
         return $this->createDependencyProviderResolver()->resolve($this);
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\ClassResolver\DependencyProvider\DependencyProviderResolver
+     * @return \Spryker\Yves\Kernel\ClassResolver\DependencyProvider\DependencyProviderResolver
      */
-    protected function createDependencyProviderResolver()
+    protected function createDependencyProviderResolver(): DependencyProviderResolver
     {
         return new DependencyProviderResolver();
     }
 
     /**
-     * @param \Spryker\Zed\Kernel\AbstractBundleDependencyProvider $dependencyProvider
-     * @param \Spryker\Zed\Kernel\Container $container
+     * @param \Spryker\Yves\Kernel\AbstractBundleDependencyProvider $dependencyProvider
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     abstract protected function provideExternalDependencies(
         AbstractBundleDependencyProvider $dependencyProvider,
         Container $container
-    );
+    ): Container;
 
     /**
-     * @param \Spryker\Zed\Kernel\Dependency\Injector\DependencyInjector $dependencyInjector
-     * @param \Spryker\Zed\Kernel\Container $container
+     * @param \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjector $dependencyInjector
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
     abstract protected function injectExternalDependencies(
         DependencyInjector $dependencyInjector,
         Container $container
-    );
+    ): Container;
 
     /**
-     * @return \Spryker\Zed\Kernel\Container
+     * @return \Spryker\Yves\Kernel\Container
      */
-    protected function createContainer()
+    protected function createContainer(): Container
     {
         $containerGlobals = $this->createContainerGlobals();
         $container = new Container($containerGlobals->getContainerGlobals());
@@ -137,23 +138,23 @@ trait BundleDependencyProviderResolverAwareTrait
     /**
      * @return \Spryker\Shared\Kernel\ContainerGlobals
      */
-    protected function createContainerGlobals()
+    protected function createContainerGlobals(): ContainerGlobals
     {
         return new ContainerGlobals();
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface
+     * @return \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface
      */
-    protected function resolveDependencyInjectorCollection()
+    protected function resolveDependencyInjectorCollection(): DependencyInjectorCollectionInterface
     {
         return $this->createDependencyInjectorResolver()->resolve($this);
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\ClassResolver\DependencyInjector\DependencyInjectorResolver
+     * @return \Spryker\Yves\Kernel\ClassResolver\DependencyInjector\DependencyInjectorResolver
      */
-    protected function createDependencyInjectorResolver()
+    protected function createDependencyInjectorResolver(): DependencyInjectorResolver
     {
         return new DependencyInjectorResolver();
     }
