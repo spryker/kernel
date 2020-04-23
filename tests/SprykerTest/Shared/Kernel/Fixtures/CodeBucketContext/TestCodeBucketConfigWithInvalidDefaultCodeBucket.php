@@ -7,10 +7,9 @@
 
 namespace SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext;
 
-use Spryker\Shared\Kernel\CodeBucket\Context\AbstractCodeBucketContext;
-use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface;
+use Spryker\Shared\Kernel\CodeBucket\Config\AbstractCodeBucketConfig;
 
-class TestCodeBucketContextWithoutDefaultCodeBucket extends AbstractCodeBucketContext implements CodeBucketContextInterface
+class TestCodeBucketConfigWithInvalidDefaultCodeBucket extends AbstractCodeBucketConfig
 {
     /**
      * @return string[]
@@ -22,5 +21,13 @@ class TestCodeBucketContextWithoutDefaultCodeBucket extends AbstractCodeBucketCo
             'test2',
             'test3',
         ];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDefaultCodeBucket(): string
+    {
+        return 'test4';
     }
 }
