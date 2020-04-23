@@ -8,13 +8,13 @@
 namespace SprykerTest\Shared\Kernel\CodeBucket;
 
 use Codeception\Test\Unit;
-use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContext;
-use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface;
-use Spryker\Shared\Kernel\CodeBucket\Context\DefaultCodeBucketContext;
+use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfig;
+use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface;
+use Spryker\Shared\Kernel\CodeBucket\Config\DefaultCodeBucketConfig;
 use Spryker\Shared\Kernel\CodeBucket\Exception\InvalidCodeBucketException;
-use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketContextWithDefaultCodeBucket;
-use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketContextWithInvalidDefaultCodeBucket;
-use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketContextWithoutDefaultCodeBucket;
+use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketConfigWithDefaultCodeBucket;
+use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketConfigWithInvalidDefaultCodeBucket;
+use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketConfigWithoutDefaultCodeBucket;
 
 /**
  * Auto-generated group annotations
@@ -23,10 +23,10 @@ use SprykerTest\Shared\Kernel\Fixtures\CodeBucketContext\TestCodeBucketContextWi
  * @group Shared
  * @group Kernel
  * @group CodeBucket
- * @group CodeBucketContextTest
+ * @group CodeBucketConfigTest
  * Add your own group annotations below this line
  */
-class CodeBucketContextTest extends Unit
+class CodeBucketConfigTest extends Unit
 {
     /**
      * @var \SprykerTest\Shared\Kernel\KernelSharedTester
@@ -39,7 +39,7 @@ class CodeBucketContextTest extends Unit
     public function testGetCurrentCodeBucketWithDynamicStoreModeAndWithoutCustomCodeBucketShouldReturnEmptyCodeBucket(): void
     {
         // Arrange
-        $codeBucketContext = $this->createCodeBucketContext(new DefaultCodeBucketContext(true));
+        $codeBucketContext = $this->createCodeBucketConfig(new DefaultCodeBucketConfig(true));
 
         // Act
         $currentCodeBucket = $codeBucketContext->getCurrentCodeBucket();
@@ -54,7 +54,7 @@ class CodeBucketContextTest extends Unit
     public function testGetCurrentCodeBucketWithoutDynamicStoreModeAndWithoutCustomCodeBucketShouldReturnCurrentStore(): void
     {
         // Arrange
-        $codeBucketContext = $this->createCodeBucketContext(new DefaultCodeBucketContext(false));
+        $codeBucketContext = $this->createCodeBucketConfig(new DefaultCodeBucketConfig(false));
 
         // Act
         $currentCodeBucket = $codeBucketContext->getCurrentCodeBucket();
@@ -69,7 +69,7 @@ class CodeBucketContextTest extends Unit
     public function testGetCurrentCodeBucketWithDynamicStoreModeAndWithCustomCodeBucketEmptyCodeBucketMustUsedShouldReturnEmptyCodeBucket(): void
     {
         // Arrange
-        $codeBucketContext = $this->createCodeBucketContext(new TestCodeBucketContextWithoutDefaultCodeBucket());
+        $codeBucketContext = $this->createCodeBucketConfig(new TestCodeBucketConfigWithoutDefaultCodeBucket());
 
         // Act
         $currentCodeBucket = $codeBucketContext->getCurrentCodeBucket();
@@ -84,7 +84,7 @@ class CodeBucketContextTest extends Unit
     public function testGetCurrentCodeBucketWithCustomCodeBucketShouldReturnCustomCodeBucket(): void
     {
         // Arrange
-        $codeBucketContext = $this->createCodeBucketContext(new TestCodeBucketContextWithDefaultCodeBucket());
+        $codeBucketContext = $this->createCodeBucketConfig(new TestCodeBucketConfigWithDefaultCodeBucket());
 
         // Act
         $currentCodeBucket = $codeBucketContext->getCurrentCodeBucket();
@@ -107,20 +107,20 @@ class CodeBucketContextTest extends Unit
 
         // Arrange
         $this->tester->haveCodeBucketEnv('test4');
-        $codeBucketContext = $this->createCodeBucketContext(new TestCodeBucketContextWithInvalidDefaultCodeBucket());
+        $codeBucketContext = $this->createCodeBucketConfig(new TestCodeBucketConfigWithInvalidDefaultCodeBucket());
 
         // Act
         $codeBucketContext->getCurrentCodeBucket();
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface|null $codeBucketContext
+     * @param \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface|null $codeBucketConfig
      *
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
      */
-    protected function createCodeBucketContext(
-        ?CodeBucketContextInterface $codeBucketContext = null
-    ): CodeBucketContextInterface {
-        return new CodeBucketContext($codeBucketContext);
+    protected function createCodeBucketConfig(
+        ?CodeBucketConfigInterface $codeBucketConfig = null
+    ): CodeBucketConfigInterface {
+        return new CodeBucketConfig($codeBucketConfig);
     }
 }

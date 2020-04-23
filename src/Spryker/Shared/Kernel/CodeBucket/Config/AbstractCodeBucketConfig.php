@@ -5,11 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Shared\Kernel\CodeBucket\Context;
+namespace Spryker\Shared\Kernel\CodeBucket\Config;
 
 use Spryker\Shared\Kernel\CodeBucket\Exception\InvalidCodeBucketException;
 
-abstract class AbstractCodeBucketContext implements CodeBucketContextInterface
+abstract class AbstractCodeBucketConfig implements CodeBucketConfigInterface
 {
     protected const SPRYKER_CODE_BUCKET = 'SPRYKER_CODE_BUCKET';
 
@@ -21,7 +21,7 @@ abstract class AbstractCodeBucketContext implements CodeBucketContextInterface
         $codeBucket = getenv(static::SPRYKER_CODE_BUCKET);
 
         if ($codeBucket === false) {
-            return $this->getDefaultCodeBucket();
+            $codeBucket = $this->getDefaultCodeBucket();
         }
 
         $this->assertCodeBucket($codeBucket);
