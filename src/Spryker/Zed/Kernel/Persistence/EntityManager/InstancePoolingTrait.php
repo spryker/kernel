@@ -30,4 +30,14 @@ trait InstancePoolingTrait
     {
         return Propel::disableInstancePooling();
     }
+
+    /**
+     * Returns boolean whether the pooling is enabled or not.
+     *
+     * @return bool
+     */
+    public function isInstancePoolingEnabled(): bool
+    {
+        return Propel::isInstancePoolingEnabled();
+    }
 }
