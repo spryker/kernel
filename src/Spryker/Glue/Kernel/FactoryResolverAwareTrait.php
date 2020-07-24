@@ -5,23 +5,23 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Yves\Kernel;
+namespace Spryker\Glue\Kernel;
 
-use Spryker\Yves\Kernel\ClassResolver\Factory\FactoryResolver;
+use Spryker\Glue\Kernel\ClassResolver\Factory\FactoryResolver;
 
 trait FactoryResolverAwareTrait
 {
     /**
-     * @var \Spryker\Yves\Kernel\FactoryInterface|null
+     * @var \Spryker\Glue\Kernel\AbstractFactory|null
      */
     private $factory;
 
     /**
-     * @param \Spryker\Yves\Kernel\FactoryInterface $factory
+     * @param \Spryker\Glue\Kernel\AbstractFactory $factory
      *
      * @return $this
      */
-    public function setFactory(FactoryInterface $factory)
+    public function setFactory(AbstractFactory $factory)
     {
         $this->factory = $factory;
 
@@ -29,9 +29,9 @@ trait FactoryResolverAwareTrait
     }
 
     /**
-     * @return \Spryker\Yves\Kernel\FactoryInterface
+     * @return \Spryker\Glue\Kernel\AbstractFactory
      */
-    protected function getFactory()
+    protected function getFactory(): AbstractFactory
     {
         if ($this->factory === null) {
             $this->factory = $this->resolveFactory();
@@ -41,17 +41,17 @@ trait FactoryResolverAwareTrait
     }
 
     /**
-     * @return \Spryker\Yves\Kernel\AbstractFactory
+     * @return \Spryker\Glue\Kernel\AbstractFactory
      */
-    private function resolveFactory()
+    protected function resolveFactory(): AbstractFactory
     {
         return $this->getFactoryResolver()->resolve($this);
     }
 
     /**
-     * @return \Spryker\Yves\Kernel\ClassResolver\Factory\FactoryResolver
+     * @return \Spryker\Glue\Kernel\ClassResolver\Factory\FactoryResolver
      */
-    private function getFactoryResolver()
+    protected function getFactoryResolver(): FactoryResolver
     {
         return new FactoryResolver();
     }
