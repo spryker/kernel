@@ -15,6 +15,30 @@ use Spryker\Shared\Kernel\BundleProxy;
 class Locator extends AbstractLocatorLocator
 {
     /**
+     * @var static
+     */
+    private static $instance;
+
+    /**
+     * @return static
+     */
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new static();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * Should be private, because this class uses `Singleton` pattern.
+     */
+    private function __construct()
+    {
+    }
+
+    /**
      * @return \Spryker\Shared\Kernel\BundleProxy
      */
     protected function getBundleProxy()

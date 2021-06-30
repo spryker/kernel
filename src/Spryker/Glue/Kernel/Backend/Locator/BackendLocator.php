@@ -5,12 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\Kernel;
+namespace Spryker\Glue\Kernel\Backend\Locator;
 
+use Spryker\Service\Kernel\ServiceLocator;
 use Spryker\Shared\Kernel\AbstractLocatorLocator;
 use Spryker\Shared\Kernel\BundleProxy;
+use Spryker\Zed\Kernel\Business\FacadeLocator;
 
-class Locator extends AbstractLocatorLocator
+class BackendLocator extends AbstractLocatorLocator
 {
     /**
      * @var static
@@ -42,8 +44,13 @@ class Locator extends AbstractLocatorLocator
     protected function getBundleProxy()
     {
         $bundleProxy = new BundleProxy();
-        $bundleProxy
-            ->addLocator(new ServiceLocator());
+        if ($this->locator === null) {
+            $this->locator = [
+                new FacadeLocator(),
+                new ServiceLocator(),
+            ];
+        }
+        $bundleProxy->setLocators($this->locator);
 
         return $bundleProxy;
     }
