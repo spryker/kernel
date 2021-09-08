@@ -12,7 +12,7 @@ use Spryker\Shared\Kernel\Container\AbstractApplicationContainer;
 class Container extends AbstractApplicationContainer
 {
     /**
-     * @return \Generated\Zed\Ide\AutoCompletion|\Spryker\Shared\Kernel\LocatorLocatorInterface
+     * @return \Generated\Zed\Ide\AutoCompletion&\Spryker\Shared\Kernel\LocatorLocatorInterface
      */
     public function getLocator()
     {
