@@ -25,30 +25,36 @@ abstract class AbstractLocatorLocator implements LocatorLocatorInterface
     private static $instance;
 
     /**
+     * @internal
+     *
      * @return static
      */
     public static function getInstance()
     {
-        if (self::$instance === null) {
-            self::$instance = new static();
+        if (static::$instance === null) {
+            static::$instance = new static();
         }
 
-        return self::$instance;
+        return static::$instance;
     }
 
     /**
      * Should be private, because this class uses `Singleton` pattern.
+     *
+     * @internal
      */
-    private function __construct()
+    protected function __construct()
     {
     }
 
     /**
      * Should be private, because this class uses `Singleton` pattern.
      *
+     * @internal
+     *
      * @return void
      */
-    private function __clone()
+    protected function __clone()
     {
     }
 

@@ -27,6 +27,7 @@ class ContainerTest extends Unit
      * @var string
      */
     public const TEST_VALUE = 'foo';
+
     /**
      * @var string
      */
@@ -48,10 +49,10 @@ class ContainerTest extends Unit
     public function testContainerShouldHaveAccessToGlobalProvidedDependency(): void
     {
         $containerGlobals = new ContainerGlobals();
-        $containerGlobals[self::TEST_KEY] = self::TEST_VALUE;
+        $containerGlobals[static::TEST_KEY] = static::TEST_VALUE;
 
         $container = new Container($containerGlobals->getContainerGlobals());
 
-        $this->assertSame(self::TEST_VALUE, $container->get(self::TEST_KEY));
+        $this->assertSame(static::TEST_VALUE, $container->get(static::TEST_KEY));
     }
 }

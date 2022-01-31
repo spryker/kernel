@@ -15,14 +15,17 @@ abstract class AbstractClassResolver extends SharedAbstractClassResolver
      * @var string
      */
     public const KEY_NAMESPACE = '%namespace%';
+
     /**
      * @var string
      */
     public const KEY_APPLICATION = '%application%';
+
     /**
      * @var string
      */
     public const KEY_BUNDLE = '%bundle%';
+
     /**
      * @var string
      */
@@ -37,16 +40,16 @@ abstract class AbstractClassResolver extends SharedAbstractClassResolver
     protected function buildClassName($namespace, $codeBucket = null)
     {
         $searchAndReplace = [
-            self::KEY_NAMESPACE => $namespace,
-            self::KEY_APPLICATION => 'Service',
-            self::KEY_BUNDLE => $this->getClassInfo()->getModule(),
+            static::KEY_NAMESPACE => $namespace,
+            static::KEY_APPLICATION => 'Service',
+            static::KEY_BUNDLE => $this->getClassInfo()->getModule(),
             static::KEY_CODE_BUCKET => $codeBucket,
         ];
 
         return str_replace(
             array_keys($searchAndReplace),
             array_values($searchAndReplace),
-            $this->getClassPattern()
+            $this->getClassPattern(),
         );
     }
 }

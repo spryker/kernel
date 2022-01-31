@@ -37,6 +37,7 @@ class Console extends SymfonyCommand
      * @var int
      */
     public const CODE_SUCCESS = 0;
+
     /**
      * @var int
      */
@@ -261,7 +262,7 @@ class Console extends SymfonyCommand
      */
     protected function hasError()
     {
-        return $this->exitCode !== self::CODE_SUCCESS;
+        return $this->exitCode !== static::CODE_SUCCESS;
     }
 
     /**
@@ -386,6 +387,7 @@ class Console extends SymfonyCommand
     {
         $answer = 'z';
         while ($answer && !in_array(strtolower($answer[0]), ['y', 'n', 'a'])) {
+            /** @var string $answer */
             $answer = $this->ask($question);
         }
 
@@ -416,7 +418,7 @@ class Console extends SymfonyCommand
 
     /**
      * @param string $question
-     * @param array $options
+     * @param array<string, mixed> $options
      * @param string $default
      *
      * @return mixed
@@ -435,8 +437,11 @@ class Console extends SymfonyCommand
      */
     protected function getQuestionHelper(): HelperInterface
     {
+        /** @var \Symfony\Component\Console\Helper\HelperSet $helperSet */
+        $helperSet = $this->getHelperSet();
+
         /** @var \Symfony\Component\Console\Helper\QuestionHelper $questionHelper */
-        $questionHelper = $this->getHelperSet()->get('question');
+        $questionHelper = $helperSet->get('question');
 
         return $questionHelper;
     }

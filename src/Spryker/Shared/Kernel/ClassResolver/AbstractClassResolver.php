@@ -7,6 +7,7 @@
 
 namespace Spryker\Shared\Kernel\ClassResolver;
 
+use RuntimeException;
 use Spryker\Shared\Kernel\ClassResolver\ClassNameFinder\ClassNameFinderInterface;
 use Spryker\Shared\Kernel\ClassResolver\ResolvableCache\CacheReader\CacheReaderInterface;
 use Spryker\Shared\Kernel\ClassResolver\ResolvableCache\CacheReader\CacheReaderPhp;
@@ -19,10 +20,12 @@ abstract class AbstractClassResolver
      * @var string
      */
     public const KEY_NAMESPACE = '%namespace%';
+
     /**
      * @var string
      */
     public const KEY_BUNDLE = '%bundle%';
+
     /**
      * @var string
      */
@@ -32,6 +35,7 @@ abstract class AbstractClassResolver
      * @var string|null
      */
     protected const CLASS_NAME_PATTERN = null;
+
     /**
      * @var string|null
      */
@@ -175,7 +179,10 @@ abstract class AbstractClassResolver
      */
     public function getClassInfo()
     {
-        return $this->classInfo;
+        /** @var \Spryker\Shared\Kernel\ClassResolver\ClassInfo $classInfo */
+        $classInfo = $this->classInfo;
+
+        return $classInfo;
     }
 
     /**
@@ -183,6 +190,7 @@ abstract class AbstractClassResolver
      */
     public function canResolve()
     {
+        $cacheKey = null;
         if ($this->canUseCaching()) {
             $cacheKey = $this->getCacheKey();
 
@@ -199,7 +207,7 @@ abstract class AbstractClassResolver
             if ($this->classExists($className)) {
                 $this->resolvedClassName = $className;
 
-                if (isset($cacheKey)) {
+                if ($cacheKey !== null) {
                     $this->addCache($cacheKey, $className);
                 }
 
@@ -545,6 +553,8 @@ abstract class AbstractClassResolver
     }
 
     /**
+     * @deprecated Will be removed in the next major without replacement.
+     *
      * @return string
      */
     protected function getStoreName(): string
@@ -595,10 +605,19 @@ abstract class AbstractClassResolver
     }
 
     /**
+     * @throws \RuntimeException
+     *
      * @return string
      */
     protected function getCacheKey(): string
     {
-        return $this->classInfo->getCacheKey(static::RESOLVABLE_TYPE);
+        if ($this->classInfo === null) {
+            throw new RuntimeException('Must set $classInfo first using setCallerClass() before accessing it.');
+        }
+
+        /** @var string $key */
+        $key = static::RESOLVABLE_TYPE;
+
+        return $this->classInfo->getCacheKey($key);
     }
 }

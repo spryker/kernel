@@ -37,11 +37,11 @@ class FactoryResolver extends AbstractClassResolver
     {
         $resolved = parent::doResolve($callerClass);
 
-        if ($resolved !== null) {
-            return $resolved;
+        if ($resolved === null) {
+            throw new FactoryNotFoundException($this->getClassInfo());
         }
 
-        throw new FactoryNotFoundException($this->getClassInfo());
+        return $resolved;
     }
 
     /**
@@ -50,11 +50,11 @@ class FactoryResolver extends AbstractClassResolver
     public function getClassPattern()
     {
         return sprintf(
-            self::CLASS_NAME_PATTERN,
-            self::KEY_NAMESPACE,
-            self::KEY_BUNDLE,
-            self::KEY_LAYER,
-            static::KEY_CODE_BUCKET
+            static::CLASS_NAME_PATTERN,
+            static::KEY_NAMESPACE,
+            static::KEY_BUNDLE,
+            static::KEY_LAYER,
+            static::KEY_CODE_BUCKET,
         );
     }
 
@@ -67,16 +67,16 @@ class FactoryResolver extends AbstractClassResolver
     protected function buildClassName($namespace, $codeBucket = null)
     {
         $searchAndReplace = [
-            self::KEY_NAMESPACE => $namespace,
-            self::KEY_BUNDLE => $this->getClassInfo()->getModule(),
-            self::KEY_LAYER => $this->getClassInfo()->getLayer(),
+            static::KEY_NAMESPACE => $namespace,
+            static::KEY_BUNDLE => $this->getClassInfo()->getModule(),
+            static::KEY_LAYER => $this->getClassInfo()->getLayer(),
             static::KEY_CODE_BUCKET => $codeBucket,
         ];
 
         $className = str_replace(
             array_keys($searchAndReplace),
             array_values($searchAndReplace),
-            $this->getClassPattern()
+            $this->getClassPattern(),
         );
 
         return $className;

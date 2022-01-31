@@ -35,8 +35,11 @@ class RedirectUrlValidator implements RedirectUrlValidatorInterface
         }
 
         $redirectUrl = $response->headers->get(static::HTTP_HEADER_LOCATION);
-        $domain = (string)parse_url($redirectUrl, PHP_URL_HOST);
+        if (!$redirectUrl) {
+            return;
+        }
 
+        $domain = (string)parse_url($redirectUrl, PHP_URL_HOST);
         if (!$this->isAllowedDomain($domain, $event->getRequest())) {
             throw new ForbiddenExternalRedirectException(sprintf('URL %s is not an allowed domain', $redirectUrl));
         }
@@ -59,7 +62,7 @@ class RedirectUrlValidator implements RedirectUrlValidatorInterface
 
         $allowedDomains = Config::get(KernelConstants::DOMAIN_WHITELIST, []);
 
-        if (empty($allowedDomains)) {
+        if (!$allowedDomains) {
             return !Config::get(KernelConstants::STRICT_DOMAIN_REDIRECT, false);
         }
 
