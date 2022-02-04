@@ -68,9 +68,9 @@ class Backtrace
     private function getUserFilePath($backtraceFile)
     {
         $backtraceFile = str_replace(
-            self::CURRENT_PATH,
-            Config::get(KernelConstants::BACKTRACE_USER_PATH, self::CURRENT_PATH),
-            $backtraceFile
+            static::CURRENT_PATH,
+            Config::get(KernelConstants::BACKTRACE_USER_PATH, static::CURRENT_PATH),
+            $backtraceFile,
         );
 
         return $backtraceFile;

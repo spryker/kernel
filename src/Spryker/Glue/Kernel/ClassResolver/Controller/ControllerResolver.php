@@ -21,18 +21,18 @@ class ControllerResolver extends AbstractControllerResolver
      */
     protected function getClassNamePattern()
     {
-        return self::CLASS_NAME_PATTERN;
+        return static::CLASS_NAME_PATTERN;
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $bundleControllerAction
+     * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $callerClass
      *
      * @return \Spryker\Glue\Kernel\Controller\AbstractController
      */
-    public function resolve($bundleControllerAction)
+    public function resolve($callerClass)
     {
         /** @var \Spryker\Glue\Kernel\Controller\AbstractController $controller */
-        $controller = parent::resolve($bundleControllerAction);
+        $controller = parent::resolve($callerClass);
 
         return $controller;
     }

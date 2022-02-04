@@ -21,10 +21,12 @@ class BundleProxy
      * @var string
      */
     protected const LOCATOR_MATCHER_SUFFIX = 'Matcher';
+
     /**
      * @var string
      */
     protected const INSTANCE = 'instance';
+
     /**
      * @var string
      */
@@ -100,6 +102,7 @@ class BundleProxy
         if (!class_exists($matcherClass)) {
             throw new LogicException(sprintf('Could not find a "%s"!', $matcherClass));
         }
+        /** @var \Spryker\Shared\Kernel\Locator\LocatorMatcherInterface $matcher */
         $matcher = new $matcherClass();
 
         $this->locators[] = $locator;

@@ -25,13 +25,13 @@ class EntityManagerResolver extends AbstractClassResolver
      */
     public function resolve($callerClass)
     {
+        /** @var \Spryker\Zed\Kernel\Persistence\AbstractEntityManager|null $resolved */
         $resolved = $this->doResolve($callerClass);
-
-        if ($resolved !== null) {
-            return $resolved;
+        if ($resolved === null) {
+            throw new EntityManagerNotFoundException($this->getClassInfo());
         }
 
-        throw new EntityManagerNotFoundException($this->getClassInfo());
+        return $resolved;
     }
 
     /**
@@ -43,15 +43,15 @@ class EntityManagerResolver extends AbstractClassResolver
     protected function buildClassName($namespace, $codeBucket = null)
     {
         $searchAndReplace = [
-            self::KEY_NAMESPACE => $namespace,
-            self::KEY_BUNDLE => $this->getClassInfo()->getBundle(),
+            static::KEY_NAMESPACE => $namespace,
+            static::KEY_BUNDLE => $this->getClassInfo()->getBundle(),
             static::KEY_CODE_BUCKET => $codeBucket,
         ];
 
         return str_replace(
             array_keys($searchAndReplace),
             array_values($searchAndReplace),
-            $this->getClassPattern()
+            $this->getClassPattern(),
         );
     }
 }

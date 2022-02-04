@@ -28,13 +28,13 @@ class SharedFactoryResolver extends AbstractClassResolver
      */
     public function resolve($callerClass)
     {
+        /** @var \Spryker\Shared\Kernel\AbstractSharedFactory|null $resolved */
         $resolved = $this->doResolve($callerClass);
-
-        if ($resolved !== null) {
-            return $resolved;
+        if ($resolved === null) {
+            throw new SharedFactoryNotFoundException($this->getClassInfo());
         }
 
-        throw new SharedFactoryNotFoundException($this->getClassInfo());
+        return $resolved;
     }
 
     /**
@@ -46,15 +46,15 @@ class SharedFactoryResolver extends AbstractClassResolver
     protected function buildClassName($namespace, $codeBucket = null)
     {
         $searchAndReplace = [
-            self::KEY_NAMESPACE => $namespace,
-            self::KEY_BUNDLE => $this->getClassInfo()->getModule(),
+            static::KEY_NAMESPACE => $namespace,
+            static::KEY_BUNDLE => $this->getClassInfo()->getModule(),
             static::KEY_CODE_BUCKET => $codeBucket,
         ];
 
         return str_replace(
             array_keys($searchAndReplace),
             array_values($searchAndReplace),
-            $this->getClassPattern()
+            $this->getClassPattern(),
         );
     }
 }

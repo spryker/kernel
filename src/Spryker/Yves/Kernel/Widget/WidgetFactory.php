@@ -37,6 +37,7 @@ class WidgetFactory implements WidgetFactoryInterface
         $this->assertClassIsWidgetPlugin($widgetClassName);
         $this->assertInitializeExists($widgetClassName);
 
+        /** @var \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface $widget */
         $widget = new $widgetClassName();
         call_user_func_array([$widget, 'initialize'], $arguments);
 
@@ -58,7 +59,7 @@ class WidgetFactory implements WidgetFactoryInterface
             throw new InvalidWidgetPluginException(sprintf(
                 'Invalid widget plugin %s. This class needs to implement %s.',
                 $widgetClassName,
-                WidgetPluginInterface::class
+                WidgetPluginInterface::class,
             ));
         }
     }
@@ -75,7 +76,7 @@ class WidgetFactory implements WidgetFactoryInterface
         if (!method_exists($widgetClassName, 'initialize')) {
             throw new InvalidWidgetPluginException(sprintf(
                 'Widget %s needs to define and implement custom initialize() method with its custom widget input parameters.',
-                $widgetClassName
+                $widgetClassName,
             ));
         }
     }

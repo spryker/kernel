@@ -31,10 +31,11 @@ trait ContainerMocker
         }
 
         foreach ($containerMocks as $key => $containerMock) {
-            /** @var \Spryker\Service\Container\ContainerInterface $container */
+            /** @phpstan-var \Spryker\Service\Container\ContainerInterface $container */
             $container->set($key, $containerMock);
         }
 
+        /** @phpstan-var \Spryker\Shared\Kernel\ContainerInterface */
         return $container;
     }
 

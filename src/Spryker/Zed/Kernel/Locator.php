@@ -17,33 +17,28 @@ use Spryker\Zed\Kernel\Persistence\QueryContainerLocator;
 class Locator extends AbstractLocatorLocator
 {
     /**
-     * @var static
+     * @var \Spryker\Zed\Kernel\Locator
      */
     private static $instance;
 
     /**
-     * @return static
+     * @internal
+     *
+     * @return self
      */
-    public static function getInstance()
+    public static function getInstance(): self
     {
-        if (self::$instance === null) {
-            self::$instance = new static();
+        if (static::$instance === null) {
+            static::$instance = new static();
         }
 
-        return self::$instance;
-    }
-
-    /**
-     * Should be private, because this class uses `Singleton` pattern.
-     */
-    private function __construct()
-    {
+        return static::$instance;
     }
 
     /**
      * @return \Spryker\Shared\Kernel\BundleProxy
      */
-    protected function getBundleProxy()
+    protected function getBundleProxy(): BundleProxy
     {
         $bundleProxy = new BundleProxy();
         if ($this->locator === null) {
