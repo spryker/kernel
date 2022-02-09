@@ -32,17 +32,17 @@ class ClassNameCandidatesBuilder implements ClassNameCandidatesBuilderInterface
     }
 
     /**
-     * @param string $module
+     * @param string $moduleName
      * @param string $classNamePattern
      *
      * @return array<string>
      */
-    public function buildClassNames(string $module, string $classNamePattern): array
+    public function buildClassNames(string $moduleName, string $classNamePattern): array
     {
         $classNames = [];
 
-        $classNames = $this->addProjectClassNames($module, $classNames, $classNamePattern);
-        $classNames = $this->addCoreClassNames($module, $classNames, $classNamePattern);
+        $classNames = $this->addProjectClassNames($moduleName, $classNames, $classNamePattern);
+        $classNames = $this->addCoreClassNames($moduleName, $classNames, $classNamePattern);
 
         return $classNames;
     }

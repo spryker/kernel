@@ -25,14 +25,14 @@ class ControllerResolver extends AbstractControllerResolver
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $callerClass
+     * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $bundleControllerAction
      *
      * @return \Spryker\Glue\Kernel\Controller\AbstractController
      */
-    public function resolve($callerClass)
+    public function resolve($bundleControllerAction)
     {
         /** @var \Spryker\Glue\Kernel\Controller\AbstractController $controller */
-        $controller = parent::resolve($callerClass);
+        $controller = parent::resolve($bundleControllerAction);
 
         return $controller;
     }

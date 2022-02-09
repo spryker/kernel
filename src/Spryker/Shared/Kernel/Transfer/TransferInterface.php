@@ -24,12 +24,12 @@ interface TransferInterface
     public function modifiedToArray($isRecursive = true);
 
     /**
-     * @param array<string, mixed> $data
-     * @param bool $ignoreMissingProperty
+     * @param array<string, mixed> $values
+     * @param bool $fuzzyMatch
      *
      * @return $this
      */
-    public function fromArray(array $data, $ignoreMissingProperty = false);
+    public function fromArray(array $values, $fuzzyMatch = false);
 
     /**
      * @param string $propertyName
