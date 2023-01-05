@@ -296,10 +296,10 @@ class ClassResolverHelper extends Module
     public function addGetCurrentStoreMethodMock(array $methodMocks, KernelConfig $config): array
     {
         return [
-            'getCurrentStoreName' => function () use ($config) {
-                return $config->getCurrentStoreName();
-            },
-        ] + $methodMocks;
+                'getCurrentStoreName' => function () use ($config) {
+                    return $config->getCurrentStoreName();
+                },
+            ] + $methodMocks;
     }
 
     /**
