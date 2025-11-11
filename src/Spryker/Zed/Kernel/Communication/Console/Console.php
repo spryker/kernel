@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\Kernel\Communication\Console;
 
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 use Spryker\Zed\Kernel\ClassResolver\Communication\CommunicationFactoryResolver;
@@ -18,8 +19,9 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 use Spryker\Zed\Kernel\RepositoryResolverAwareTrait;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use Symfony\Component\Console\Helper\HelperInterface;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -35,92 +37,41 @@ class Console extends SymfonyCommand
     use RepositoryResolverAwareTrait;
     use BusinessFactoryResolverAwareTrait;
 
-    /**
-     * @var int
-     */
-    public const CODE_SUCCESS = 0;
+    public const int CODE_SUCCESS = 0;
 
-    /**
-     * @var int
-     */
-    public const CODE_ERROR = 1;
+    public const int CODE_ERROR = 1;
 
-    /**
-     * @var \Symfony\Component\Console\Input\InputInterface
-     */
-    protected $input;
+    protected InputInterface $input;
 
-    /**
-     * @var \Symfony\Component\Console\Output\OutputInterface
-     */
-    protected $output;
+    protected OutputInterface $output;
 
-    /**
-     * @var \Spryker\Zed\Kernel\Business\AbstractFacade|null
-     */
-    protected $facade;
+    protected ?AbstractFacade $facade = null;
 
-    /**
-     * @var \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory|null
-     */
-    protected $factory;
+    protected ?AbstractCommunicationFactory $factory = null;
 
-    /**
-     * @var \Spryker\Zed\Kernel\Container
-     */
-    protected $container;
+    protected ?Container $container = null;
 
-    /**
-     * @var \Spryker\Zed\Kernel\Persistence\AbstractQueryContainer
-     */
-    protected $queryContainer;
+    protected ?AbstractQueryContainer $queryContainer = null;
 
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $messenger;
+    protected LoggerInterface|ConsoleLogger|null $messenger = null;
 
-    /**
-     * @var int
-     */
-    protected $exitCode = self::CODE_SUCCESS;
+    protected ?InputDefinition $mergedDefinition = null;
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return $this
-     */
-    public function setExternalDependencies(Container $container)
-    {
-        $this->container = $container;
+    protected int $exitCode = self::CODE_SUCCESS;
 
-        return $this;
-    }
-
-    /**
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function getContainer()
+    protected function getContainer(): ?Container
     {
         return $this->container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory $factory
-     *
-     * @return $this
-     */
-    public function setFactory(AbstractCommunicationFactory $factory)
+    public function setFactory(AbstractCommunicationFactory $factory): self
     {
         $this->factory = $factory;
 
         return $this;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
-     */
-    protected function getFactory()
+    protected function getFactory(): AbstractCommunicationFactory
     {
         if ($this->factory === null) {
             $this->factory = $this->resolveFactory();
@@ -137,10 +88,7 @@ class Console extends SymfonyCommand
         return $this->factory;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
-     */
-    private function resolveFactory()
+    private function resolveFactory(): AbstractCommunicationFactory
     {
         /** @var \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory $factory */
         $factory = $this->getFactoryResolver()->resolve($this);
@@ -148,30 +96,19 @@ class Console extends SymfonyCommand
         return $factory;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\ClassResolver\Communication\CommunicationFactoryResolver
-     */
-    private function getFactoryResolver()
+    private function getFactoryResolver(): CommunicationFactoryResolver
     {
         return new CommunicationFactoryResolver();
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Business\AbstractFacade $facade
-     *
-     * @return $this
-     */
-    public function setFacade(AbstractFacade $facade)
+    public function setFacade(AbstractFacade $facade): self
     {
         $this->facade = $facade;
 
         return $this;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade
-     */
-    protected function getFacade()
+    protected function getFacade(): AbstractFacade
     {
         if ($this->facade === null) {
             $this->facade = $this->resolveFacade();
@@ -180,61 +117,35 @@ class Console extends SymfonyCommand
         return $this->facade;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade
-     */
-    private function resolveFacade()
+    private function resolveFacade(): AbstractFacade
     {
         return $this->getFacadeResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\ClassResolver\Facade\FacadeResolver
-     */
-    private function getFacadeResolver()
+    private function getFacadeResolver(): FacadeResolver
     {
         return new FacadeResolver();
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Persistence\AbstractQueryContainer $queryContainer
-     *
-     * @return $this
-     */
-    public function setQueryContainer(AbstractQueryContainer $queryContainer)
+    public function setQueryContainer(AbstractQueryContainer $queryContainer): self
     {
         $this->queryContainer = $queryContainer;
 
         return $this;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Persistence\AbstractQueryContainer
-     */
-    protected function getQueryContainer()
+    protected function getQueryContainer(): ?AbstractQueryContainer
     {
         return $this->queryContainer;
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return void
-     */
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->input = $input;
         $this->output = $output;
     }
 
-    /**
-     * @param string $command
-     * @param array $arguments
-     *
-     * @return int
-     */
-    protected function runDependingCommand($command, array $arguments = [])
+    protected function runDependingCommand(string $command, array $arguments = []): int
     {
         $command = $this->getApplication()->find($command);
         $arguments['command'] = $command->getName();
@@ -247,38 +158,24 @@ class Console extends SymfonyCommand
         return $exitCode;
     }
 
-    /**
-     * @param int $exitCode
-     *
-     * @return $this
-     */
-    private function setExitCode($exitCode)
+    private function setExitCode(int $exitCode): self
     {
         $this->exitCode = $exitCode;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    protected function hasError()
+    protected function hasError(): bool
     {
         return $this->exitCode !== static::CODE_SUCCESS;
     }
 
-    /**
-     * @return int
-     */
-    protected function getLastExitCode()
+    protected function getLastExitCode(): int
     {
         return $this->exitCode;
     }
 
-    /**
-     * @return \Psr\Log\LoggerInterface|\Symfony\Component\Console\Logger\ConsoleLogger
-     */
-    protected function getMessenger()
+    protected function getMessenger(): LoggerInterface|ConsoleLogger
     {
         if ($this->messenger === null) {
             $this->messenger = new ConsoleLogger($this->output);
@@ -287,29 +184,20 @@ class Console extends SymfonyCommand
         return $this->messenger;
     }
 
-    /**
-     * @param array|string $message
-     * @param bool $wrapInInfoTags
-     *
-     * @return void
-     */
-    public function info($message, $wrapInInfoTags = true)
+    public function info(array|string $message, bool $wrapInInfoTags = true): void
     {
         if (is_array($message)) {
             $message = implode(PHP_EOL, $message);
         }
+
         if ($wrapInInfoTags) {
             $message = '<info>' . $message . '</info>';
         }
+
         $this->output->writeln($message);
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
-    public function error($message)
+    public function error(string $message): void
     {
         $width = $this->getTerminalWidth() - mb_strlen($message) - 1;
         $width = max(0, $width);
@@ -318,12 +206,7 @@ class Console extends SymfonyCommand
         $this->output->writeln(sprintf('<error> %s</error>', $message));
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
-    public function warning($message)
+    public function warning(string $message): void
     {
         $style = new OutputFormatterStyle('black', 'yellow');
         $this->output->getFormatter()->setStyle('warning', $style);
@@ -335,12 +218,7 @@ class Console extends SymfonyCommand
         $this->output->writeln(sprintf('<warning> %s</warning>', $message));
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
-    public function success($message)
+    public function success(string $message): void
     {
         $style = new OutputFormatterStyle('black', 'green');
         $this->output->getFormatter()->setStyle('success', $style);
@@ -404,13 +282,7 @@ class Console extends SymfonyCommand
         return !$answer || strtolower($answer[0]) === 'y';
     }
 
-    /**
-     * @param string $question
-     * @param string|null $default
-     *
-     * @return string|null
-     */
-    public function ask($question, $default = null)
+    public function ask(string $question, ?string $default = null): ?string
     {
         $questionHelper = $this->getQuestionHelper();
         $question = new Question($question, $default);
@@ -419,13 +291,9 @@ class Console extends SymfonyCommand
     }
 
     /**
-     * @param string $question
      * @param array<string, mixed> $options
-     * @param string $default
-     *
-     * @return mixed
      */
-    public function select($question, array $options, $default)
+    public function select(string $question, array $options, string $default): mixed
     {
         $questionHelper = $this->getQuestionHelper();
 
@@ -434,10 +302,7 @@ class Console extends SymfonyCommand
         return $questionHelper->ask($this->input, $this->output, $choiceQuestion);
     }
 
-    /**
-     * @return \Symfony\Component\Console\Helper\QuestionHelper
-     */
-    protected function getQuestionHelper(): HelperInterface
+    protected function getQuestionHelper(): QuestionHelper
     {
         /** @var \Symfony\Component\Console\Helper\HelperSet $helperSet */
         $helperSet = $this->getHelperSet();
@@ -448,25 +313,62 @@ class Console extends SymfonyCommand
         return $questionHelper;
     }
 
-    /**
-     * @param bool $wrapInInfoTags
-     *
-     * @return void
-     */
-    public function printLineSeparator($wrapInInfoTags = true)
+    public function printLineSeparator(bool $wrapInInfoTags = true): void
     {
         $width = $this->getTerminalWidth();
         $this->info(str_repeat('-', $width), $wrapInInfoTags);
     }
 
-    /**
-     * @return int
-     */
     protected function getTerminalWidth(): int
     {
         $terminal = new Terminal();
-        $width = $terminal->getWidth();
 
-        return $width;
+        return $terminal->getWidth();
+    }
+
+    /**
+     * We can't merge with the Symfony Application definition as it uses the shortcut `e` for the `env` option, and we do
+     * have quite some commands that are using this short-cut as well which breaks on merge.
+     */
+    public function mergeApplicationDefinition(bool $mergeArgs = true): void
+    {
+        // Get the current Console Command definition
+        $definition = parent::getDefinition();
+
+        // Get the Application to check if it exists and to merge the application options with the command options.
+        $application = parent::getApplication();
+
+        $this->mergedDefinition = new InputDefinition();
+        $this->mergedDefinition->setOptions($definition->getOptions());
+
+        if ($application) {
+            $this->mergedDefinition->setArguments($application->getDefinition()->getArguments());
+            $this->mergedDefinition->addArguments($definition->getArguments());
+
+            foreach ($application->getDefinition()->getOptions() as $option) {
+                // The Symfony Application default option `env` shortcut `e` conflicts with existing options of some console commands, we need to skip this.
+                if ($option->getName() === 'env') {
+                    continue;
+                }
+
+                $this->mergedDefinition->addOption($option);
+            }
+
+            return;
+        }
+
+        $this->mergedDefinition->setArguments($definition->getArguments());
+    }
+
+    public function getDefinition(): InputDefinition
+    {
+        // This will be returned when a specific command was requested. Symfony calls the mergeApplicationDefinition before it uses
+        // the command.
+        if ($this->mergedDefinition) {
+            return $this->mergedDefinition;
+        }
+
+        // This one needs to be returned when the Console Application is called without a command name to run.
+        return $this->getNativeDefinition();
     }
 }

@@ -9,6 +9,7 @@ namespace Spryker\Glue\Kernel\Backend;
 
 use Spryker\Glue\Kernel\BundleConfigResolverAwareTrait;
 use Spryker\Glue\Kernel\FactoryResolverAwareTrait;
+use Spryker\Service\Container\ContainerTrait;
 use Spryker\Zed\Kernel\Communication\FacadeResolverAwareTrait;
 use Spryker\Zed\Kernel\EntityManagerResolverAwareTrait;
 use Spryker\Zed\Kernel\QueryContainerResolverAwareTrait;
@@ -22,6 +23,7 @@ abstract class AbstractPlugin
     use BundleConfigResolverAwareTrait;
     use QueryContainerResolverAwareTrait;
     use EntityManagerResolverAwareTrait;
+    use ContainerTrait;
 
     /**
      * @api

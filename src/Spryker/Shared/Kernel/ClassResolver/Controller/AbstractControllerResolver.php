@@ -43,6 +43,17 @@ abstract class AbstractControllerResolver extends AbstractClassResolver
         throw new ControllerNotFoundException($callerClass);
     }
 
+    public function getResolvedClassName(BundleControllerActionInterface $callerClass): string
+    {
+        $this->bundleControllerAction = $callerClass;
+
+        if ($this->canResolve()) {
+            return $this->resolvedClassName;
+        }
+
+        throw new ControllerNotFoundException($callerClass);
+    }
+
     /**
      * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $bundleControllerAction
      *

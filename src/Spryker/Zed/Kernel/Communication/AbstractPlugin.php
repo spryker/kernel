@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\Kernel\Communication;
 
+use Spryker\Service\Container\ContainerTrait;
 use Spryker\Zed\Kernel\BundleConfigResolverAwareTrait;
 use Spryker\Zed\Kernel\QueryContainerResolverAwareTrait;
 use Spryker\Zed\Kernel\RepositoryResolverAwareTrait;
@@ -19,4 +20,5 @@ abstract class AbstractPlugin
     use BundleConfigResolverAwareTrait;
     use QueryContainerResolverAwareTrait;
     use BusinessFactoryResolverAwareTrait;
+    use ContainerTrait;
 }

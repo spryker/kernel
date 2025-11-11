@@ -7,8 +7,11 @@
 
 namespace Spryker\Client\Kernel;
 
+use Spryker\Service\Container\ContainerTrait;
+
 abstract class AbstractPlugin
 {
     use ClientResolverAwareTrait;
     use FactoryResolverAwareTrait;
+    use ContainerTrait;
 }

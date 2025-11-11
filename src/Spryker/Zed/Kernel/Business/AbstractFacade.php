@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\Kernel\Business;
 
+use Spryker\Service\Container\ContainerTrait;
 use Spryker\Zed\Kernel\ClassResolver\Business\BusinessFactoryResolver;
 use Spryker\Zed\Kernel\EntityManagerResolverAwareTrait;
 use Spryker\Zed\Kernel\RepositoryResolverAwareTrait;
@@ -15,6 +16,7 @@ abstract class AbstractFacade
 {
     use EntityManagerResolverAwareTrait;
     use RepositoryResolverAwareTrait;
+    use ContainerTrait;
 
     /**
      * @var \Spryker\Zed\Kernel\Business\BusinessFactoryInterface

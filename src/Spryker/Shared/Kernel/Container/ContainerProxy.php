@@ -7,9 +7,10 @@
 
 namespace Spryker\Shared\Kernel\Container;
 
+use Psr\Container\ContainerInterface;
 use Spryker\Service\Container\Container;
 
-class ContainerProxy extends Container
+class ContainerProxy extends Container implements ContainerInterface
 {
     /**
      * @param array $services

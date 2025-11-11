@@ -8,6 +8,7 @@
 namespace Spryker\Yves\Kernel;
 
 use Spryker\Service\Container\ContainerInterface;
+use Spryker\Service\Container\ContainerTrait;
 use Spryker\Shared\Kernel\Container\GlobalContainer;
 
 abstract class AbstractPlugin
@@ -15,6 +16,7 @@ abstract class AbstractPlugin
     use FactoryResolverAwareTrait;
     use ClientResolverAwareTrait;
     use BundleConfigResolverAwareTrait;
+    use ContainerTrait;
 
     /**
      * @var string

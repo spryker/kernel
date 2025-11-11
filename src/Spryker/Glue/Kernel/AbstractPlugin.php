@@ -7,11 +7,14 @@
 
 namespace Spryker\Glue\Kernel;
 
+use Spryker\Service\Container\ContainerTrait;
+
 abstract class AbstractPlugin implements ModuleNameAwareInterface
 {
     use ClientResolverAwareTrait;
     use FactoryResolverAwareTrait;
     use BundleConfigResolverAwareTrait;
+    use ContainerTrait;
 
     /**
      * @api
