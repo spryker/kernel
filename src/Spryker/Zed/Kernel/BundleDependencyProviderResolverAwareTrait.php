@@ -164,9 +164,8 @@ trait BundleDependencyProviderResolverAwareTrait
     protected function createContainer()
     {
         $containerGlobals = $this->createContainerGlobals();
-        $container = new Container($containerGlobals->getContainerGlobals());
 
-        return $container;
+        return new Container($containerGlobals->getContainerGlobals());
     }
 
     /**
