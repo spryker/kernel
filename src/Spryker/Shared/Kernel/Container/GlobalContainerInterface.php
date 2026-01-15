@@ -11,29 +11,11 @@ use Spryker\Service\Container\ContainerInterface;
 
 interface GlobalContainerInterface
 {
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return void
-     */
     public static function setContainer(ContainerInterface $container): void;
 
-    /**
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     public function getContainer(): ContainerInterface;
 
-    /**
-     * @param string $id
-     *
-     * @return mixed
-     */
-    public function has(string $id);
+    public function has(string $id): bool;
 
-    /**
-     * @param string $id
-     *
-     * @return mixed
-     */
-    public function get(string $id);
+    public function get(string $id): mixed;
 }

@@ -7,6 +7,7 @@
 
 namespace Spryker\Shared\Kernel\Container;
 
+use RuntimeException;
 use Spryker\Service\Container\ContainerInterface;
 
 class GlobalContainer implements GlobalContainerInterface
@@ -16,41 +17,35 @@ class GlobalContainer implements GlobalContainerInterface
      */
     protected static $container;
 
-    /**
-     * @param \Spryker\Service\Container\ContainerInterface $container
-     *
-     * @return void
-     */
     public static function setContainer(ContainerInterface $container): void
     {
         static::$container = $container;
     }
 
-    /**
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     public function getContainer(): ContainerInterface
     {
+        if (static::$container === null) {
+            throw new RuntimeException('GlobalContainer has not been initialized. Call GlobalContainer::setContainer() first.');
+        }
+
         return static::$container;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return mixed
-     */
-    public function has(string $id)
+    public function has(string $id): bool
     {
+        if (static::$container === null) {
+            return false;
+        }
+
         return static::$container->has($id);
     }
 
-    /**
-     * @param string $id
-     *
-     * @return mixed
-     */
-    public function get(string $id)
+    public function get(string $id): mixed
     {
+        if (static::$container === null) {
+            throw new RuntimeException('GlobalContainer has not been initialized. Call GlobalContainer::setContainer() first.');
+        }
+
         return static::$container->get($id);
     }
 }
