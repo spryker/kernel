@@ -179,7 +179,7 @@ class KernelConfig extends AbstractBundleConfig implements ClassNameCandidatesBu
      *
      * @api
      *
-     * @return array<string>
+     * @return list<string>
      */
     public function getDomainsAllowedForRedirect(): array
     {

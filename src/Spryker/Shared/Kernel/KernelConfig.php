@@ -169,7 +169,7 @@ class KernelConfig extends AbstractSharedConfig implements ClassNameCandidatesBu
      *
      * @api
      *
-     * @return array<string>
+     * @return list<string>
      */
     public function getDomainsAllowedForRedirect(): array
     {

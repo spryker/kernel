@@ -32,7 +32,7 @@ class KernelConfig extends AbstractBundleConfig
      *
      * @api
      *
-     * @return array<string>
+     * @return list<string>
      */
     public function getDomainsAllowedForRedirect(): array
     {
