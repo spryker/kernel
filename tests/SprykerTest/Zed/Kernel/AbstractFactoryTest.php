@@ -121,7 +121,8 @@ class AbstractFactoryTest extends Unit
         $factoryMock = $this->getFactoryMock(['createDependencyInjectorResolver', 'resolveDependencyProvider']);
         $factoryMock->expects($this->once())->method('createDependencyInjectorResolver')->willReturn($dependencyInjectorResolver);
 
-        $abstractBundleDependencyProviderMock = $this->getMockForAbstractClass(AbstractBundleDependencyProvider::class);
+        $abstractBundleDependencyProviderMock = new class extends AbstractBundleDependencyProvider {
+        };
         $factoryMock->expects($this->once())->method('resolveDependencyProvider')->willReturn($abstractBundleDependencyProviderMock);
 
         $this->assertSame(static::CONTAINER_VALUE, $factoryMock->getProvidedDependency(static::CONTAINER_KEY));

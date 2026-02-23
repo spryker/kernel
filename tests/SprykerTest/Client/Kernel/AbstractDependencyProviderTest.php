@@ -40,7 +40,9 @@ class AbstractDependencyProviderTest extends Unit
      */
     private function getAbstractDependencyProviderMock(): AbstractDependencyProvider
     {
-        return $this->getMockForAbstractClass(AbstractDependencyProvider::class);
+        // Return a minimal concrete implementation of the abstract class.
+        return new class extends AbstractDependencyProvider {
+        };
     }
 
     /**
@@ -58,8 +60,7 @@ class AbstractDependencyProviderTest extends Unit
      */
     private function getAbstractDependencyContainerMock(): AbstractDependencyProvider
     {
-        $abstractDependencyContainerMock = $this->getMockForAbstractClass(AbstractDependencyProvider::class);
-
-        return $abstractDependencyContainerMock;
+        return new class extends AbstractDependencyProvider {
+        };
     }
 }

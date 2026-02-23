@@ -32,8 +32,9 @@ class AbstractBundleDependencyProviderTest extends Unit
     {
         $container = new Container();
 
-        $abstractDependencyProviderMock = $this->getMockForAbstractClass(AbstractBundleDependencyProvider::class);
-        $expected = $abstractDependencyProviderMock->provideDependencies($container);
+        $abstractDependencyProvider = new class extends AbstractBundleDependencyProvider {
+        };
+        $expected = $abstractDependencyProvider->provideDependencies($container);
 
         $this->assertSame($expected, $container);
     }
@@ -44,10 +45,11 @@ class AbstractBundleDependencyProviderTest extends Unit
     public function testCallProvideGlueLayerDependenciesMustThrowExceptionIfNotReturnBackendContainer(): void
     {
         $container = new GlueContainer();
-        $abstractDependencyProviderMock = $this->getMockForAbstractClass(AbstractBundleDependencyProvider::class);
+        $abstractDependencyProvider = new class extends AbstractBundleDependencyProvider {
+        };
 
         $this->expectException(InvalidContainerException::class);
 
-        $abstractDependencyProviderMock->provideDependencies($container);
+        $abstractDependencyProvider->provideDependencies($container);
     }
 }

@@ -36,18 +36,23 @@ class BundleConfigResolverAwareTraitTest extends Unit
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\Kernel\BundleConfigResolverAwareTrait
+     * @return \Spryker\Zed\Kernel\BundleConfigResolverAwareTrait|object
      */
     private function getBundleConfigResolverAwareTraitMock()
     {
-        return $this->getMockForTrait(BundleConfigResolverAwareTrait::class);
+        // Create a tiny concrete object that uses the trait instead of relying on PHPUnit's getMockForTrait()
+        return new class {
+            use BundleConfigResolverAwareTrait;
+        };
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\Kernel\AbstractBundleConfig
+     * @return \Spryker\Zed\Kernel\AbstractBundleConfig
      */
     private function getAbstractBundleConfigMock(): AbstractBundleConfig
     {
-        return $this->getMockForAbstractClass(AbstractBundleConfig::class);
+        // Create a minimal concrete subclass of the abstract config to avoid getMockForAbstractClass()
+        return new class extends AbstractBundleConfig {
+        };
     }
 }

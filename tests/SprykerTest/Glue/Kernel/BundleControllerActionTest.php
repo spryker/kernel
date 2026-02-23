@@ -60,7 +60,7 @@ class BundleControllerActionTest extends Unit
 
         $mock
             ->method('getModuleNameResolver')
-            ->will($this->returnValue($this->getModuleNameResolverMock($storeName)));
+            ->willReturn($this->getModuleNameResolverMock($storeName));
 
         return $mock;
     }
@@ -72,16 +72,8 @@ class BundleControllerActionTest extends Unit
      */
     protected function getModuleNameResolverMock(string $storeName): ModuleNameResolver
     {
-        $mock = $this
-            ->getMockBuilder(ModuleNameResolver::class)
-            ->addMethods(['getStoreName'])
-            ->getMock();
-
-        $mock
-            ->method('getStoreName')
-            ->will($this->returnValue($storeName));
-
-        return $mock;
+        // Return a concrete prototype instance instead of mocking the original class
+        return new ModuleNameResolverPrototype($storeName);
     }
 
     /**

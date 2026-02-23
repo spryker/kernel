@@ -33,6 +33,11 @@ class ResolvableCacheBuilderHelper extends Module
     /**
      * @var string
      */
+    protected const CURRENT_STORE = 'DE';
+
+    /**
+     * @var string
+     */
     protected const CODE_BUCKET_CB2 = 'CB2';
 
     /**

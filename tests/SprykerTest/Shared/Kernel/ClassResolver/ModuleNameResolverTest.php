@@ -47,7 +47,7 @@ class ModuleNameResolverTest extends Unit
 
         $mock
             ->method('getCodeBucket')
-            ->will($this->returnValue($codeBucket));
+            ->willReturn($codeBucket);
 
         return $mock;
     }

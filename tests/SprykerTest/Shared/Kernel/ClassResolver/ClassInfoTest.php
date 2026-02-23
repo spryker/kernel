@@ -49,7 +49,7 @@ class ClassInfoTest extends Unit
 
         $mock
             ->method('getModuleNameResolver')
-            ->will($this->returnValue($this->getModuleNameResolverMock($codeBucket)));
+            ->willReturn($this->getModuleNameResolverMock($codeBucket));
 
         return $mock;
     }
@@ -68,7 +68,7 @@ class ClassInfoTest extends Unit
 
         $mock
             ->method('getCodeBucket')
-            ->will($this->returnValue($codeBucket));
+            ->willReturn($codeBucket);
 
         return $mock;
     }
