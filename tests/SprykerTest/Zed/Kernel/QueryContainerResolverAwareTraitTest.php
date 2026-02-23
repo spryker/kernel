@@ -40,7 +40,9 @@ class QueryContainerResolverAwareTraitTest extends Unit
      */
     private function getQueryContainerResolverAwareTraitMock()
     {
-        return $this->getMockForTrait(QueryContainerResolverAwareTrait::class);
+        return new class {
+            use QueryContainerResolverAwareTrait;
+        };
     }
 
     /**
@@ -48,6 +50,7 @@ class QueryContainerResolverAwareTraitTest extends Unit
      */
     private function getAbstractQueryContainerMock(): AbstractQueryContainer
     {
-        return $this->getMockForAbstractClass(AbstractQueryContainer::class);
+        return new class extends AbstractQueryContainer {
+        };
     }
 }

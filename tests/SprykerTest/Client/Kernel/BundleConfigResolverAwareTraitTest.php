@@ -40,7 +40,10 @@ class BundleConfigResolverAwareTraitTest extends Unit
      */
     private function getBundleConfigResolverAwareTraitMock()
     {
-        return $this->getMockForTrait(BundleConfigResolverAwareTrait::class);
+        // Create a tiny concrete object that uses the trait instead of relying on PHPUnit's getMockForTrait()
+        return new class {
+            use BundleConfigResolverAwareTrait;
+        };
     }
 
     /**
@@ -48,6 +51,7 @@ class BundleConfigResolverAwareTraitTest extends Unit
      */
     private function getAbstractBundleConfigMock(): AbstractBundleConfig
     {
-        return $this->getMockForAbstractClass(AbstractBundleConfig::class);
+        return new class extends AbstractBundleConfig {
+        };
     }
 }

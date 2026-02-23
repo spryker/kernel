@@ -92,10 +92,15 @@ class AbstractFactoryTest extends Unit
      */
     protected function getFactoryMock(): ConcreteFactory
     {
-        $dependencyResolverMock = $this->getMockForAbstractClass(AbstractBundleDependencyProvider::class);
+        $dependencyResolverMock = new class extends AbstractBundleDependencyProvider {
+        };
         $container = new Container([static::TEST_KEY => static::TEST_VALUE]);
 
-        $factoryMock = $this->getMockForAbstractClass(ConcreteFactory::class, [], '', true, true, true, ['resolveDependencyProvider', 'createContainer']);
+        $factoryMock = $this->getMockBuilder(ConcreteFactory::class)
+            ->onlyMethods(['resolveDependencyProvider', 'createContainer'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $factoryMock->expects($this->once())->method('resolveDependencyProvider')->willReturn($dependencyResolverMock);
         $factoryMock->expects($this->once())->method('createContainer')->willReturn($container);
 
