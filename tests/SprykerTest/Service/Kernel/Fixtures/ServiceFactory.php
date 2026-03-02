@@ -14,12 +14,6 @@ use SprykerTest\Service\Kernel\AbstractServiceFactoryTest;
 
 class ServiceFactory extends AbstractServiceFactory
 {
-    /**
-     * @param \Spryker\Service\Kernel\AbstractBundleDependencyProvider $dependencyProvider
-     * @param \Spryker\Service\Kernel\Container $container
-     *
-     * @return void
-     */
     protected function provideExternalDependencies(
         AbstractBundleDependencyProvider $dependencyProvider,
         Container $container

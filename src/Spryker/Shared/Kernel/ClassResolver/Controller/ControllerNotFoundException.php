@@ -14,9 +14,6 @@ use Symfony\Component\Routing\Exception\ExceptionInterface;
 
 class ControllerNotFoundException extends Exception implements ExceptionInterface
 {
-    /**
-     * @param \Spryker\Shared\Kernel\Communication\BundleControllerActionInterface $bundleControllerAction
-     */
     public function __construct(BundleControllerActionInterface $bundleControllerAction)
     {
         parent::__construct($this->buildMessage($bundleControllerAction));

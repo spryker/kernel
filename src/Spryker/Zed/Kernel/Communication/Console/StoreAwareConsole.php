@@ -21,9 +21,6 @@ abstract class StoreAwareConsole extends Console
      */
     protected const OPTION_STORE = 'store';
 
-    /**
-     * @param string|null $name
-     */
     public function __construct(?string $name = null)
     {
         parent::__construct($name);
@@ -31,11 +28,6 @@ abstract class StoreAwareConsole extends Console
         $this->addOption(static::OPTION_STORE, '', InputOption::VALUE_OPTIONAL, 'Executes for concrete store only');
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     *
-     * @return string|null
-     */
     protected function getStore(InputInterface $input): ?string
     {
         $store = null;

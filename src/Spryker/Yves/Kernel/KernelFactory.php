@@ -17,9 +17,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class KernelFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Shared\Kernel\Validator\RedirectUrlValidatorInterface
-     */
     public function createRedirectUrlValidator(): RedirectUrlValidatorInterface
     {
         return new RedirectUrlValidator(
@@ -29,9 +26,6 @@ class KernelFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Validator\ValidatorInterface
-     */
     public function createValidator(): ValidatorInterface
     {
         return Validation::createValidator();

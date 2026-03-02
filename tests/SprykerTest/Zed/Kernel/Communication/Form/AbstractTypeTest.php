@@ -30,9 +30,6 @@ use SprykerTest\Zed\Kernel\Communication\Form\Fixtures\FooType;
  */
 class AbstractTypeTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetCommunicationFactoryShouldReturnInstanceIfExists(): void
     {
         $formType = new FooType();
@@ -48,9 +45,6 @@ class AbstractTypeTest extends Unit
         $this->assertInstanceOf(AbstractCommunicationFactory::class, $communicationFactory);
     }
 
-    /**
-     * @return void
-     */
     public function testGetFacadeShouldReturnInstanceIfExists(): void
     {
         $formType = new FooType();
@@ -66,9 +60,6 @@ class AbstractTypeTest extends Unit
         $this->assertInstanceOf(AbstractFacade::class, $facade);
     }
 
-    /**
-     * @return void
-     */
     public function testGetQueryContainerThrowExceptionIfQueryContainerNotFound(): void
     {
         $this->expectException(QueryContainerNotFoundException::class);
@@ -90,9 +81,6 @@ class AbstractTypeTest extends Unit
         $fooType->getQueryContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testGetQueryContainerShouldReturnInstanceIfQueryContainerIfExists(): void
     {
         $formType = new FooType();

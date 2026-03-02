@@ -17,11 +17,6 @@ abstract class AbstractApplicationContainer extends Container implements Contain
      */
     protected $staticContainer;
 
-    /**
-     * @param string $id
-     *
-     * @return bool
-     */
     public function hasApplicationService(string $id): bool
     {
         return $this->getGlobalContainer()->has($id);
@@ -37,9 +32,6 @@ abstract class AbstractApplicationContainer extends Container implements Contain
         return $this->getGlobalContainer()->get($id);
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Container\GlobalContainerInterface
-     */
     protected function getGlobalContainer(): GlobalContainerInterface
     {
         if ($this->staticContainer === null) {

@@ -76,9 +76,6 @@ abstract class AbstractWidget implements WidgetInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getParameters(): array
     {
         return $this->parameters;
@@ -140,17 +137,11 @@ abstract class AbstractWidget implements WidgetInterface
         return (new Pimple())->getApplication();
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Container\GlobalContainerInterface
-     */
     protected function getGlobalContainer(): GlobalContainerInterface
     {
         return new GlobalContainer();
     }
 
-    /**
-     * @return string
-     */
     protected function getLocale(): string
     {
         return $this->getGlobalContainer()->get(static::SERVICE_LOCALE);

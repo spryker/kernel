@@ -17,11 +17,6 @@ use Spryker\Yves\Kernel\ClassResolver\Controller\ControllerResolver;
  */
 class YvesFragmentControllerResolver extends SilexControllerResolver
 {
-    /**
-     * @param string $controller
-     *
-     * @return callable
-     */
     protected function createController(string $controller): callable
     {
         [$bundle, $controllerName, $actionName] = explode('/', ltrim($controller, '/'));

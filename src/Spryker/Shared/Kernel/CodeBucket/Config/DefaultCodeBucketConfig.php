@@ -16,9 +16,6 @@ class DefaultCodeBucketConfig extends AbstractCodeBucketConfig
      */
     protected $isDynamicStoreMode;
 
-    /**
-     * @param bool|null $isDynamicStoreMode
-     */
     public function __construct(?bool $isDynamicStoreMode = null)
     {
         $this->isDynamicStoreMode = $this->resolveDynamicStoreMode($isDynamicStoreMode);
@@ -36,9 +33,6 @@ class DefaultCodeBucketConfig extends AbstractCodeBucketConfig
         return [];
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentCodeBucket(): string
     {
         if (!$this->isDynamicStoreMode) {

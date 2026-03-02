@@ -38,9 +38,6 @@ class BundleControllerActionTest extends Unit
      */
     public const ACTION = 'baz';
 
-    /**
-     * @return void
-     */
     public function testGetBundleShouldReturnBundleNameFromRequest(): void
     {
         $bundleControllerAction = $this->getBundleControllerAction();
@@ -48,9 +45,6 @@ class BundleControllerActionTest extends Unit
         $this->assertSame(static::BUNDLE, $bundleControllerAction->getBundle());
     }
 
-    /**
-     * @return void
-     */
     public function testGetControllerShouldReturnControllerNameFromRequest(): void
     {
         $bundleControllerAction = $this->getBundleControllerAction();
@@ -58,9 +52,6 @@ class BundleControllerActionTest extends Unit
         $this->assertSame(static::CONTROLLER, $bundleControllerAction->getController());
     }
 
-    /**
-     * @return void
-     */
     public function testGetActionShouldReturnActionNameFromRequest(): void
     {
         $bundleControllerAction = $this->getBundleControllerAction();
@@ -68,9 +59,6 @@ class BundleControllerActionTest extends Unit
         $this->assertSame(static::ACTION, $bundleControllerAction->getAction());
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\BundleControllerAction
-     */
     private function getBundleControllerAction(): BundleControllerAction
     {
         $request = $this->getRequestTestObject();
@@ -83,9 +71,6 @@ class BundleControllerActionTest extends Unit
         return $bundleControllerAction;
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     private function getRequestTestObject(): Request
     {
         $request = new Request(

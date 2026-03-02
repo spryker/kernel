@@ -9,14 +9,6 @@ namespace Spryker\Shared\Kernel\ClassResolver\ClassNameFinder;
 
 interface ClassNameFinderInterface
 {
-    /**
-     * @param string $moduleName
-     * @param string $classNamePattern
-     * @param bool $throwException
-     * @param string|null $moduleNamePostfix
-     *
-     * @return string|null
-     */
     public function findClassName(
         string $moduleName,
         string $classNamePattern,

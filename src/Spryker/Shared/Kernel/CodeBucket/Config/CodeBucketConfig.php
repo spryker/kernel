@@ -16,9 +16,6 @@ class CodeBucketConfig implements CodeBucketConfigInterface
      */
     protected $customCodeBucketConfig;
 
-    /**
-     * @param \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface|null $customCodeBucketConfig
-     */
     public function __construct(?CodeBucketConfigInterface $customCodeBucketConfig = null)
     {
         $this->initializeCustomCodeBucketConfig($customCodeBucketConfig);
@@ -32,19 +29,11 @@ class CodeBucketConfig implements CodeBucketConfigInterface
         return $this->customCodeBucketConfig->getCodeBuckets();
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentCodeBucket(): string
     {
         return $this->customCodeBucketConfig->getCurrentCodeBucket();
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface|null $customCodeBucketConfig
-     *
-     * @return void
-     */
     protected function initializeCustomCodeBucketConfig(?CodeBucketConfigInterface $customCodeBucketConfig = null): void
     {
         if ($customCodeBucketConfig) {

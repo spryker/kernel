@@ -9,11 +9,6 @@ namespace Spryker\Shared\Kernel\ClassResolver;
 
 class ModuleNameResolver
 {
-    /**
-     * @param string $moduleName
-     *
-     * @return string
-     */
     public function resolve(string $moduleName): string
     {
         $codeBucket = $this->getCodeBucket();
@@ -28,9 +23,6 @@ class ModuleNameResolver
         return $moduleName;
     }
 
-    /**
-     * @return string
-     */
     protected function getCodeBucket(): string
     {
         return APPLICATION_CODE_BUCKET;

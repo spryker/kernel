@@ -29,27 +29,18 @@ use SprykerTest\Glue\Kernel\Fixtures\Backend\ConcreteFactory;
  */
 class AbstractFactoryTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetContainerReturnsFluentInterface(): void
     {
         $factory = new ConcreteFactory();
         $this->assertSame($factory, $factory->setContainer(new Container()));
     }
 
-    /**
-     * @return void
-     */
     public function testGetContainerReturnsBackendContainer(): void
     {
         $factory = new ConcreteFactory();
         $this->assertInstanceOf(Container::class, $factory->getInternalContainer());
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidBundleDependencyProviderThrowsException(): void
     {
         $this->expectException(InvalidDependencyProviderException::class);
@@ -63,9 +54,6 @@ class AbstractFactoryTest extends Unit
         $method->invokeArgs($factory, [$dependencyProviderMock, new Container()]);
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidContainerThrowsException(): void
     {
         $this->expectException(InvalidContainerException::class);

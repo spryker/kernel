@@ -23,9 +23,6 @@ use SprykerTest\Zed\Kernel\Communication\Fixture\FixtureGatewayController;
  */
 class AbstractGatewayControllerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGatewayControllerMustBeConstructable(): void
     {
         $this->assertInstanceOf(

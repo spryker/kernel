@@ -9,9 +9,6 @@ namespace Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider;
 
 interface ModuleNamePostfixProviderInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentModuleNamePostfix(): string;
 
     /**

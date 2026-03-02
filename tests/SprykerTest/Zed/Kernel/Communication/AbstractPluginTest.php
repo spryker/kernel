@@ -30,9 +30,6 @@ use SprykerTest\Zed\Kernel\Communication\Fixtures\AbstractPlugin\Plugin\FooPlugi
  */
 class AbstractPluginTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetCommunicationFactoryShouldReturnInstanceIfExists(): void
     {
         $plugin = new FooPlugin();
@@ -48,9 +45,6 @@ class AbstractPluginTest extends Unit
         $this->assertInstanceOf(AbstractCommunicationFactory::class, $communicationFactory);
     }
 
-    /**
-     * @return void
-     */
     public function testGetBusinessFactoryShouldReturnInstanceIfExists(): void
     {
         $plugin = new FooPlugin();
@@ -66,9 +60,6 @@ class AbstractPluginTest extends Unit
         $this->assertInstanceOf(AbstractBusinessFactory::class, $businessFactory);
     }
 
-    /**
-     * @return void
-     */
     public function testGetFacadeShouldReturnInstanceIfExists(): void
     {
         $plugin = new FooPlugin();
@@ -84,9 +75,6 @@ class AbstractPluginTest extends Unit
         $this->assertInstanceOf(AbstractFacade::class, $facade);
     }
 
-    /**
-     * @return void
-     */
     public function testGetQueryContainerThrowExceptionIfQueryContainerNotFound(): void
     {
         $this->expectException(QueryContainerNotFoundException::class);
@@ -108,9 +96,6 @@ class AbstractPluginTest extends Unit
         $fooPlugin->getQueryContainer();
     }
 
-    /**
-     * @return void
-     */
     public function testGetQueryContainerShouldReturnInstanceIfQueryContainerIfExists(): void
     {
         $plugin = new FooPlugin();

@@ -71,9 +71,6 @@ class RequestUrlValidatorTest extends Unit
         $redirectUrlValidator->validateRedirectUrl($responseEvent);
     }
 
-    /**
-     * @return array
-     */
     public function redirectUrlValidationDataProvider(): array
     {
         return [
@@ -241,12 +238,6 @@ class RequestUrlValidatorTest extends Unit
         ];
     }
 
-    /**
-     * @param string $url
-     * @param bool $isRedirect
-     *
-     * @return \Symfony\Component\HttpKernel\Event\ResponseEvent
-     */
     protected function createResponseEvent(string $url, bool $isRedirect = true): ResponseEvent
     {
         $requestMock = $this->createMock(Request::class);

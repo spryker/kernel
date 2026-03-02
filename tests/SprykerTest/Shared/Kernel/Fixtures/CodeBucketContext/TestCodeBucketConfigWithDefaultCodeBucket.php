@@ -23,9 +23,6 @@ class TestCodeBucketConfigWithDefaultCodeBucket extends AbstractCodeBucketConfig
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getDefaultCodeBucket(): string
     {
         return 'test2';

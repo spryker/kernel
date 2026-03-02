@@ -229,9 +229,6 @@ abstract class AbstractClassResolver
         return '';
     }
 
-    /**
-     * @return string|null
-     */
     protected function findCacheKey(): ?string
     {
         if (!$this->isCacheEnabled()) {
@@ -241,11 +238,6 @@ abstract class AbstractClassResolver
         return $this->getCacheKey();
     }
 
-    /**
-     * @param string|null $cacheKey
-     *
-     * @return string|null
-     */
     protected function resolveClassName(?string $cacheKey = null): ?string
     {
         if ($cacheKey !== null && $this->hasCache($cacheKey)) {
@@ -255,9 +247,6 @@ abstract class AbstractClassResolver
         return $this->findClassName();
     }
 
-    /**
-     * @return string|null
-     */
     protected function findClassName(): ?string
     {
         $classNamePattern = $this->getResolvableTypeClassNamePatternMap()[static::RESOLVABLE_TYPE] ?? null;
@@ -280,9 +269,6 @@ abstract class AbstractClassResolver
         return static::$resolvableTypeClassNamePatternMap;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ClassNameFinder\ClassNameFinderInterface
-     */
     protected function getClassNameFinder(): ClassNameFinderInterface
     {
         if (static::$classNameFinder === null) {
@@ -306,11 +292,6 @@ abstract class AbstractClassResolver
         return new $this->resolvedClassName();
     }
 
-    /**
-     * @param string $cacheKey
-     *
-     * @return bool
-     */
     protected function hasCache(string $cacheKey): bool
     {
         $cache = $this->getCache();
@@ -318,11 +299,6 @@ abstract class AbstractClassResolver
         return isset($cache[$cacheKey]);
     }
 
-    /**
-     * @param string $cacheKey
-     *
-     * @return string
-     */
     protected function getCached(string $cacheKey): string
     {
         $cache = $this->getCache();
@@ -330,12 +306,6 @@ abstract class AbstractClassResolver
         return str_replace('\\\\', '\\', $cache[$cacheKey]);
     }
 
-    /**
-     * @param string $cacheKey
-     * @param string $className
-     *
-     * @return void
-     */
     protected function addCache(string $cacheKey, string $className): void
     {
         $cache = $this->getCache();
@@ -343,9 +313,6 @@ abstract class AbstractClassResolver
         $cache[$cacheKey] = $className;
     }
 
-    /**
-     * @return array
-     */
     protected function getCache(): array
     {
         if (static::$resolvableClassNamesCache === null) {
@@ -359,17 +326,11 @@ abstract class AbstractClassResolver
         return static::$resolvableClassNamesCache;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ResolvableCache\CacheReader\CacheReaderInterface
-     */
     protected function createCacheReader(): CacheReaderInterface
     {
         return new CacheReaderPhp($this->getSharedConfig());
     }
 
-    /**
-     * @return bool
-     */
     protected function canUseCaching(): bool
     {
         if ($this->isCacheEnabled() === false || $this->classInfo === null || static::RESOLVABLE_TYPE === null) {
@@ -379,9 +340,6 @@ abstract class AbstractClassResolver
         return true;
     }
 
-    /**
-     * @return bool
-     */
     protected function isCacheEnabled(): bool
     {
         // For PHP versions lower 7.3 class resolver cache might not work because of bug https://bugs.php.net/bug.php?id=75765
@@ -396,9 +354,6 @@ abstract class AbstractClassResolver
         return static::$isCacheEnabled;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\KernelConfig
-     */
     protected function getSharedConfig(): KernelConfig
     {
         if (static::$sharedConfig === null) {
@@ -408,9 +363,6 @@ abstract class AbstractClassResolver
         return static::$sharedConfig;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\KernelSharedFactory
-     */
     protected function getSharedFactory(): KernelSharedFactory
     {
         if (static::$sharedFactory === null) {
@@ -421,9 +373,6 @@ abstract class AbstractClassResolver
         return static::$sharedFactory;
     }
 
-    /**
-     * @return bool
-     */
     protected function isInstanceCacheEnabled(): bool
     {
         if (static::$isInstanceCacheEnabled === null) {
@@ -468,9 +417,6 @@ abstract class AbstractClassResolver
         return $cacheProvider->getCache()->classExists($className);
     }
 
-    /**
-     * @return bool
-     */
     protected function useResolverCache(): bool
     {
         if (static::$useResolverCache === null) {
@@ -480,9 +426,6 @@ abstract class AbstractClassResolver
         return static::$useResolverCache;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ResolverCacheFactoryInterface
-     */
     protected function getResolverCacheManager(): ResolverCacheFactoryInterface
     {
         if (static::$resolverCacheManager === null) {

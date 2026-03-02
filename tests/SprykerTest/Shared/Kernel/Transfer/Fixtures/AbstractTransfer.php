@@ -141,9 +141,6 @@ class AbstractTransfer extends ParentAbstractTransfer
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getString(): string
     {
         return $this->string;
@@ -172,9 +169,6 @@ class AbstractTransfer extends ParentAbstractTransfer
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getInt(): int
     {
         return $this->int;
@@ -203,9 +197,6 @@ class AbstractTransfer extends ParentAbstractTransfer
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getBool(): bool
     {
         return $this->bool;
@@ -234,9 +225,6 @@ class AbstractTransfer extends ParentAbstractTransfer
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getArray(): array
     {
         return $this->array;
@@ -278,9 +266,6 @@ class AbstractTransfer extends ParentAbstractTransfer
         return $this;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
-     */
     public function getTransfer(): TransferInterface
     {
         return $this->transfer;

@@ -24,9 +24,6 @@ use Spryker\Zed\Kernel\Dependency\Injector\AbstractDependencyInjector;
  */
 class AbstractDependencyInjectorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testInjectBusinessLayerDependenciesShouldReturnContainer(): void
     {
         $dependencyInjector = new AbstractDependencyInjector();
@@ -36,9 +33,6 @@ class AbstractDependencyInjectorTest extends Unit
         $this->assertInstanceOf(Container::class, $container);
     }
 
-    /**
-     * @return void
-     */
     public function testInjectCommunicationLayerDependenciesShouldReturnContainer(): void
     {
         $dependencyInjector = new AbstractDependencyInjector();
@@ -48,9 +42,6 @@ class AbstractDependencyInjectorTest extends Unit
         $this->assertInstanceOf(Container::class, $container);
     }
 
-    /**
-     * @return void
-     */
     public function testInjectPersistenceLayerDependenciesShouldReturnContainer(): void
     {
         $dependencyInjector = new AbstractDependencyInjector();

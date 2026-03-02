@@ -15,9 +15,6 @@ use Spryker\Shared\Kernel\KernelConstants;
 
 class RestResourceNotFoundException extends Exception
 {
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassInfo $callerClassInfo
-     */
     public function __construct(ClassInfo $callerClassInfo)
     {
         parent::__construct($this->buildMessage($callerClassInfo));

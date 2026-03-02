@@ -22,25 +22,16 @@ use Spryker\Zed\Kernel\Persistence\QueryContainerLocatorMatcher;
  */
 class QueryContainerLocatorMatcherTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnTrueIfMethodStartsWithQueryContainer(): void
     {
         $this->assertTrue((new QueryContainerLocatorMatcher())->match('queryContainer'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithQueryContainer(): void
     {
         $this->assertFalse((new QueryContainerLocatorMatcher())->match('locatorFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithQueryContainerButQueryContainerInString(): void
     {
         $this->assertFalse((new QueryContainerLocatorMatcher())->match('locatorQueryContainer'));

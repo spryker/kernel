@@ -22,9 +22,6 @@ use Spryker\Client\Kernel\Locator;
  */
 class ContainerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetLocatorShouldReturnInstanceOfLocator(): void
     {
         $container = new Container();

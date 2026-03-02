@@ -38,9 +38,6 @@ class AbstractFactoryTest extends Unit
      */
     public const CONTAINER_VALUE = 'value';
 
-    /**
-     * @return void
-     */
     public function testSetContainer(): void
     {
         $container = new Container();
@@ -49,9 +46,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame($factory, $factory->setContainer($container));
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyThrowsException(): void
     {
         $container = new Container();
@@ -62,9 +56,6 @@ class AbstractFactoryTest extends Unit
         $factory->getProvidedDependency('something');
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependency(): void
     {
         // Assign
@@ -80,9 +71,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::CONTAINER_VALUE, $dependency);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyWithLazyFetch(): void
     {
         // Assign
@@ -98,9 +86,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::CONTAINER_VALUE, $wrappedDependency());
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyShouldResolveContainer(): void
     {
         $container = new Container();
@@ -112,9 +97,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::CONTAINER_VALUE, $factoryMock->getProvidedDependency(static::CONTAINER_KEY));
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyShouldGetInjectedData(): void
     {
         $dependencyInjectorResolver = $this->getDependencyInjectorResolverMock();

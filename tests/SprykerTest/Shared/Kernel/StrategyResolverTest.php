@@ -33,9 +33,6 @@ class StrategyResolverTest extends Unit
      */
     protected const TEST_CONTEXT_2 = 'context-2';
 
-    /**
-     * @return void
-     */
     public function testGetResolvesCorrectContext(): void
     {
         // Arrange
@@ -59,9 +56,6 @@ class StrategyResolverTest extends Unit
         $this->assertSame(spl_object_id($object2), spl_object_id($strategy2[0]));
     }
 
-    /**
-     * @return void
-     */
     public function testGetResolvesFallbackContext(): void
     {
         // Arrange
@@ -83,9 +77,6 @@ class StrategyResolverTest extends Unit
         $this->assertCount(2, $strategy2);
     }
 
-    /**
-     * @return void
-     */
     public function testGetThrowsErrorIfNoFallback(): void
     {
         // Arrange
@@ -104,9 +95,6 @@ class StrategyResolverTest extends Unit
         $strategyResolver->get(static::TEST_CONTEXT_2);
     }
 
-    /**
-     * @return void
-     */
     public function testGetThrowsErrorWithoutContextIfNoFallback(): void
     {
         // Arrange

@@ -25,9 +25,6 @@ use Spryker\Glue\Kernel\ClassResolver\RestResource\RestResourceNotFoundException
  */
 class ResourceLocatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveThrowsExceptionWithoutResourceLocator(): void
     {
         $this->expectException(RestResourceNotFoundException::class);
@@ -36,9 +33,6 @@ class ResourceLocatorTest extends Unit
         $locator->locate(static::class);
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidResourceLocatorThrowsException(): void
     {
         $resourceLocatorMock = $this->createMock(ResourceLocator::class);
@@ -51,9 +45,6 @@ class ResourceLocatorTest extends Unit
         $resourceLocatorMock->locate(AbstractRestResource::class);
     }
 
-    /**
-     * @return void
-     */
     public function testResourceLocatorShouldReturnResolvedResource(): void
     {
         $resourceLocatorMock = $this->createMock(ResourceLocator::class);

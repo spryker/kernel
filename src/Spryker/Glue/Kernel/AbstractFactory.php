@@ -110,9 +110,6 @@ abstract class AbstractFactory
         return $container->get($key);
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\Container
-     */
     protected function getContainer(): Container
     {
         $containerKey = static::class;

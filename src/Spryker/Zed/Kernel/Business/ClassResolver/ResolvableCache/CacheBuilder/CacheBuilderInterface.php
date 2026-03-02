@@ -9,8 +9,5 @@ namespace Spryker\Zed\Kernel\Business\ClassResolver\ResolvableCache\CacheBuilder
 
 interface CacheBuilderInterface
 {
-    /**
-     * @return void
-     */
     public function build(): void;
 }

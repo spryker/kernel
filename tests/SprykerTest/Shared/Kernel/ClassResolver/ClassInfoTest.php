@@ -23,9 +23,6 @@ use Spryker\Shared\Kernel\ClassResolver\ModuleNameResolver;
  */
 class ClassInfoTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetBundleStripsStoreNameFromModuleName(): void
     {
         $classInfo = $this->getClassInfo('TEST');

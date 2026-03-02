@@ -21,9 +21,6 @@ use SprykerTest\Shared\Kernel\Fixtures\MissingPropertyLocator;
  */
 class AbstractLocatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCreateInstanceShouldThrowExceptionIfApplicationNotDefined(): void
     {
         $this->expectException('\Exception');
@@ -31,9 +28,6 @@ class AbstractLocatorTest extends Unit
         new MissingPropertyLocator();
     }
 
-    /**
-     * @return void
-     */
     public function testCanCreateShouldThrowException(): void
     {
         $this->expectException('\Exception');

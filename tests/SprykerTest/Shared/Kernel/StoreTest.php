@@ -27,9 +27,6 @@ class StoreTest extends Unit
      */
     protected $Store;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -50,26 +47,17 @@ class StoreTest extends Unit
         $this->Store->setCurrentLocale('de_DE');
     }
 
-    /**
-     * @return void
-     */
     public function testInstance(): void
     {
         $this->assertInstanceOf(Store::class, $this->Store);
     }
 
-    /**
-     * @return void
-     */
     public function testGetLocales(): void
     {
         $locales = $this->Store->getLocales();
         $this->assertSame($locales['de'], 'de_DE');
     }
 
-    /**
-     * @return void
-     */
     public function testSetCurrentLocale(): void
     {
         $locale = $this->Store->getCurrentLocale();
@@ -82,9 +70,6 @@ class StoreTest extends Unit
         $this->assertSame($newLocale, $locale);
     }
 
-    /**
-     * @return void
-     */
     public function testSetCurrentLocaleInvalid(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -92,9 +77,6 @@ class StoreTest extends Unit
         $this->Store->setCurrentLocale($newLocale);
     }
 
-    /**
-     * @return void
-     */
     public function testInitializeSetupWhenMultipleCurrenciesNotDefinedShouldUseDefault(): void
     {
         $mockConfig = [
@@ -129,9 +111,6 @@ class StoreTest extends Unit
             ->getMock();
     }
 
-    /**
-     * @return bool
-     */
     protected function isDynamicStoreEnabled(): bool
     {
         return (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');

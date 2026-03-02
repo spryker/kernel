@@ -33,9 +33,6 @@ class Console extends SharedConsole
         return $this;
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\AbstractFactory
-     */
     protected function getFactory(): AbstractFactory
     {
         if ($this->factory === null) {
@@ -45,9 +42,6 @@ class Console extends SharedConsole
         return $this->factory;
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\AbstractFactory
-     */
     private function resolveFactory(): AbstractFactory
     {
         /** @var \Spryker\Glue\Kernel\AbstractFactory $factory */
@@ -56,9 +50,6 @@ class Console extends SharedConsole
         return $factory;
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\ClassResolver\Factory\FactoryResolver
-     */
     private function getFactoryResolver(): FactoryResolver
     {
         return new FactoryResolver();

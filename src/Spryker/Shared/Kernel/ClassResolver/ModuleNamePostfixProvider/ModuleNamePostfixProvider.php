@@ -27,10 +27,6 @@ class ModuleNamePostfixProvider implements ModuleNamePostfixProviderInterface
      */
     protected $codeBucketConfig;
 
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ModuleNameCandidatesBuilder\ModuleNameCandidatesBuilderConfigInterface $moduleNameCandidatesBuilderConfig
-     * @param \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface $codeBucketConfig
-     */
     public function __construct(
         ModuleNameCandidatesBuilderConfigInterface $moduleNameCandidatesBuilderConfig,
         CodeBucketConfigInterface $codeBucketConfig
@@ -39,9 +35,6 @@ class ModuleNamePostfixProvider implements ModuleNamePostfixProviderInterface
         $this->codeBucketConfig = $codeBucketConfig;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentModuleNamePostfix(): string
     {
         return $this->getCurrentApplicationsCodeBucket() ?: $this->getCurrentStoreName();
@@ -59,9 +52,6 @@ class ModuleNamePostfixProvider implements ModuleNamePostfixProviderInterface
         return $codeBuckets;
     }
 
-    /**
-     * @return string
-     */
     protected function getCurrentApplicationsCodeBucket(): string
     {
         return $this->isApplicationCodeBucketDefined() ? APPLICATION_CODE_BUCKET : '';
@@ -77,9 +67,6 @@ class ModuleNamePostfixProvider implements ModuleNamePostfixProviderInterface
         return $this->moduleNameCandidatesBuilderConfig->getCurrentStoreName();
     }
 
-    /**
-     * @return bool
-     */
     protected function isApplicationCodeBucketDefined(): bool
     {
         return defined('APPLICATION_CODE_BUCKET');

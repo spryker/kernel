@@ -121,9 +121,6 @@ class TransferObjectFormatter extends AbstractFormatterWithHydration
         return $entityTransfer;
     }
 
-    /**
-     * @return bool
-     */
     public function isObjectFormatter(): bool
     {
         return false;

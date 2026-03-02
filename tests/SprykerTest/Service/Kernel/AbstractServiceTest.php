@@ -23,9 +23,6 @@ use SprykerTest\Service\Kernel\Fixtures\Service;
  */
 class AbstractServiceTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetFactoryWillReturnFluentInterface(): void
     {
         $abstractFactory = new AbstractServiceFactory();
@@ -34,9 +31,6 @@ class AbstractServiceTest extends Unit
         $this->assertInstanceOf(AbstractService::class, $abstractService->setFactory($abstractFactory));
     }
 
-    /**
-     * @return void
-     */
     public function testGetFactoryWillReturnAddedFactory(): void
     {
         $abstractFactory = new AbstractServiceFactory();

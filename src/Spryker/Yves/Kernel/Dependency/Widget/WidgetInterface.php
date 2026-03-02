@@ -15,18 +15,9 @@ use Spryker\Yves\Kernel\Widget\WidgetContainerInterface;
  */
 interface WidgetInterface extends WidgetContainerInterface, ArrayAccess
 {
-    /**
-     * @return string
-     */
     public static function getName(): string;
 
-    /**
-     * @return string
-     */
     public static function getTemplate(): string;
 
-    /**
-     * @return array
-     */
     public function getParameters(): array;
 }

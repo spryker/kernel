@@ -22,9 +22,6 @@ use SprykerTest\Shared\Kernel\Fixtures\LocatorLocator;
  */
 class AbstractLocatorLocatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMagicMethodCallShouldReturnBundleProxy(): void
     {
         $locator = LocatorLocator::getInstance();

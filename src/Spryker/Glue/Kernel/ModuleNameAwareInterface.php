@@ -9,8 +9,5 @@ namespace Spryker\Glue\Kernel;
 
 interface ModuleNameAwareInterface
 {
-    /**
-     * @return string
-     */
     public function getModuleName(): string;
 }

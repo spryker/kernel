@@ -14,8 +14,5 @@ interface CodeBucketConfigInterface
      */
     public function getCodeBuckets(): array;
 
-    /**
-     * @return string
-     */
     public function getCurrentCodeBucket(): string;
 }

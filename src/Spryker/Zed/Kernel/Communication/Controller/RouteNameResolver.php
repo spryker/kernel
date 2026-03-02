@@ -18,9 +18,6 @@ class RouteNameResolver implements RouteNameResolverInterface
      */
     protected $request;
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request;

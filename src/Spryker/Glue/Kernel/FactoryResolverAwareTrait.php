@@ -28,9 +28,6 @@ trait FactoryResolverAwareTrait
         return $this;
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\AbstractFactory
-     */
     protected function getFactory(): AbstractFactory
     {
         if ($this->factory === null) {
@@ -40,17 +37,11 @@ trait FactoryResolverAwareTrait
         return $this->factory;
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\AbstractFactory
-     */
     protected function resolveFactory(): AbstractFactory
     {
         return $this->getFactoryResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\ClassResolver\Factory\FactoryResolver
-     */
     protected function getFactoryResolver(): FactoryResolver
     {
         return new FactoryResolver();

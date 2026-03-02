@@ -57,9 +57,6 @@ trait BundleDependencyProviderResolverAwareTrait
         return $this->container->get($key);
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function createContainerWithProvidedDependencies(): Container
     {
         $container = $this->createContainer();
@@ -76,57 +73,31 @@ trait BundleDependencyProviderResolverAwareTrait
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface $dependencyInjectorCollection
-     *
-     * @return \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorInterface
-     */
     protected function createDependencyInjector(DependencyInjectorCollectionInterface $dependencyInjectorCollection): DependencyInjectorInterface
     {
         return new DependencyInjector($dependencyInjectorCollection);
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\AbstractBundleDependencyProvider
-     */
     protected function resolveDependencyProvider(): AbstractBundleDependencyProvider
     {
         return $this->createDependencyProviderResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\ClassResolver\DependencyProvider\DependencyProviderResolver
-     */
     protected function createDependencyProviderResolver(): DependencyProviderResolver
     {
         return new DependencyProviderResolver();
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\AbstractBundleDependencyProvider $dependencyProvider
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     abstract protected function provideExternalDependencies(
         AbstractBundleDependencyProvider $dependencyProvider,
         Container $container
     ): Container;
 
-    /**
-     * @param \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjector $dependencyInjector
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     abstract protected function injectExternalDependencies(
         DependencyInjector $dependencyInjector,
         Container $container
     ): Container;
 
-    /**
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function createContainer(): Container
     {
         $containerGlobals = $this->createContainerGlobals();
@@ -135,25 +106,16 @@ trait BundleDependencyProviderResolverAwareTrait
         return $container;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ContainerGlobals
-     */
     protected function createContainerGlobals(): ContainerGlobals
     {
         return new ContainerGlobals();
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface
-     */
     protected function resolveDependencyInjectorCollection(): DependencyInjectorCollectionInterface
     {
         return $this->createDependencyInjectorResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\ClassResolver\DependencyInjector\DependencyInjectorResolver
-     */
     protected function createDependencyInjectorResolver(): DependencyInjectorResolver
     {
         return new DependencyInjectorResolver();

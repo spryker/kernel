@@ -28,9 +28,6 @@ use SprykerTest\Glue\Kernel\Fixtures\Backend\ClassResolver\RestResource\Resource
  */
 class ResourceResolverTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveThrowsExceptionWithoutResource(): void
     {
         $this->expectException(RestResourceNotFoundException::class);
@@ -39,9 +36,6 @@ class ResourceResolverTest extends Unit
         $resolver->resolve($this);
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidResourceThrowsException(): void
     {
         $resolver = new ResourceResolverStub();
@@ -53,9 +47,6 @@ class ResourceResolverTest extends Unit
         $resolver->resolve($this);
     }
 
-    /**
-     * @return void
-     */
     public function testValidResourceResource(): void
     {
         $expectedResource = $this->createMock(AbstractRestResource::class);

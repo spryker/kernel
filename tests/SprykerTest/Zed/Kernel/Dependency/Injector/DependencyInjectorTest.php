@@ -27,9 +27,6 @@ use Spryker\Zed\Kernel\Dependency\Injector\DependencyInjectorInterface;
  */
 class DependencyInjectorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testInstantiation(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();
@@ -38,9 +35,6 @@ class DependencyInjectorTest extends Unit
         $this->assertInstanceOf(DependencyInjectorInterface::class, $dependencyInjector);
     }
 
-    /**
-     * @return void
-     */
     public function testInjectBusinessLayerDependenciesShouldCallMethodOfRegisteredDependencyInjector(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();
@@ -53,9 +47,6 @@ class DependencyInjectorTest extends Unit
         $dependencyInjector->injectBusinessLayerDependencies(new Container());
     }
 
-    /**
-     * @return void
-     */
     public function testInjectCommunicationLayerDependenciesShouldCallMethodOfRegisteredDependencyInjector(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();
@@ -68,9 +59,6 @@ class DependencyInjectorTest extends Unit
         $dependencyInjector->injectCommunicationLayerDependencies(new Container());
     }
 
-    /**
-     * @return void
-     */
     public function testInjectPersistenceLayerDependenciesShouldCallMethodOfRegisteredDependencyInjector(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();

@@ -23,24 +23,12 @@ class ClassNameFinder implements ClassNameFinderInterface
      */
     protected $resolverCacheManager;
 
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassNameCandidatesBuilder\ClassNameCandidatesBuilderInterface $classNameCandidatesBuilder
-     * @param \Spryker\Shared\Kernel\ClassResolver\ResolverCacheFactoryInterface $resolverCacheManager
-     */
     public function __construct(ClassNameCandidatesBuilderInterface $classNameCandidatesBuilder, ResolverCacheFactoryInterface $resolverCacheManager)
     {
         $this->classNameCandidatesBuilder = $classNameCandidatesBuilder;
         $this->resolverCacheManager = $resolverCacheManager;
     }
 
-    /**
-     * @param string $moduleName
-     * @param string $classNamePattern
-     * @param bool $throwException
-     * @param string|null $moduleNamePostfix
-     *
-     * @return string|null
-     */
     public function findClassName(
         string $moduleName,
         string $classNamePattern,

@@ -27,9 +27,6 @@ class CacheBuilderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testBuildBuildsResolvableCacheForCoreClass(): void
     {
         $this->tester->arrangeCoreClassCacheBuilderTest();
@@ -43,9 +40,6 @@ class CacheBuilderTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testBuildBuildsResolvableCacheForProjectClass(): void
     {
         $this->tester->arrangeProjectClassCacheBuilderTest();
@@ -59,9 +53,6 @@ class CacheBuilderTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testBuildBuildsResolvableCacheForCodeBucketClass(): void
     {
         $this->tester->arrangeCodeBucketClassCacheBuilderTest();
@@ -83,13 +74,6 @@ class CacheBuilderTest extends Unit
         }
     }
 
-    /**
-     * @param string $cacheKey
-     * @param string $cacheFileNamePostfix
-     * @param string $expectedCacheValue
-     *
-     * @return void
-     */
     protected function assertCacheHasExpectedValue(string $cacheKey, string $cacheFileNamePostfix, string $expectedCacheValue): void
     {
         $this->assertFileExists($this->tester->getPathToCacheFile($cacheFileNamePostfix), 'Cache file does not exists.');

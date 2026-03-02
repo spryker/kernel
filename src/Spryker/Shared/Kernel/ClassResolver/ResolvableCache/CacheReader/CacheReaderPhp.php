@@ -16,9 +16,6 @@ class CacheReaderPhp implements CacheReaderInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Shared\Kernel\KernelConfig $config
-     */
     public function __construct(KernelConfig $config)
     {
         $this->config = $config;

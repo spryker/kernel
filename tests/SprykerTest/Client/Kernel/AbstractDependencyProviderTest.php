@@ -22,9 +22,6 @@ use Spryker\Client\Kernel\Container;
  */
 class AbstractDependencyProviderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCallProvideServiceLayerDependenciesMustReturnContainer(): void
     {
         $container = new Container();
@@ -45,9 +42,6 @@ class AbstractDependencyProviderTest extends Unit
         };
     }
 
-    /**
-     * @return void
-     */
     public function testProvideServiceLayerDependencies(): void
     {
         $container = new Container();

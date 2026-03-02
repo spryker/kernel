@@ -13,17 +13,11 @@ use Spryker\Client\Kernel\AbstractPlugin;
 
 class FooPlugin extends AbstractPlugin
 {
-    /**
-     * @return \Spryker\Client\Kernel\AbstractFactory
-     */
     public function getFactory(): AbstractFactory
     {
         return parent::getFactory();
     }
 
-    /**
-     * @return \Spryker\Client\Kernel\AbstractClient
-     */
     public function getClient(): AbstractClient
     {
         return parent::getClient();

@@ -131,9 +131,6 @@ abstract class AbstractFactory implements FactoryInterface
         return $container->get($key);
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function getContainer(): Container
     {
         $containerKey = static::class;

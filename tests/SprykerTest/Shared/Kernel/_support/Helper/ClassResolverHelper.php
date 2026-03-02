@@ -51,12 +51,6 @@ class ClassResolverHelper extends Module
      */
     protected const STORE_NAME = 'STORE';
 
-    /**
-     * @param string $resolverClassName
-     * @param string $codeBucket
-     *
-     * @return \Spryker\Shared\Kernel\ClassResolver\AbstractClassResolver
-     */
     public function getResolver(string $resolverClassName, string $codeBucket = ''): AbstractClassResolver
     {
         /** @var \Spryker\Shared\Kernel\ClassResolver\AbstractClassResolver $resolverStub */
@@ -75,11 +69,6 @@ class ClassResolverHelper extends Module
         return $resolverStub;
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return \Spryker\Shared\Kernel\KernelConfig
-     */
     protected function getConfigStub(string $resolverClassName): KernelConfig
     {
         $resolvableType = $this->getResolvableType($resolverClassName);
@@ -128,11 +117,6 @@ class ClassResolverHelper extends Module
         return $resolvableType;
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return string
-     */
     public function getProjectStoreClassName(string $resolverClassName): string
     {
         $classNamePattern = $this->getClassNamePattern($resolverClassName);
@@ -140,11 +124,6 @@ class ClassResolverHelper extends Module
         return $this->buildClassName($classNamePattern, static::PROJECT_ORGANIZATION, static::MODULE_NAME, static::STORE_NAME);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return string
-     */
     public function getProjectCodeBucketClassName(string $resolverClassName): string
     {
         $classNamePattern = $this->getClassNamePattern($resolverClassName);
@@ -152,11 +131,6 @@ class ClassResolverHelper extends Module
         return $this->buildClassName($classNamePattern, static::PROJECT_ORGANIZATION, static::MODULE_NAME, static::CODE_BUCKET);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return string
-     */
     public function getProjectClassName(string $resolverClassName): string
     {
         $classNamePattern = $this->getClassNamePattern($resolverClassName);
@@ -164,11 +138,6 @@ class ClassResolverHelper extends Module
         return $this->buildClassName($classNamePattern, static::PROJECT_ORGANIZATION, static::MODULE_NAME);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return string
-     */
     public function getCoreClassName(string $resolverClassName): string
     {
         $classNamePattern = $this->getClassNamePattern($resolverClassName);
@@ -176,11 +145,6 @@ class ClassResolverHelper extends Module
         return $this->buildClassName($classNamePattern, static::CORE_ORGANIZATION, static::MODULE_NAME);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return string
-     */
     protected function getClassNamePattern(string $resolverClassName): string
     {
         $config = $this->getConfig();
@@ -188,9 +152,6 @@ class ClassResolverHelper extends Module
         return $config->getResolvableTypeClassNamePatternMap()[$this->getResolvableType($resolverClassName)];
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\KernelConfig
-     */
     protected function getConfig(): KernelConfig
     {
         /** @var \Spryker\Shared\Kernel\KernelConfig $config */
@@ -199,14 +160,6 @@ class ClassResolverHelper extends Module
         return $config;
     }
 
-    /**
-     * @param string $classNamePattern
-     * @param string $organization
-     * @param string $moduleName
-     * @param string $moduleNamePostfix
-     *
-     * @return string
-     */
     protected function buildClassName(string $classNamePattern, string $organization, string $moduleName, string $moduleNamePostfix = ''): string
     {
         $moduleNameCandidate = $moduleName . $moduleNamePostfix;
@@ -214,11 +167,6 @@ class ClassResolverHelper extends Module
         return ltrim(sprintf($classNamePattern, $organization, $moduleNameCandidate, $moduleName), '\\');
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return void
-     */
     public function createProjectStoreClass(string $resolverClassName): void
     {
         $className = $this->getProjectStoreClassName($resolverClassName);
@@ -227,11 +175,6 @@ class ClassResolverHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($className, $extends);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return void
-     */
     public function createProjectCodeBucketClass(string $resolverClassName): void
     {
         $className = $this->getProjectCodeBucketClassName($resolverClassName);
@@ -240,11 +183,6 @@ class ClassResolverHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($className, $extends);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return void
-     */
     public function createProjectClass(string $resolverClassName): void
     {
         $className = $this->getProjectClassName($resolverClassName);
@@ -253,11 +191,6 @@ class ClassResolverHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($className, $extends);
     }
 
-    /**
-     * @param string $resolverClassName
-     *
-     * @return void
-     */
     public function createCoreClass(string $resolverClassName): void
     {
         $className = $this->getCoreClassName($resolverClassName);
@@ -266,12 +199,6 @@ class ClassResolverHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($className, $extends);
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\KernelConfig $config
-     * @param string $codeBucket
-     *
-     * @return \Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider\ModuleNamePostfixProvider
-     */
     protected function getModuleNamePostfixProviderStub(KernelConfig $config, string $codeBucket = ''): ModuleNamePostfixProvider
     {
         $methodMocks = [

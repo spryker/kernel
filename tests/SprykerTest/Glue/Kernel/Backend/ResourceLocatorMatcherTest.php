@@ -22,9 +22,6 @@ use Spryker\Glue\Kernel\Backend\ResourceLocatorMatcher;
  */
 class ResourceLocatorMatcherTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMatchingShouldReturnTrueIfMethodStartsWithResource(): void
     {
         $locatorMatcher = new ResourceLocatorMatcher();
@@ -32,9 +29,6 @@ class ResourceLocatorMatcherTest extends Unit
         $this->assertTrue($locatorMatcher->match('resourceAdd'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchingShouldReturnFalseIfMethodDoesNotStartWithResource(): void
     {
         $locatorMatcher = new ResourceLocatorMatcher();
@@ -42,9 +36,6 @@ class ResourceLocatorMatcherTest extends Unit
         $this->assertFalse($locatorMatcher->match('locatorFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchingShouldReturnFalseIfMethodDoesNotStartWithResourceButResourceInString(): void
     {
         $locatorMatcher = new ResourceLocatorMatcher();

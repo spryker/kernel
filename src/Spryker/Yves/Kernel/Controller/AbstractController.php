@@ -108,17 +108,11 @@ abstract class AbstractController
         return new RedirectResponse($this->getRouter()->generate($path, $parameters), $code);
     }
 
-    /**
-     * @return \Symfony\Cmf\Component\Routing\ChainRouterInterface
-     */
     protected function getRouter(): ChainRouterInterface
     {
         return $this->getApplication()->get(static::SERVICE_ROUTER);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\RequestStack
-     */
     protected function getRequestStack(): RequestStack
     {
         return $this->getApplication()->get(static::SERVICE_REQUEST_STACK);

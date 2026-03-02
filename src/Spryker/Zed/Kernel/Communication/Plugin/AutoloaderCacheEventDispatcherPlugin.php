@@ -40,9 +40,6 @@ class AutoloaderCacheEventDispatcherPlugin extends AbstractPlugin implements Eve
         return $eventDispatcher;
     }
 
-    /**
-     * @return void
-     */
     protected function persistClassResolverCache(): void
     {
         $resolverCacheManager = $this->getFactory()->createResolverCacheManager();

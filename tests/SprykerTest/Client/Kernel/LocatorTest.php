@@ -22,9 +22,6 @@ use Spryker\Shared\Kernel\BundleProxy;
  */
 class LocatorTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCallShouldReturnBundleProxy(): void
     {
         $locator = Locator::getInstance();

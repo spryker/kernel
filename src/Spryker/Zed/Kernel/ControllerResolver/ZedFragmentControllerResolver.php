@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Communication\BundleControllerAction;
  */
 class ZedFragmentControllerResolver extends SilexControllerResolver
 {
-    /**
-     * @param string $controller
-     *
-     * @return callable
-     */
     protected function createController(string $controller): callable
     {
         if (strpos($controller, ':') !== false) {

@@ -22,9 +22,6 @@ use Spryker\Service\Kernel\Container;
  */
 class AbstractDependencyProviderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCallProvideServiceLayerDependenciesMustReturnContainer(): void
     {
         $container = new Container();
@@ -35,9 +32,6 @@ class AbstractDependencyProviderTest extends Unit
         $this->assertSame($expected, $container);
     }
 
-    /**
-     * @return \Spryker\Service\Kernel\AbstractBundleDependencyProvider
-     */
     private function getAbstractDependencyProviderMock(): AbstractBundleDependencyProvider
     {
         return new class extends AbstractBundleDependencyProvider {

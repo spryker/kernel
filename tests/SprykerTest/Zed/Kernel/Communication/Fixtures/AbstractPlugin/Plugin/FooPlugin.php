@@ -15,41 +15,26 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 class FooPlugin extends AbstractPlugin
 {
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
-     */
     public function getFactory(): AbstractCommunicationFactory
     {
         return parent::getFactory();
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractBusinessFactory
-     */
     public function getBusinessFactory(): AbstractBusinessFactory
     {
         return parent::getBusinessFactory();
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade
-     */
     public function getFacade(): AbstractFacade
     {
         return parent::getFacade();
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Persistence\AbstractQueryContainer
-     */
     public function getQueryContainer(): AbstractQueryContainer
     {
         return parent::getQueryContainer();
     }
 
-    /**
-     * @return string
-     */
     protected function getBundleName(): string
     {
         return 'Kernel';

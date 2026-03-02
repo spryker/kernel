@@ -20,17 +20,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class KernelCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ResolverCacheFactoryInterface
-     */
     public function createResolverCacheManager(): ResolverCacheFactoryInterface
     {
         return new ResolverCacheManager();
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Validator\RedirectUrlValidatorInterface
-     */
     public function createRedirectUrlValidator(): RedirectUrlValidatorInterface
     {
         return new RedirectUrlValidator(
@@ -40,9 +34,6 @@ class KernelCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Validator\ValidatorInterface
-     */
     public function getValidator(): ValidatorInterface
     {
         return Validation::createValidator();

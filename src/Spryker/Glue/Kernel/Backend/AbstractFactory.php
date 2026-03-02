@@ -64,9 +64,6 @@ abstract class AbstractFactory extends GlueAbstractFactory
         return $this->createDependencyProviderResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\Backend\ClassResolver\DependencyProviderResolver
-     */
     protected function createDependencyProviderResolver(): DependencyProviderResolver
     {
         return new DependencyProviderResolver();

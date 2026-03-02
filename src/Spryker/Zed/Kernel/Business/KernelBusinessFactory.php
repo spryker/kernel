@@ -22,9 +22,6 @@ use Spryker\Zed\Kernel\Business\ModuleNamesFinder\ModuleNamesFinderInterface;
  */
 class KernelBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Kernel\Business\ClassResolver\ResolvableCache\CacheBuilder\CacheBuilderInterface
-     */
     public function createCacheBuilder(): CacheBuilderInterface
     {
         return new CacheBuilder(
@@ -36,25 +33,16 @@ class KernelBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\ModuleNamesFinder\ModuleNamesFinderInterface
-     */
     public function createModuleNamesFinder(): ModuleNamesFinderInterface
     {
         return new ModuleNamesFinder($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\ClassResolver\ResolvableCache\CacheWriter\CacheWriterInterface
-     */
     public function createCacheWriter(): CacheWriterInterface
     {
         return new CacheWriterPhp($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
-     */
     public function createCodeBucketConfig(): CodeBucketConfigInterface
     {
         return new CodeBucketConfig();

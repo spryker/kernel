@@ -44,9 +44,6 @@ trait ContainerMocker
         return $container;
     }
 
-    /**
-     * @return bool
-     */
     protected function isContainerOverridingEnabled(): bool
     {
         return Config::get(KernelConstants::ENABLE_CONTAINER_OVERRIDING, $this->getOverwriteContainerForTestingDefaultValue());

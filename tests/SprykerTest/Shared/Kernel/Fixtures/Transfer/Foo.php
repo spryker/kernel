@@ -17,9 +17,6 @@ class Foo extends AbstractTransfer
      */
     protected $bar;
 
-    /**
-     * @return \SprykerTest\Shared\Kernel\Fixtures\Transfer\Foo\Bar
-     */
     public function getBar(): Bar
     {
         return $this->bar;

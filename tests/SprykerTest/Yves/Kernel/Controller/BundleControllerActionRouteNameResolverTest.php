@@ -23,9 +23,6 @@ use Spryker\Yves\Kernel\Controller\BundleControllerActionRouteNameResolver;
  */
 class BundleControllerActionRouteNameResolverTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveShouldReturnResolvedRouteName(): void
     {
         $bundleControllerAction = new BundleControllerAction('Foo', 'Bar', 'baz');

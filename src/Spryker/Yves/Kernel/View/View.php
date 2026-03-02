@@ -48,9 +48,6 @@ class View implements ViewInterface, WidgetContainerInterface
         return $this->template;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return $this->data;

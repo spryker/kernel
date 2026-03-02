@@ -16,9 +16,6 @@ class CacheWriterPhp implements CacheWriterInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Zed\Kernel\KernelConfig $config
-     */
     public function __construct(KernelConfig $config)
     {
         $this->config = $config;

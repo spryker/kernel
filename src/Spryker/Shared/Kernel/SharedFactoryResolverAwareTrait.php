@@ -28,9 +28,6 @@ trait SharedFactoryResolverAwareTrait
         return $this;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\AbstractSharedFactory
-     */
     protected function getSharedFactory(): AbstractSharedFactory
     {
         if ($this->sharedFactory === null) {
@@ -40,9 +37,6 @@ trait SharedFactoryResolverAwareTrait
         return $this->sharedFactory;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\AbstractSharedFactory
-     */
     private function resolveSharedFactory(): AbstractSharedFactory
     {
         $resolver = new SharedFactoryResolver();

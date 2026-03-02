@@ -21,10 +21,6 @@ class ClassNameCandidatesBuilder implements ClassNameCandidatesBuilderInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ModuleNameCandidatesBuilder\ModuleNameCandidatesBuilderInterface $moduleNameCandidatesBuilder
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassNameCandidatesBuilder\ClassNameCandidatesBuilderConfigInterface $config
-     */
     public function __construct(ModuleNameCandidatesBuilderInterface $moduleNameCandidatesBuilder, ClassNameCandidatesBuilderConfigInterface $config)
     {
         $this->moduleNameCandidatesBuilder = $moduleNameCandidatesBuilder;
@@ -83,14 +79,6 @@ class ClassNameCandidatesBuilder implements ClassNameCandidatesBuilderInterface
         return $classNames;
     }
 
-    /**
-     * @param string $organization
-     * @param string $moduleName
-     * @param string $moduleNameCandidate
-     * @param string $classNamePattern
-     *
-     * @return string
-     */
     protected function buildClassNameCandidate(string $organization, string $moduleName, string $moduleNameCandidate, string $classNamePattern): string
     {
         return sprintf($classNamePattern, $organization, $moduleNameCandidate, $moduleName);

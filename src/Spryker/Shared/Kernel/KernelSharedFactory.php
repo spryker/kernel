@@ -25,9 +25,6 @@ use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface;
  */
 class KernelSharedFactory extends AbstractSharedFactory
 {
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ClassNameFinder\ClassNameFinderInterface
-     */
     public function createClassNameFinder(): ClassNameFinderInterface
     {
         return new ClassNameFinder(
@@ -36,33 +33,21 @@ class KernelSharedFactory extends AbstractSharedFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ResolverCacheFactoryInterface
-     */
     public function createResolverCacheManager(): ResolverCacheFactoryInterface
     {
         return new ResolverCacheManager();
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ClassNameCandidatesBuilder\ClassNameCandidatesBuilderInterface
-     */
     public function createClassNameCandidatesBuilder(): ClassNameCandidatesBuilderInterface
     {
         return new ClassNameCandidatesBuilder($this->createModuleNameCandidatesBuilder(), $this->getSharedConfig());
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ModuleNameCandidatesBuilder\ModuleNameCandidatesBuilderInterface
-     */
     public function createModuleNameCandidatesBuilder(): ModuleNameCandidatesBuilderInterface
     {
         return new ModuleNameCandidatesBuilder($this->createModuleNamePostfixProvider());
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider\ModuleNamePostfixProviderInterface
-     */
     public function createModuleNamePostfixProvider(): ModuleNamePostfixProviderInterface
     {
         return new ModuleNamePostfixProvider(
@@ -71,9 +56,6 @@ class KernelSharedFactory extends AbstractSharedFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
-     */
     public function createCodeBucketConfig(): CodeBucketConfigInterface
     {
         return new CodeBucketConfig();

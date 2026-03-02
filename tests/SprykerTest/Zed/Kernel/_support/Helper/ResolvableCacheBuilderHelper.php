@@ -65,9 +65,6 @@ class ResolvableCacheBuilderHelper extends Module
      */
     protected $coreOrganizations = ['Spryker'];
 
-    /**
-     * @return void
-     */
     protected function arrangeCacheBuilderTest(): void
     {
         $structure = [
@@ -95,11 +92,6 @@ class ResolvableCacheBuilderHelper extends Module
         $this->getConfigHelper()->mockConfigMethod('getPathsToCoreModules', [$path]);
     }
 
-    /**
-     * @param string $codeBucket
-     *
-     * @return string
-     */
     public function getAutoloadableCodeBucketClassName(string $codeBucket): string
     {
         $moduleNameCandidate = sprintf('%s%s', static::MODULE_NAME, $codeBucket);
@@ -107,25 +99,16 @@ class ResolvableCacheBuilderHelper extends Module
         return sprintf('\\Pyz\\Zed\\%s\\Business\\%sFacade', $moduleNameCandidate, static::MODULE_NAME);
     }
 
-    /**
-     * @return string
-     */
     public function getAutoloadableProjectClassName(): string
     {
         return sprintf('\\Pyz\\Zed\\%s\\Business\\%sFacade', static::MODULE_NAME, static::MODULE_NAME);
     }
 
-    /**
-     * @return string
-     */
     public function getAutoloadableCoreClassName(): string
     {
         return sprintf('\\Spryker\\Zed\\%s\\Business\\%sFacade', static::MODULE_NAME, static::MODULE_NAME);
     }
 
-    /**
-     * @return void
-     */
     public function arrangeCodeBucketClassCacheBuilderTest(): void
     {
         $this->arrangeCacheBuilderTest();
@@ -141,9 +124,6 @@ class ResolvableCacheBuilderHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($this->getAutoloadableCoreClassName());
     }
 
-    /**
-     * @return void
-     */
     public function arrangeProjectClassCacheBuilderTest(): void
     {
         $this->arrangeCacheBuilderTest();
@@ -152,9 +132,6 @@ class ResolvableCacheBuilderHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($this->getAutoloadableCoreClassName());
     }
 
-    /**
-     * @return void
-     */
     public function arrangeCoreClassCacheBuilderTest(): void
     {
         $this->arrangeCacheBuilderTest();
@@ -162,37 +139,21 @@ class ResolvableCacheBuilderHelper extends Module
         $this->getClassHelper()->createAutoloadableClass($this->getAutoloadableCoreClassName());
     }
 
-    /**
-     * @return string
-     */
     public function getModuleName(): string
     {
         return static::MODULE_NAME;
     }
 
-    /**
-     * @param string $resolvableType
-     *
-     * @return string
-     */
     public function getCacheKey(string $resolvableType = 'ZedFacade'): string
     {
         return sprintf('%s%s', static::MODULE_NAME, $resolvableType);
     }
 
-    /**
-     * @return array
-     */
     public function getExpectedFacadeClassNames(): array
     {
         return $this->buildExpectedClassNames('\\%s\\Zed\\%s\\%sFacade');
     }
 
-    /**
-     * @param string $classNamePattern
-     *
-     * @return array
-     */
     protected function buildExpectedClassNames(string $classNamePattern): array
     {
         $classNames = [];
@@ -206,24 +167,11 @@ class ResolvableCacheBuilderHelper extends Module
         return $classNames;
     }
 
-    /**
-     * @param string $organization
-     * @param string $moduleName
-     * @param string $moduleNameCandidate
-     * @param string $pattern
-     *
-     * @return string
-     */
     protected function buildClassNameCandidate(string $organization, string $moduleName, string $moduleNameCandidate, string $pattern): string
     {
         return sprintf($pattern, $organization, $moduleNameCandidate, $moduleName);
     }
 
-    /**
-     * @param string $moduleName
-     *
-     * @return array
-     */
     protected function buildModuleNameCanditates(string $moduleName): array
     {
         return [
@@ -232,19 +180,11 @@ class ResolvableCacheBuilderHelper extends Module
         ];
     }
 
-    /**
-     * @param string $cacheFileNamePostfix
-     *
-     * @return array
-     */
     public function getCacheData(string $cacheFileNamePostfix): array
     {
         return include($this->getPathToCacheFile($cacheFileNamePostfix));
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\KernelBusinessFactory
-     */
     public function getBusinessFactory(): KernelBusinessFactory
     {
         /** @var \Spryker\Zed\Kernel\Business\KernelBusinessFactory $businessFactory */
@@ -253,11 +193,6 @@ class ResolvableCacheBuilderHelper extends Module
         return $businessFactory;
     }
 
-    /**
-     * @param string $cacheFileNamePostfix
-     *
-     * @return string
-     */
     public function getPathToCacheFile(string $cacheFileNamePostfix): string
     {
         return sprintf(static::PATH_TO_CACHE_FILE, $cacheFileNamePostfix);
@@ -274,17 +209,11 @@ class ResolvableCacheBuilderHelper extends Module
         ];
     }
 
-    /**
-     * @return string
-     */
     public function getDefaultModuleNamePostfixValue(): string
     {
         return static::DEFAULT_MODULE_NAME_POSTFIX_VALUE;
     }
 
-    /**
-     * @return \SprykerTest\Zed\Testify\Helper\BusinessHelper
-     */
     protected function getBusinessHelper(): BusinessHelper
     {
         /** @var \SprykerTest\Zed\Testify\Helper\BusinessHelper $businessHelper */
@@ -293,11 +222,6 @@ class ResolvableCacheBuilderHelper extends Module
         return $businessHelper;
     }
 
-    /**
-     * @param bool $isApplicationCodeBucketDefined
-     *
-     * @return \Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider\ModuleNamePostfixProviderInterface
-     */
     protected function getModuleNamePostfixProviderStub(bool $isApplicationCodeBucketDefined = false): ModuleNamePostfixProviderInterface
     {
         $constructorParams = [
@@ -312,9 +236,6 @@ class ResolvableCacheBuilderHelper extends Module
         ]);
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
-     */
     protected function getCodeBucketConfigStub(): CodeBucketConfigInterface
     {
         return Stub::make(CodeBucketConfig::class, [

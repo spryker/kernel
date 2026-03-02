@@ -58,9 +58,6 @@ class File implements StorageInterface
         }
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         try {
@@ -72,9 +69,6 @@ class File implements StorageInterface
         }
     }
 
-    /**
-     * @return string
-     */
     protected function getCacheFilename(): string
     {
         if (!$this->cacheFilePath) {

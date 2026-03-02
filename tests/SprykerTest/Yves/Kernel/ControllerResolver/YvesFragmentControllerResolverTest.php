@@ -42,9 +42,6 @@ class YvesFragmentControllerResolverTest extends Unit
         $this->assertIsCallable($result);
     }
 
-    /**
-     * @return array
-     */
     public function getController(): array
     {
         return [
@@ -56,12 +53,6 @@ class YvesFragmentControllerResolverTest extends Unit
         ];
     }
 
-    /**
-     * @param string $name
-     * @param array $arguments
-     *
-     * @return void
-     */
     public function __call(string $name, array $arguments = []): void
     {
     }
@@ -84,11 +75,6 @@ class YvesFragmentControllerResolverTest extends Unit
         return $controllerResolverMock;
     }
 
-    /**
-     * @param string $controller
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     private function getRequest(string $controller): Request
     {
         return new Request([], [], ['_controller' => $controller]);

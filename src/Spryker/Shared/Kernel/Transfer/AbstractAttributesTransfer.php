@@ -92,19 +92,11 @@ class AbstractAttributesTransfer extends AbstractTransfer
         return $this;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface|null
-     */
     public function getValueTransfer(): ?TransferInterface
     {
         return $this->transfer;
     }
 
-    /**
-     * @param string $transferName
-     *
-     * @return string|null
-     */
     protected function getAttributesTransferType(string $transferName): ?string
     {
         $className = '\\Generated\\Shared\\Transfer\\' . $transferName;

@@ -30,9 +30,6 @@ class BundleNameResolver
         return $bundleName;
     }
 
-    /**
-     * @return string
-     */
     protected function getCodeBucket(): string
     {
         return APPLICATION_CODE_BUCKET;

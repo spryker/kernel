@@ -19,11 +19,6 @@ class CodeBucketHelper extends Module
      */
     protected const SPRYKER_CODE_BUCKET = 'SPRYKER_CODE_BUCKET';
 
-    /**
-     * @param string $codeBucket
-     *
-     * @return void
-     */
     public function haveCodeBucketEnv(string $codeBucket): void
     {
         $oldEnv = getenv(static::SPRYKER_CODE_BUCKET);

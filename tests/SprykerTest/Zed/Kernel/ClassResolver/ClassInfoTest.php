@@ -22,9 +22,6 @@ use Spryker\Shared\Kernel\ClassResolver\ClassInfo;
  */
 class ClassInfoTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetClassNameMustReturnSelf(): void
     {
         $classInfo = new ClassInfo();
@@ -34,9 +31,6 @@ class ClassInfoTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testSetClassNameMustExtractNamespaceFromClass(): void
     {
         $classInfo = new ClassInfo();
@@ -45,9 +39,6 @@ class ClassInfoTest extends Unit
         $this->assertSame('Spryker', $classInfo->getNamespace());
     }
 
-    /**
-     * @return void
-     */
     public function testSetClassNameMustExtractApplicationFromClass(): void
     {
         $classInfo = new ClassInfo();
@@ -56,9 +47,6 @@ class ClassInfoTest extends Unit
         $this->assertSame('Shared', $classInfo->getApplication());
     }
 
-    /**
-     * @return void
-     */
     public function testSetClassNameMustExtractBundleFromClass(): void
     {
         $classInfo = new ClassInfo();
@@ -67,9 +55,6 @@ class ClassInfoTest extends Unit
         $this->assertSame('Kernel', $classInfo->getModule());
     }
 
-    /**
-     * @return void
-     */
     public function testSetClassNameMustExtractLayerFromClass(): void
     {
         $classInfo = new ClassInfo();

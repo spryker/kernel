@@ -22,9 +22,6 @@ use Spryker\Shared\Kernel\ClassResolver\ModuleNameResolver;
  */
 class ModuleNameResolverTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveShouldRemoveStoreName(): void
     {
         $moduleNameResolver = $this->getModuleNameResolver('TEST');

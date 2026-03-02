@@ -25,9 +25,6 @@ use Spryker\Glue\Kernel\Container as GlueContainer;
  */
 class AbstractBundleDependencyProviderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCallProvideGlueLayerDependenciesMustReturnBackendContainer(): void
     {
         $container = new Container();
@@ -39,9 +36,6 @@ class AbstractBundleDependencyProviderTest extends Unit
         $this->assertSame($expected, $container);
     }
 
-    /**
-     * @return void
-     */
     public function testCallProvideGlueLayerDependenciesMustThrowExceptionIfNotReturnBackendContainer(): void
     {
         $container = new GlueContainer();

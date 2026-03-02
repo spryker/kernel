@@ -16,9 +16,6 @@ abstract class AbstractCodeBucketConfig implements CodeBucketConfigInterface
      */
     protected const SPRYKER_CODE_BUCKET = 'SPRYKER_CODE_BUCKET';
 
-    /**
-     * @return string
-     */
     public function getCurrentCodeBucket(): string
     {
         $codeBucket = getenv(static::SPRYKER_CODE_BUCKET);
@@ -51,9 +48,6 @@ abstract class AbstractCodeBucketConfig implements CodeBucketConfigInterface
         }
     }
 
-    /**
-     * @return string
-     */
     protected function getDefaultCodeBucket(): string
     {
         return '';

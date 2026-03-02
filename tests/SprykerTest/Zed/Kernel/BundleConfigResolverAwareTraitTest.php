@@ -22,9 +22,6 @@ use Spryker\Zed\Kernel\BundleConfigResolverAwareTrait;
  */
 class BundleConfigResolverAwareTraitTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetConfigMustReturnFluentInterface(): void
     {
         $bundleConfigResolverAwareTraitMock = $this->getBundleConfigResolverAwareTraitMock();
@@ -46,9 +43,6 @@ class BundleConfigResolverAwareTraitTest extends Unit
         };
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\AbstractBundleConfig
-     */
     private function getAbstractBundleConfigMock(): AbstractBundleConfig
     {
         // Create a minimal concrete subclass of the abstract config to avoid getMockForAbstractClass()

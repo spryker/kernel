@@ -33,9 +33,6 @@ class Locator extends AbstractLocatorLocator
         return static::$instance;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\BundleProxy
-     */
     protected function getBundleProxy(): BundleProxy
     {
         $bundleProxy = new BundleProxy();

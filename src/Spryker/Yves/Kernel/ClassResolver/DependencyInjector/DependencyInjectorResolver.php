@@ -146,9 +146,6 @@ class DependencyInjectorResolver extends AbstractClassResolver
         return new DependencyInjectorCollection();
     }
 
-    /**
-     * @return string
-     */
     protected function getCacheKey(): string
     {
         return sprintf(static::CACHE_KEY_FORMAT, parent::getCacheKey(), $this->fromBundle ?? '');

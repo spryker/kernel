@@ -24,9 +24,6 @@ use SprykerTest\Service\Kernel\Fixtures\Plugin\FooPlugin;
  */
 class AbstractPluginTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetFactoryShouldReturnInstanceIfExists(): void
     {
         $plugin = new FooPlugin();
@@ -42,9 +39,6 @@ class AbstractPluginTest extends Unit
         $this->assertInstanceOf(AbstractServiceFactory::class, $factory);
     }
 
-    /**
-     * @return void
-     */
     public function testGetServiceShouldReturnInstanceIfExists(): void
     {
         $plugin = new FooPlugin();

@@ -22,9 +22,6 @@ use Spryker\Shared\Kernel\ClassResolver\BundleNameResolver;
  */
 class BundleNameResolverTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveShouldRemoveCodeBucketName(): void
     {
         $bundleNameResolver = $this->getBundleNameResolver('TEST');

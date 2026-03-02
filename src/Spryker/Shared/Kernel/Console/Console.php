@@ -53,37 +53,22 @@ class Console extends SymfonyCommand
      */
     protected $exitCode = self::CODE_SUCCESS;
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return void
-     */
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->input = $input;
         $this->output = $output;
     }
 
-    /**
-     * @return bool
-     */
     protected function hasError(): bool
     {
         return $this->exitCode !== static::CODE_SUCCESS;
     }
 
-    /**
-     * @return int
-     */
     protected function getLastExitCode(): int
     {
         return $this->exitCode;
     }
 
-    /**
-     * @return \Psr\Log\LoggerInterface
-     */
     protected function getMessenger(): LoggerInterface
     {
         if ($this->messenger === null) {
@@ -110,11 +95,6 @@ class Console extends SymfonyCommand
         $this->output->writeln($message);
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
     public function error(string $message): void
     {
         $width = $this->getTerminalWidth() - mb_strlen($message) - 1;
@@ -124,11 +104,6 @@ class Console extends SymfonyCommand
         $this->output->writeln(sprintf('<error> %s</error>', $message));
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
     public function warning(string $message): void
     {
         $style = new OutputFormatterStyle('black', 'yellow');
@@ -141,11 +116,6 @@ class Console extends SymfonyCommand
         $this->output->writeln(sprintf('<warning> %s</warning>', $message));
     }
 
-    /**
-     * @param string $message
-     *
-     * @return void
-     */
     public function success(string $message): void
     {
         $style = new OutputFormatterStyle('black', 'green');
@@ -158,12 +128,6 @@ class Console extends SymfonyCommand
         $this->output->writeln(sprintf('<success> %s</success>', $message));
     }
 
-    /**
-     * @param string $question
-     * @param string|null $default
-     *
-     * @return string|null
-     */
     public function ask(string $question, ?string $default): ?string
     {
         $questionHelper = $this->getQuestionHelper();
@@ -202,20 +166,12 @@ class Console extends SymfonyCommand
         return $questionHelper;
     }
 
-    /**
-     * @param bool $wrapInInfoTags
-     *
-     * @return void
-     */
     public function printLineSeparator(bool $wrapInInfoTags = true): void
     {
         $width = $this->getTerminalWidth();
         $this->info(str_repeat('-', $width), $wrapInInfoTags);
     }
 
-    /**
-     * @return int
-     */
     protected function getTerminalWidth(): int
     {
         $terminal = new Terminal();

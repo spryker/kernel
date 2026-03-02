@@ -21,25 +21,16 @@ use Spryker\Service\Kernel\ServiceLocatorMatcher;
  */
 class ServiceLocatorMatcherTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnTrueIfMethodStartsWithService(): void
     {
         $this->assertTrue((new ServiceLocatorMatcher())->match('service'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithService(): void
     {
         $this->assertFalse((new ServiceLocatorMatcher())->match('locatorFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithServiceButServiceInString(): void
     {
         $this->assertFalse((new ServiceLocatorMatcher())->match('locatorService'));

@@ -16,9 +16,6 @@ class ModuleNameCandidatesBuilder implements ModuleNameCandidatesBuilderInterfac
      */
     protected $moduleNamePostfixProvider;
 
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider\ModuleNamePostfixProviderInterface $moduleNamePostfixProvider
-     */
     public function __construct(ModuleNamePostfixProviderInterface $moduleNamePostfixProvider)
     {
         $this->moduleNamePostfixProvider = $moduleNamePostfixProvider;

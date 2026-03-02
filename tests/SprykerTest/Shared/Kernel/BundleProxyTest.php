@@ -24,9 +24,6 @@ use SprykerTest\Shared\Kernel\Fixtures\LocatorWithoutMatcher;
  */
 class BundleProxyTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testAddLocatorShouldAddLocatorCreateMatcherAndReturnBundleProxy(): void
     {
         $bundleProxy = new BundleProxy();
@@ -34,9 +31,6 @@ class BundleProxyTest extends Unit
         $this->assertInstanceOf(BundleProxy::class, $bundleProxy->addLocator(new LocatorWithMatcher()));
     }
 
-    /**
-     * @return void
-     */
     public function testAddLocatorShouldThrowExceptionIfNoMatcherCanBeCreated(): void
     {
         $this->expectException(LogicException::class);
@@ -45,9 +39,6 @@ class BundleProxyTest extends Unit
         $bundleProxy->addLocator(new LocatorWithoutMatcher());
     }
 
-    /**
-     * @return void
-     */
     public function testSetBundleShouldReturnBundleProxy(): void
     {
         $bundleProxy = new BundleProxy();
@@ -55,9 +46,6 @@ class BundleProxyTest extends Unit
         $this->assertInstanceOf(BundleProxy::class, $bundleProxy->setBundle('Foo'));
     }
 
-    /**
-     * @return void
-     */
     public function testCallShouldReturnLocatedClassIfMatcherMatchesToAGivenLocator(): void
     {
         $bundleProxy = new BundleProxy();
@@ -67,9 +55,6 @@ class BundleProxyTest extends Unit
         $this->assertSame($locator, $bundleProxy->locatorTest());
     }
 
-    /**
-     * @return void
-     */
     public function testCallShouldThrowExceptionIfNoLocatorCanBeMatchedToCalledMethod(): void
     {
         $this->expectException(LogicException::class);

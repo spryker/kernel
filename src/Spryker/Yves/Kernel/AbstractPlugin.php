@@ -43,9 +43,6 @@ abstract class AbstractPlugin
         return $this->getContainer();
     }
 
-    /**
-     * @return \Spryker\Service\Container\ContainerInterface
-     */
     protected function getContainer(): ContainerInterface
     {
         if (static::$container === null) {

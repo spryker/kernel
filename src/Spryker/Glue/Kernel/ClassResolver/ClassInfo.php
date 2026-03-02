@@ -19,9 +19,6 @@ class ClassInfo extends SharedClassInfo
      */
     public const KEY_LAYER = 3;
 
-    /**
-     * @return string
-     */
     public function getLayer(): string
     {
         return $this->callerClassParts[static::KEY_LAYER];

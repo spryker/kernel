@@ -22,9 +22,6 @@ use Spryker\Glue\Kernel\Controller\RouteNameResolver;
  */
 class RouteNameResolverTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testResolveShouldReturnResolvedRouteName(): void
     {
         $resolver = new RouteNameResolver('foo', 'bar', 'baz');

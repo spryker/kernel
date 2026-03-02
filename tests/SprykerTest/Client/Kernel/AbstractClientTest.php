@@ -21,9 +21,6 @@ use SprykerTest\Client\Kernel\Fixtures\KernelClient;
  */
 class AbstractClientTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testAbstractStubMustBeConstructable(): void
     {
         $abstractStub = new KernelClient();

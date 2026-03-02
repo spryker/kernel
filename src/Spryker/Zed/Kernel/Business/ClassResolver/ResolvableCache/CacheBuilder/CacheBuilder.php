@@ -40,13 +40,6 @@ class CacheBuilder implements CacheBuilderInterface
      */
     protected $moduleNamePostfixProvider;
 
-    /**
-     * @param \Spryker\Zed\Kernel\Business\ModuleNamesFinder\ModuleNamesFinderInterface $moduleNameFinder
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassNameFinder\ClassNameFinderInterface $classNameFinder
-     * @param \Spryker\Zed\Kernel\Business\ClassResolver\ResolvableCache\CacheWriter\CacheWriterInterface $cacheWriter
-     * @param \Spryker\Zed\Kernel\KernelConfig $config
-     * @param \Spryker\Shared\Kernel\ClassResolver\ModuleNamePostfixProvider\ModuleNamePostfixProviderInterface $moduleNamePostfixProvider
-     */
     public function __construct(
         ModuleNamesFinderInterface $moduleNameFinder,
         ClassNameFinderInterface $classNameFinder,
@@ -61,9 +54,6 @@ class CacheBuilder implements CacheBuilderInterface
         $this->moduleNamePostfixProvider = $moduleNamePostfixProvider;
     }
 
-    /**
-     * @return void
-     */
     public function build(): void
     {
         $cacheEntries = [];

@@ -34,9 +34,6 @@ class DependencyInjectorCollection implements DependencyInjectorCollectionInterf
         return $this->dependencyInjector;
     }
 
-    /**
-     * @return int
-     */
     public function count(): int
     {
         return count($this->dependencyInjector);

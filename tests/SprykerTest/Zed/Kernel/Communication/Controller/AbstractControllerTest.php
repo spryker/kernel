@@ -68,9 +68,6 @@ class AbstractControllerTest extends Unit
         $controller->indexAction($input);
     }
 
-    /**
-     * @return array
-     */
     public function getTestData(): array
     {
         return [
@@ -80,9 +77,6 @@ class AbstractControllerTest extends Unit
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getInvalidTestData(): array
     {
         return [

@@ -21,25 +21,16 @@ use Spryker\Client\Kernel\ClientLocatorMatcher;
  */
 class ClientLocatorMatcherTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnTrueIfMethodStartsWithClient(): void
     {
         $this->assertTrue((new ClientLocatorMatcher())->match('client'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithClient(): void
     {
         $this->assertFalse((new ClientLocatorMatcher())->match('locatorFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithClientButClientInString(): void
     {
         $this->assertFalse((new ClientLocatorMatcher())->match('locatorClient'));

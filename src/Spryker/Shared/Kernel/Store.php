@@ -134,9 +134,6 @@ class Store
         return static::$instance;
     }
 
-    /**
-     * @return bool
-     */
     public static function isDynamicStoreMode(): bool
     {
         if (getenv('SPRYKER_DYNAMIC_STORE_MODE')) {
@@ -210,9 +207,6 @@ class Store
         return $stores;
     }
 
-    /**
-     * @return array
-     */
     protected function getStores(): array
     {
         if ($this->stores === null) {

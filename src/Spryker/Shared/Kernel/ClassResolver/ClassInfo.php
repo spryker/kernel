@@ -86,11 +86,6 @@ class ClassInfo
         return $this;
     }
 
-    /**
-     * @param string $resolvableType
-     *
-     * @return string
-     */
     public function getCacheKey(string $resolvableType): string
     {
         if (!$this->cacheKey) {
@@ -100,11 +95,6 @@ class ClassInfo
         return $this->cacheKey;
     }
 
-    /**
-     * @param string $resolvableType
-     *
-     * @return string
-     */
     protected function buildCacheKey(string $resolvableType): string
     {
         $module = $this->getModule();
@@ -119,9 +109,6 @@ class ClassInfo
         return $cacheKey;
     }
 
-    /**
-     * @return bool
-     */
     protected function shouldTestNamespaceBeAdjusted(): bool
     {
         return APPLICATION_ENV === 'devtest';
@@ -175,9 +162,6 @@ class ClassInfo
         return $this->callerClassParts[static::KEY_BUNDLE];
     }
 
-    /**
-     * @return string
-     */
     public function getLayer(): string
     {
         return $this->callerClassParts[static::KEY_LAYER] ?? '';

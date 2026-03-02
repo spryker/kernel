@@ -23,25 +23,16 @@ use Spryker\Zed\Kernel\Business\FacadeLocatorMatcher;
  */
 class FacadeLocatorMatcherTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnTrueIfMethodStartsWithFacade(): void
     {
         $this->assertTrue((new FacadeLocatorMatcher())->match('facadeFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithFacade(): void
     {
         $this->assertFalse((new FacadeLocatorMatcher())->match('locatorFoo'));
     }
 
-    /**
-     * @return void
-     */
     public function testMatchShouldReturnFalseIfMethodNotStartsWithFacadeButFacadeInString(): void
     {
         $this->assertFalse((new FacadeLocatorMatcher())->match('locatorFacade'));

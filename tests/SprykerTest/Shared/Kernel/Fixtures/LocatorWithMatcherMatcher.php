@@ -26,11 +26,6 @@ class LocatorWithMatcherMatcher implements LocatorMatcherInterface
         return (strpos($method, static::NAME) === 0);
     }
 
-    /**
-     * @param string $method
-     *
-     * @return string
-     */
     public function filter(string $method): string
     {
         return substr($method, strlen(static::NAME));

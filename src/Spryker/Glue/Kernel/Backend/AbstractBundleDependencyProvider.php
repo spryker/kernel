@@ -37,11 +37,6 @@ abstract class AbstractBundleDependencyProvider extends GlueAbstractBundleDepend
         return $this->provideBackendDependencies($container);
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     public function provideBackendDependencies(Container $container): Container
     {
         return $container;

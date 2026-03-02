@@ -66,9 +66,6 @@ class DependencyInjectorResolverTest extends Unit
      */
     protected $createdFiles = [];
 
-    /**
-     * @return void
-     */
     public function tearDown(): void
     {
         parent::tearDown();
@@ -88,9 +85,6 @@ class DependencyInjectorResolverTest extends Unit
         return $dependencyInjectorResolverMock;
     }
 
-    /**
-     * @return void
-     */
     public function testResolveShouldReturnEmptyCollection(): void
     {
         $resolverMock = $this->getResolverMock(['canResolve']);
@@ -107,9 +101,6 @@ class DependencyInjectorResolverTest extends Unit
         $this->assertCount(0, $dependencyInjectorCollection);
     }
 
-    /**
-     * @return void
-     */
     public function testResolveMustReturnCoreClass(): void
     {
         $this->createClass($this->coreClass);
@@ -132,9 +123,6 @@ class DependencyInjectorResolverTest extends Unit
         $this->assertInstanceOf($this->coreClass, $resolvedDependencyInjector);
     }
 
-    /**
-     * @return void
-     */
     public function testResolveMustReturnProjectClass(): void
     {
         $this->createClass($this->coreClass);
@@ -158,9 +146,6 @@ class DependencyInjectorResolverTest extends Unit
         $this->assertInstanceOf($this->projectClass, $resolvedDependencyInjector);
     }
 
-    /**
-     * @return void
-     */
     public function testResolveMustReturnStoreClass(): void
     {
         $this->createClass($this->projectClass);
@@ -184,18 +169,12 @@ class DependencyInjectorResolverTest extends Unit
         $this->assertInstanceOf($this->storeClass, $resolvedDependencyInjector);
     }
 
-    /**
-     * @return void
-     */
     public function testGetClassPattern(): void
     {
         $dependencyInjectorResolver = new DependencyInjectorResolver();
         $this->assertSame('\%namespace%\Zed\%fromBundle%%codeBucket%\Dependency\Injector\%bundle%DependencyInjector', $dependencyInjectorResolver->getClassPattern());
     }
 
-    /**
-     * @return void
-     */
     private function deleteCreatedFiles(): void
     {
         if (is_dir($this->getBasePath())) {
@@ -204,11 +183,6 @@ class DependencyInjectorResolverTest extends Unit
         }
     }
 
-    /**
-     * @param string $className
-     *
-     * @return void
-     */
     protected function createClass(string $className): void
     {
         $classNameParts = explode('\\', $className);
@@ -238,9 +212,6 @@ class DependencyInjectorResolverTest extends Unit
         require_once $fileName;
     }
 
-    /**
-     * @return string
-     */
     private function getBasePath(): string
     {
         return __DIR__ . '/../_data/Generated';

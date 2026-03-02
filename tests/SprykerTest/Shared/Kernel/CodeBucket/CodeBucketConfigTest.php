@@ -33,9 +33,6 @@ class CodeBucketConfigTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetCurrentCodeBucketWithDynamicStoreModeAndWithoutCustomCodeBucketShouldReturnEmptyCodeBucket(): void
     {
         // Arrange
@@ -48,9 +45,6 @@ class CodeBucketConfigTest extends Unit
         $this->assertEmpty($currentCodeBucket, 'CodeBucket should be empty');
     }
 
-    /**
-     * @return void
-     */
     public function testGetCurrentCodeBucketWithoutDynamicStoreModeAndWithoutCustomCodeBucketShouldReturnCurrentStore(): void
     {
         if ($this->isDynamicStoreEnabled()) {
@@ -67,9 +61,6 @@ class CodeBucketConfigTest extends Unit
         $this->assertSame($currentCodeBucket, APPLICATION_STORE);
     }
 
-    /**
-     * @return void
-     */
     public function testGetCurrentCodeBucketWithDynamicStoreModeAndWithCustomCodeBucketEmptyCodeBucketMustUsedShouldReturnEmptyCodeBucket(): void
     {
         // Arrange
@@ -82,9 +73,6 @@ class CodeBucketConfigTest extends Unit
         $this->assertEmpty($currentCodeBucket, 'CodeBucket should be empty');
     }
 
-    /**
-     * @return void
-     */
     public function testGetCurrentCodeBucketWithCustomCodeBucketShouldReturnCustomCodeBucket(): void
     {
         // Arrange
@@ -101,9 +89,6 @@ class CodeBucketConfigTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetCurrentCodeBucketWithCustomInvalidCodeBucketShouldThrowException(): void
     {
         // Assert
@@ -128,9 +113,6 @@ class CodeBucketConfigTest extends Unit
         return new CodeBucketConfig($codeBucketConfig);
     }
 
-    /**
-     * @return bool
-     */
     protected function isDynamicStoreEnabled(): bool
     {
         return (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');

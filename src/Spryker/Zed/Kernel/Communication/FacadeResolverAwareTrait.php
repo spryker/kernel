@@ -29,9 +29,6 @@ trait FacadeResolverAwareTrait
         return $this;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade
-     */
     protected function getFacade(): AbstractFacade
     {
         if ($this->facade === null) {
@@ -41,17 +38,11 @@ trait FacadeResolverAwareTrait
         return $this->facade;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade
-     */
     private function resolveFacade(): AbstractFacade
     {
         return $this->getFacadeResolver()->resolve($this);
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\ClassResolver\Facade\FacadeResolver
-     */
     private function getFacadeResolver(): FacadeResolver
     {
         return new FacadeResolver();

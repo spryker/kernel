@@ -23,9 +23,6 @@ use Spryker\Glue\Kernel\Backend\Locator;
  */
 class ContainerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetLocatorReturnsBackendLocator(): void
     {
         $container = new Container();

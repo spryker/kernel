@@ -27,9 +27,6 @@ class ModuleNamesFinderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFindModuleNamesReturnsListOfModuleNames(): void
     {
         $structure = [

@@ -167,9 +167,6 @@ class BundleProxy
         throw new LogicException(sprintf('Could not map method "%s" to a locator!', $methodName));
     }
 
-    /**
-     * @return bool
-     */
     protected function isClassCacheEnabled(): bool
     {
         if (static::$isInstanceCacheEnabled === null) {
@@ -179,11 +176,6 @@ class BundleProxy
         return static::$isInstanceCacheEnabled;
     }
 
-    /**
-     * @param string $methodName
-     *
-     * @return string
-     */
     protected function buildCacheKey(string $methodName): string
     {
         return $this->moduleName . '-' . $methodName;

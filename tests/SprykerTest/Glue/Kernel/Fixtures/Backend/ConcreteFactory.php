@@ -21,9 +21,6 @@ class ConcreteFactory extends AbstractFactory
         return $this->getContainer();
     }
 
-    /**
-     * @return \Spryker\Glue\Kernel\Backend\AbstractBundleDependencyProvider
-     */
     protected function resolveDependencyProvider(): AbstractBundleDependencyProvider
     {
         return new ConcreteDependencyProvider();

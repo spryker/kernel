@@ -28,9 +28,6 @@ trait FactoryResolverAwareTrait
         return $this;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
-     */
     protected function getFactory(): AbstractCommunicationFactory
     {
         if ($this->factory === null) {
@@ -40,9 +37,6 @@ trait FactoryResolverAwareTrait
         return $this->factory;
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory
-     */
     private function resolveFactory(): AbstractCommunicationFactory
     {
         /** @var \Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory $resolvedFactory */

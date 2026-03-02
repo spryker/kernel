@@ -22,9 +22,6 @@ use Spryker\Zed\Kernel\QueryContainerResolverAwareTrait;
  */
 class QueryContainerResolverAwareTraitTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetQueryContainerMustReturnFluentInterface(): void
     {
         $queryContainerResolverAwareTraitMock = $this->getQueryContainerResolverAwareTraitMock();

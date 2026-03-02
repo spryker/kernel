@@ -23,9 +23,6 @@ class TestCodeBucketConfigWithInvalidDefaultCodeBucket extends AbstractCodeBucke
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getDefaultCodeBucket(): string
     {
         return 'test4';

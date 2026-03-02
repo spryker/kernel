@@ -16,9 +16,6 @@ class DependencyInjector implements DependencyInjectorInterface
      */
     protected $dependencyInjectorCollection;
 
-    /**
-     * @param \Spryker\Shared\Kernel\Dependency\Injector\DependencyInjectorCollectionInterface $dependencyInjectorCollection
-     */
     public function __construct(DependencyInjectorCollectionInterface $dependencyInjectorCollection)
     {
         $this->dependencyInjectorCollection = $dependencyInjectorCollection;

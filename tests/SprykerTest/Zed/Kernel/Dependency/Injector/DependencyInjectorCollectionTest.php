@@ -25,9 +25,6 @@ use Spryker\Zed\Kernel\Dependency\Injector\DependencyInjectorInterface;
  */
 class DependencyInjectorCollectionTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testAddDependencyInjectorShouldReturnInstance(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();
@@ -36,9 +33,6 @@ class DependencyInjectorCollectionTest extends Unit
         $this->assertInstanceOf(DependencyInjectorCollectionInterface::class, $result);
     }
 
-    /**
-     * @return void
-     */
     public function testGetDependencyInjectorShouldReturnInstance(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();
@@ -49,9 +43,6 @@ class DependencyInjectorCollectionTest extends Unit
         $this->assertSame($dependencyInjectorMock, $dependencyInjector[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testCountShouldReturnCountOfAddedDependencyInjector(): void
     {
         $dependencyInjectorCollection = new DependencyInjectorCollection();

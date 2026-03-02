@@ -15,19 +15,11 @@ use Spryker\Shared\Kernel\KernelConstants;
 
 class SharedFactoryNotFoundException extends Exception
 {
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassInfo $callerClassInfo
-     */
     public function __construct(ClassInfo $callerClassInfo)
     {
         parent::__construct($this->buildMessage($callerClassInfo));
     }
 
-    /**
-     * @param \Spryker\Shared\Kernel\ClassResolver\ClassInfo $callerClassInfo
-     *
-     * @return string
-     */
     protected function buildMessage(ClassInfo $callerClassInfo): string
     {
         $message = 'Spryker Kernel Exception' . PHP_EOL;

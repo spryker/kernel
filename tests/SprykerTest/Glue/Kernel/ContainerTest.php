@@ -33,9 +33,6 @@ class ContainerTest extends Unit
      */
     public const TEST_KEY = 'test.value';
 
-    /**
-     * @return void
-     */
     public function testGetLocatorShouldReturnInstanceOfLocator(): void
     {
         $container = new Container();
@@ -43,9 +40,6 @@ class ContainerTest extends Unit
         $this->assertInstanceOf(LocatorLocatorInterface::class, $container->getLocator());
     }
 
-    /**
-     * @return void
-     */
     public function testContainerShouldHaveAccessToGlobalProvidedDependency(): void
     {
         $containerGlobals = new ContainerGlobals();

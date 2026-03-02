@@ -14,11 +14,6 @@ use Spryker\Shared\Kernel\Communication\BundleControllerActionInterface;
 
 class GlueFragmentControllerResolver extends SilexControllerResolver
 {
-    /**
-     * @param string $controller
-     *
-     * @return callable
-     */
     protected function createController(string $controller): callable
     {
         [$bundle, $controllerName, $actionName] = explode('/', ltrim($controller, '/'));

@@ -22,9 +22,6 @@ use Spryker\Zed\Kernel\Container;
  */
 class AbstractBundleDependencyProviderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testCallProvidePersistenceLayerDependenciesMustReturnContainer(): void
     {
         $container = new Container();
@@ -35,9 +32,6 @@ class AbstractBundleDependencyProviderTest extends Unit
         $this->assertSame($expected, $container);
     }
 
-    /**
-     * @return void
-     */
     public function testCallProvideCommunicationLayerDependenciesMustReturnContainer(): void
     {
         $container = new Container();
@@ -48,9 +42,6 @@ class AbstractBundleDependencyProviderTest extends Unit
         $this->assertSame($expected, $container);
     }
 
-    /**
-     * @return void
-     */
     public function testCallProvideBusinessLayerDependenciesMustReturnContainer(): void
     {
         $container = new Container();
@@ -61,9 +52,6 @@ class AbstractBundleDependencyProviderTest extends Unit
         $this->assertSame($expected, $container);
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\AbstractBundleDependencyProvider
-     */
     private function getAbstractBundleDependencyProviderMock(): AbstractBundleDependencyProvider
     {
         return new class extends AbstractBundleDependencyProvider {

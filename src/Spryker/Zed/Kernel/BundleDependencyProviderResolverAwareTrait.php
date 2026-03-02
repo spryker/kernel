@@ -77,9 +77,6 @@ trait BundleDependencyProviderResolverAwareTrait
         return $container->get($key);
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function getContainer(): Container
     {
         $containerKey = static::class;

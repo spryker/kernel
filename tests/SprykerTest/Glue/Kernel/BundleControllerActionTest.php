@@ -22,9 +22,6 @@ use Spryker\Shared\Kernel\ClassResolver\ModuleNameResolver;
  */
 class BundleControllerActionTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetBundleShouldReturnBundleName(): void
     {
         $bundleControllerAction = new BundleControllerAction('foo', 'bar', 'baz');
@@ -32,9 +29,6 @@ class BundleControllerActionTest extends Unit
         $this->assertSame('foo', $bundleControllerAction->getBundle());
     }
 
-    /**
-     * @return void
-     */
     public function testGetBundleShouldStripStoreName(): void
     {
         $bundleControllerAction = $this->getBundleControllerAction('foo' . APPLICATION_CODE_BUCKET, 'bar', 'baz', 'DE');
@@ -76,9 +70,6 @@ class BundleControllerActionTest extends Unit
         return new ModuleNameResolverPrototype($storeName);
     }
 
-    /**
-     * @return void
-     */
     public function testGetControllerShouldReturnControllerName(): void
     {
         $bundleControllerAction = new BundleControllerAction('foo', 'bar', 'baz');
@@ -86,9 +77,6 @@ class BundleControllerActionTest extends Unit
         $this->assertSame('bar', $bundleControllerAction->getController());
     }
 
-    /**
-     * @return void
-     */
     public function testGetActionShouldReturnActionName(): void
     {
         $bundleControllerAction = new BundleControllerAction('foo', 'bar', 'baz');

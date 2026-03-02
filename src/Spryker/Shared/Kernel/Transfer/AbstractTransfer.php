@@ -77,11 +77,6 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
         return isset($this->modifiedProperties[$propertyName]);
     }
 
-    /**
-     * @param string $propertyName
-     *
-     * @return bool
-     */
     public function isPropertyStrict(string $propertyName): bool
     {
         if (!isset($this->transferMetadata[$propertyName]['is_strict'])) {
@@ -140,12 +135,6 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
         return $values;
     }
 
-    /**
-     * @param string $propertyName
-     * @param bool $camelCasedKeys
-     *
-     * @return string
-     */
     protected function getArrayKey(string $propertyName, bool $camelCasedKeys): string
     {
         if ($camelCasedKeys) {
@@ -155,9 +144,6 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
         return $this->transferMetadata[$propertyName]['name_underscore'];
     }
 
-    /**
-     * @return array
-     */
     protected function getPropertyNames(): array
     {
         return array_keys($this->transferMetadata);
@@ -317,11 +303,6 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
         return $value;
     }
 
-    /**
-     * @param string $propertyName
-     *
-     * @return string
-     */
     protected function getSetterMethod(string $propertyName): string
     {
         return 'set' . ucfirst($propertyName);

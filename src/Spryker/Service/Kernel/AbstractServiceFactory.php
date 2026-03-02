@@ -74,9 +74,6 @@ class AbstractServiceFactory
         return $container->get($key);
     }
 
-    /**
-     * @return \Spryker\Service\Kernel\Container
-     */
     protected function getContainer(): Container
     {
         $containerKey = static::class;

@@ -22,9 +22,6 @@ use Spryker\Client\Kernel\BundleConfigResolverAwareTrait;
  */
 class BundleConfigResolverAwareTraitTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetConfigMustReturnFluentInterface(): void
     {
         $bundleConfigResolverAwareTraitMock = $this->getBundleConfigResolverAwareTraitMock();

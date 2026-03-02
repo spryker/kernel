@@ -35,18 +35,12 @@ class AbstractFactoryTest extends Unit
      */
     public const TEST_VALUE = 'value';
 
-    /**
-     * @return void
-     */
     public function testSetContainer(): void
     {
         $factory = new ConcreteFactory();
         $this->assertSame($factory, $factory->setContainer(new Container()));
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependency(): void
     {
         // Assign
@@ -61,9 +55,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::TEST_VALUE, $dependency);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyWithLazyFetch(): void
     {
         // Assign
@@ -78,9 +69,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::TEST_VALUE, $wrappedDependency());
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyWithResolvedProvider(): void
     {
         $factoryMock = $this->getFactoryMock();
@@ -107,9 +95,6 @@ class AbstractFactoryTest extends Unit
         return $factoryMock;
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyThrowsExceptionWhenProviderNotFound(): void
     {
         $factory = new ConcreteFactory();
@@ -118,9 +103,6 @@ class AbstractFactoryTest extends Unit
         $factory->getProvidedDependency(static::TEST_KEY);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyThrowsExceptionWhenKeyNotInContainer(): void
     {
         $container = new Container();

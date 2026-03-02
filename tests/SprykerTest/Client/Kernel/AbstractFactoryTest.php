@@ -32,9 +32,6 @@ class AbstractFactoryTest extends Unit
      */
     public const TEST_VALUE = 'value';
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependency(): void
     {
         // Assign
@@ -49,9 +46,6 @@ class AbstractFactoryTest extends Unit
         $this->assertSame(static::TEST_VALUE, $dependency);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProvidedDependencyWithLazyFetch(): void
     {
         // Assign

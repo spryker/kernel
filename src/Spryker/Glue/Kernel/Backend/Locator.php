@@ -21,9 +21,6 @@ class Locator extends AbstractLocatorLocator
      */
     private static $instance;
 
-    /**
-     * @return self
-     */
     public static function getInstance(): self
     {
         if (static::$instance === null) {
@@ -33,9 +30,6 @@ class Locator extends AbstractLocatorLocator
         return static::$instance;
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\BundleProxy
-     */
     protected function getBundleProxy(): BundleProxy
     {
         $bundleProxy = new BundleProxy();

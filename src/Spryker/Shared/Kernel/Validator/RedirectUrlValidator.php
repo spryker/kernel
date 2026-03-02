@@ -100,11 +100,6 @@ class RedirectUrlValidator implements RedirectUrlValidatorInterface
         return in_array($domain, $this->allowedDomains, true);
     }
 
-    /**
-     * @param string $url
-     *
-     * @return bool
-     */
     protected function isValidUrl(string $url): bool
     {
         if ($this->isRelativeUrl($url)) {
@@ -114,19 +109,11 @@ class RedirectUrlValidator implements RedirectUrlValidatorInterface
         return $this->validator->validate($url, $this->createUrlConstraint())->count() === 0;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return bool
-     */
     protected function isRelativeUrl(string $url): bool
     {
         return preg_match(static::RELATIVE_URL_PATTERN, $url) === 1;
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     protected function createUrlConstraint(): Constraint
     {
         return new Url([

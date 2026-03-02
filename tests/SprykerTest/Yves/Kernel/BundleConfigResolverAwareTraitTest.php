@@ -22,9 +22,6 @@ use Spryker\Yves\Kernel\BundleConfigResolverAwareTrait;
  */
 class BundleConfigResolverAwareTraitTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testSetConfigMustReturnFluentInterface(): void
     {
         $bundleConfigResolverAwareTraitMock = $this->getBundleConfigResolverAwareTraitMock();
@@ -46,9 +43,6 @@ class BundleConfigResolverAwareTraitTest extends Unit
         };
     }
 
-    /**
-     * @return \Spryker\Yves\Kernel\AbstractBundleConfig
-     */
     private function getAbstractBundleConfigMock(): AbstractBundleConfig
     {
         return new class extends AbstractBundleConfig {

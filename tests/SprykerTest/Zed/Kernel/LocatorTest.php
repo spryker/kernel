@@ -27,9 +27,6 @@ class LocatorTest extends Unit
      */
     protected $locator;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -37,9 +34,6 @@ class LocatorTest extends Unit
         $this->locator = Locator::getInstance();
     }
 
-    /**
-     * @return void
-     */
     public function testCallShouldReturnBundleProxy(): void
     {
         $this->assertInstanceOf(BundleProxy::class, $this->locator->foo());

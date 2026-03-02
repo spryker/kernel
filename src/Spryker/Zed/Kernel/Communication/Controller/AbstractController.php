@@ -333,11 +333,6 @@ abstract class AbstractController
         return $this->application;
     }
 
-    /**
-     * @param string $absoluteUrl
-     *
-     * @return bool
-     */
     protected function isUrlDomainWhitelisted(string $absoluteUrl): bool
     {
         $whitelistedDomains = Config::get(KernelConstants::DOMAIN_WHITELIST, []);
@@ -356,11 +351,6 @@ abstract class AbstractController
         return false;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return string
-     */
     protected function extractDomainFromUrl(string $url): string
     {
         /** @var string|false $urlDomain */
@@ -372,13 +362,6 @@ abstract class AbstractController
         return $urlDomain;
     }
 
-    /**
-     * @param string $view
-     * @param array $parameters
-     * @param \Symfony\Component\HttpFoundation\Response|null $response
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     protected function renderView(string $view, array $parameters = [], ?Response $response = null): Response
     {
         if ($response instanceof StreamedResponse) {
