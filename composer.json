@@ -24,6 +24,7 @@
         "spryker/testify": "^3.3.0"
     },
     "suggest": {
+        "spryker/configuration": "Add this module if you want to use AbstractBundleConfig::getModuleConfig methods.",
         "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher.",
         "spryker/silex": "Add this when you still want to use the abandoned Silex."
     },

@@ -13,4 +13,14 @@
         <property name="orderDirection" type="string"/>
     </transfer>
 
+    <transfer name="ConfigurationValueRequest">
+        <property name="key" type="string"/>
+        <property name="scope" type="string"/>
+        <property name="scopeIdentifier" type="string"/>
+        <property name="scopes" type="ConfigurationScope[]" singular="scope"/>
+    </transfer>
+
+    <transfer name="ConfigurationScope">
+    </transfer>
+
 </transfers>
