@@ -46,4 +46,28 @@ abstract class AbstractBundleConfig extends SharedAbstractBundleConfig
 
         return $default;
     }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\ConfigurationScopeTransfer> $configurationScopes
+     *
+     * @return array<string, mixed>
+     */
+    protected function getModuleConfigValues(string $prefix, array $configurationScopes = []): array
+    {
+        if (!interface_exists('\Spryker\Client\Configuration\ConfigurationClientInterface')) {
+            return [];
+        }
+
+        /** @var \Generated\Yves\Ide\AutoCompletion&\Spryker\Shared\Kernel\LocatorLocatorInterface $locator */
+        $locator = Locator::getInstance();
+
+        $requestTransfer = (new ConfigurationValueRequestTransfer())
+            ->setKey($prefix);
+
+        foreach ($configurationScopes as $configurationScopeTransfer) {
+            $requestTransfer->addScope($configurationScopeTransfer);
+        }
+
+        return $locator->configuration()->client()->getConfigurationValues($requestTransfer);
+    }
 }
