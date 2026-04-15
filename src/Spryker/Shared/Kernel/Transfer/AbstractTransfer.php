@@ -227,7 +227,7 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
         $result = new ArrayObject();
         foreach ($arrayObject as $key => $arrayElement) {
             if (!is_array($arrayElement)) {
-                $result->offsetSet($key, new $elementType());
+                $result->offsetSet($key, $arrayElement instanceof TransferInterface ? $arrayElement : new $elementType());
 
                 continue;
             }

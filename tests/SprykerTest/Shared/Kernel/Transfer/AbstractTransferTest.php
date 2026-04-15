@@ -470,4 +470,41 @@ class AbstractTransferTest extends Unit
 
         $this->assertCount(2, $transfer->getTransferCollection());
     }
+
+    /**
+     * Regression: when a collection element is already a TransferInterface (not an array),
+     * processArrayObject must preserve the existing object instead of replacing it with an empty instance.
+     */
+    public function testFromArrayShouldPreserveDataWhenCollectionElementIsAlreadyATransferObject(): void
+    {
+        $innerTransfer = (new AbstractTransfer())->setInt(42);
+
+        $data = [
+            'transfer_collection' => [
+                $innerTransfer,
+            ],
+        ];
+
+        $transfer = new AbstractTransfer();
+        $transfer->fromArray($data);
+
+        $this->assertSame(42, $transfer->getTransferCollection()[0]->getInt());
+    }
+
+    /**
+     * Regression: toArray(false) returns the raw ArrayObject for collection properties.
+     * A subsequent fromArray() call must round-trip the collection data without data loss.
+     */
+    public function testFromArrayToArrayNonRecursiveRoundTripShouldPreserveCollectionData(): void
+    {
+        $source = (new AbstractTransfer())
+            ->setTransferCollection(new ArrayObject([
+                (new AbstractTransfer())->setInt(42),
+            ]));
+
+        $target = new AbstractTransfer();
+        $target->fromArray($source->toArray(false));
+
+        $this->assertSame(42, $target->getTransferCollection()[0]->getInt());
+    }
 }
