@@ -30,8 +30,6 @@ class CacheReaderPhp implements CacheReaderInterface
         $resolvableCacheFilePath = sprintf($resolvableCacheFilePathPattern, APPLICATION_CODE_BUCKET);
 
         if (!file_exists($resolvableCacheFilePath)) {
-            trigger_error(sprintf('The resolvable class cache is enabled but was not generated.'), E_USER_DEPRECATED);
-
             return [];
         }
 
