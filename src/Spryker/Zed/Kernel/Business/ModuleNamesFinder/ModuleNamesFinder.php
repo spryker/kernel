@@ -61,13 +61,33 @@ class ModuleNamesFinder implements ModuleNamesFinderInterface
      */
     protected function addCoreModuleNames(array $moduleNames): array
     {
+        $existingPaths = $this->filterExistingPaths($this->config->getPathsToCoreModules());
+
+        if ($existingPaths === []) {
+            return $moduleNames;
+        }
+
         $finder = new Finder();
-        $finder->directories()->depth(0)->in($this->config->getPathsToCoreModules());
+        $finder->directories()->depth(0)->in($existingPaths);
 
         foreach ($finder as $splFileInfo) {
             $moduleNames[$splFileInfo->getFilename()] = $splFileInfo->getFilename();
         }
 
         return $moduleNames;
+    }
+
+    /**
+     * @param array<string> $paths
+     *
+     * @return array<string>
+     */
+    protected function filterExistingPaths(array $paths): array
+    {
+        return array_values(array_filter($paths, static function (string $path): bool {
+            $baseDir = rtrim(explode('*', $path)[0], '/');
+
+            return is_dir($baseDir);
+        }));
     }
 }

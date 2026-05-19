@@ -54,4 +54,35 @@ class ModuleNamesFinderTest extends Unit
 
         $this->assertTrue(in_array($this->tester->getModuleName(), $moduleNames));
     }
+
+    public function testFindModuleNamesDoesNotThrowWhenCoreModulesDirectoryDoesNotExist(): void
+    {
+        $structure = [
+            'src' => [
+                'Organization' => [
+                    'Application' => [
+                        $this->tester->getModuleName() => [
+                            'Layer' => [
+                                $this->tester->getModuleName() . 'Facade.php' => '',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $virtualDirectory = $this->tester->getVirtualDirectory($structure);
+        $existingPath = sprintf('%ssrc/Organization/Application/', $virtualDirectory);
+
+        // Simulates a vendor organisation directory that does not exist on disk (e.g. spryker-eco not installed).
+        $nonExistingPath = '/non/existing/vendor/spryker-eco/*/src/*/*/';
+
+        $this->tester->mockConfigMethod('getPathsToProjectModules', [$existingPath]);
+        $this->tester->mockConfigMethod('getPathsToCoreModules', [$existingPath, $nonExistingPath]);
+
+        $moduleNameFinder = $this->tester->getFactory()->createModuleNamesFinder();
+
+        $moduleNames = $moduleNameFinder->findModuleNames();
+
+        $this->assertTrue(in_array($this->tester->getModuleName(), $moduleNames));
+    }
 }

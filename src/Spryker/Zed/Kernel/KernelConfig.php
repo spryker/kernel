@@ -7,8 +7,6 @@
 
 namespace Spryker\Zed\Kernel;
 
-use FilesystemIterator;
-use SplFileInfo;
 use Spryker\Shared\Kernel\ClassResolver\ClassNameCandidatesBuilder\ClassNameCandidatesBuilderConfigInterface;
 use Spryker\Shared\Kernel\KernelConstants;
 
@@ -72,38 +70,12 @@ class KernelConfig extends AbstractBundleConfig implements ClassNameCandidatesBu
      */
     public function getPathsToCoreModules(): array
     {
-        $pathsToCoreModules = [
+        return [
             APPLICATION_VENDOR_DIR . '/spryker/*/src/*/*/',
             APPLICATION_VENDOR_DIR . '/spryker-shop/*/src/*/*/',
             APPLICATION_VENDOR_DIR . '/spryker-eco/*/src/*/*/',
+            APPLICATION_VENDOR_DIR . '/spryker-feature/*/src/*/*/',
         ];
-
-        if ($this->featureExists()) {
-            $pathsToCoreModules[] = APPLICATION_VENDOR_DIR . '/spryker-feature/*/src/*/*/';
-        }
-
-        return $pathsToCoreModules;
-    }
-
-    /**
-     * @deprecated Will be removed without replacement.
-     *
-     * @return bool
-     */
-    protected function featureExists(): bool
-    {
-        $featuresDir = APPLICATION_VENDOR_DIR . '/spryker-feature/';
-
-        if (is_dir($featuresDir)) {
-            $iterator = new FilesystemIterator($featuresDir, FilesystemIterator::SKIP_DOTS);
-            foreach ($iterator as $fileinfo) {
-                if ($fileinfo instanceof SplFileInfo && $fileinfo->isDir()) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     /**
