@@ -44,8 +44,14 @@ class ModuleNamesFinder implements ModuleNamesFinderInterface
      */
     protected function addProjectModuleNames(array $moduleNames): array
     {
+        $existingPaths = $this->filterExistingPaths($this->config->getPathsToProjectModules());
+
+        if ($existingPaths === []) {
+            return $moduleNames;
+        }
+
         $finder = new Finder();
-        $finder->directories()->depth(0)->in($this->config->getPathsToProjectModules());
+        $finder->directories()->depth(0)->in($existingPaths);
 
         foreach ($finder as $splFileInfo) {
             $moduleNames[$splFileInfo->getFilename()] = $splFileInfo->getFilename();
