@@ -36,7 +36,6 @@ class AbstractTypeTest extends Unit
 
         $formTypeReflection = new ReflectionClass($formType);
         $communicationFactoryProperty = $formTypeReflection->getParentClass()->getProperty('factory');
-        $communicationFactoryProperty->setAccessible(true);
         $abstractCommunicationFactoryMock = $this->getMockBuilder(AbstractCommunicationFactory::class)->disableOriginalConstructor()->getMock();
         $communicationFactoryProperty->setValue($formType, $abstractCommunicationFactoryMock);
 
@@ -51,7 +50,6 @@ class AbstractTypeTest extends Unit
 
         $formTypeReflection = new ReflectionClass($formType);
         $facadeProperty = $formTypeReflection->getParentClass()->getProperty('facade');
-        $facadeProperty->setAccessible(true);
         $abstractFacadeMock = $this->getMockBuilder(AbstractFacade::class)->disableOriginalConstructor()->getMock();
         $facadeProperty->setValue($formType, $abstractFacadeMock);
 
@@ -75,7 +73,6 @@ class AbstractTypeTest extends Unit
 
         $fooTypeReflection = new ReflectionClass($fooType);
         $getQueryContainerResolverMethod = $fooTypeReflection->getParentClass()->getMethod('getQueryContainerResolver');
-        $getQueryContainerResolverMethod->setAccessible(true);
         $getQueryContainerResolverMethod->invoke($fooType, $queryContainerResolverMock);
 
         $fooType->getQueryContainer();
@@ -87,7 +84,6 @@ class AbstractTypeTest extends Unit
 
         $formTypeReflection = new ReflectionClass($formType);
         $queryContainerProperty = $formTypeReflection->getParentClass()->getProperty('queryContainer');
-        $queryContainerProperty->setAccessible(true);
         $queryContainerProperty->setValue($formType, $this->getMockBuilder(AbstractQueryContainer::class)->disableOriginalConstructor()->getMock());
 
         $queryContainer = $formType->getQueryContainer();

@@ -260,7 +260,6 @@ class DependencyInjectorResolverTest extends Unit
         $stripeResolver->setCallerClass('Foo');
 
         $reflectionMethod = new ReflectionMethod(DependencyInjectorResolver::class, 'getCacheKey');
-        $reflectionMethod->setAccessible(true);
 
         // Act
         $dummyPaymentCacheKey = $reflectionMethod->invoke($dummyPaymentResolver);
@@ -289,7 +288,6 @@ class DependencyInjectorResolverTest extends Unit
         $resolver->setCallerClass('TargetBundle');
 
         $reflectionMethod = new ReflectionMethod(DependencyInjectorResolver::class, 'getCacheKey');
-        $reflectionMethod->setAccessible(true);
 
         // Act
         $cacheKey = $reflectionMethod->invoke($resolver);
@@ -307,7 +305,6 @@ class DependencyInjectorResolverTest extends Unit
         $resolver->setCallerClass('TargetBundle');
 
         $reflectionMethod = new ReflectionMethod(DependencyInjectorResolver::class, 'getCacheKey');
-        $reflectionMethod->setAccessible(true);
 
         // Act
         $cacheKey = $reflectionMethod->invoke($resolver);

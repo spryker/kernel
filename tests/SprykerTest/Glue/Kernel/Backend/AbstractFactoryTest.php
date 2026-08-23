@@ -50,7 +50,6 @@ class AbstractFactoryTest extends Unit
         $factory = new ConcreteFactory();
         $factoryReflection = new ReflectionObject($factory);
         $method = $factoryReflection->getMethod('provideDependencies');
-        $method->setAccessible(true);
         $method->invokeArgs($factory, [$dependencyProviderMock, new Container()]);
     }
 
@@ -64,7 +63,6 @@ class AbstractFactoryTest extends Unit
         $factory = new ConcreteFactory();
         $factoryReflection = new ReflectionObject($factory);
         $method = $factoryReflection->getMethod('provideDependencies');
-        $method->setAccessible(true);
         $method->invokeArgs($factory, [$dependencyProviderMock, new GlueContainer()]);
     }
 }

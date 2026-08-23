@@ -36,7 +36,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $communicationFactoryProperty = $pluginReflection->getParentClass()->getProperty('factory');
-        $communicationFactoryProperty->setAccessible(true);
         $abstractCommunicationFactoryMock = $this->getMockBuilder(AbstractCommunicationFactory::class)->disableOriginalConstructor()->getMock();
         $communicationFactoryProperty->setValue($plugin, $abstractCommunicationFactoryMock);
 
@@ -51,7 +50,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $communicationBusinessFactoryProperty = $pluginReflection->getParentClass()->getProperty('businessFactory');
-        $communicationBusinessFactoryProperty->setAccessible(true);
         $abstractBusinessFactoryMock = $this->getMockBuilder(AbstractBusinessFactory::class)->disableOriginalConstructor()->getMock();
         $communicationBusinessFactoryProperty->setValue($plugin, $abstractBusinessFactoryMock);
 
@@ -66,7 +64,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $facadeProperty = $pluginReflection->getParentClass()->getProperty('facade');
-        $facadeProperty->setAccessible(true);
         $abstractFacadeMock = $this->getMockBuilder(AbstractFacade::class)->disableOriginalConstructor()->getMock();
         $facadeProperty->setValue($plugin, $abstractFacadeMock);
 
@@ -90,7 +87,6 @@ class AbstractPluginTest extends Unit
 
         $fooPluginReflection = new ReflectionClass($fooPlugin);
         $getQueryContainerResolverMethod = $fooPluginReflection->getParentClass()->getMethod('getQueryContainerResolver');
-        $getQueryContainerResolverMethod->setAccessible(true);
         $getQueryContainerResolverMethod->invoke($fooPlugin, $queryContainerResolverMock);
 
         $fooPlugin->getQueryContainer();
@@ -102,7 +98,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $queryContainerProperty = $pluginReflection->getParentClass()->getProperty('queryContainer');
-        $queryContainerProperty->setAccessible(true);
         $queryContainerProperty->setValue($plugin, $this->getMockBuilder(AbstractQueryContainer::class)->disableOriginalConstructor()->getMock());
 
         $queryContainer = $plugin->getQueryContainer();

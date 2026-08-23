@@ -30,7 +30,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $communicationFactoryProperty = $pluginReflection->getParentClass()->getProperty('factory');
-        $communicationFactoryProperty->setAccessible(true);
         $abstractFactoryMock = $this->getMockBuilder(AbstractServiceFactory::class)->disableOriginalConstructor()->getMock();
         $communicationFactoryProperty->setValue($plugin, $abstractFactoryMock);
 
@@ -45,7 +44,6 @@ class AbstractPluginTest extends Unit
 
         $pluginReflection = new ReflectionClass($plugin);
         $communicationFactoryProperty = $pluginReflection->getParentClass()->getProperty('service');
-        $communicationFactoryProperty->setAccessible(true);
         $abstractFactoryMock = $this->getMockBuilder(AbstractService::class)->disableOriginalConstructor()->getMock();
         $communicationFactoryProperty->setValue($plugin, $abstractFactoryMock);
 
