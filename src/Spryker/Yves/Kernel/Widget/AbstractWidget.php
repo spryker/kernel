@@ -34,6 +34,8 @@ abstract class AbstractWidget implements WidgetInterface
      */
     protected $parameters = [];
 
+    protected static ?string $locale = null;
+
     /**
      * @param string $name
      *
@@ -144,6 +146,10 @@ abstract class AbstractWidget implements WidgetInterface
 
     protected function getLocale(): string
     {
-        return $this->getGlobalContainer()->get(static::SERVICE_LOCALE);
+        if (static::$locale === null) {
+            return static::$locale = $this->getGlobalContainer()->get(static::SERVICE_LOCALE);
+        }
+
+        return static::$locale;
     }
 }

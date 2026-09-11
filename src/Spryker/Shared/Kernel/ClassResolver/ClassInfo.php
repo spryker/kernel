@@ -52,6 +52,11 @@ class ClassInfo
     protected $callerClassParts = [];
 
     /**
+     * @var array<string, array<string>>
+     */
+    protected static $callerClassPartsCache = [];
+
+    /**
      * @var \Spryker\Shared\Kernel\ClassResolver\ModuleNameResolver|null
      */
     protected $moduleNameResolver;
@@ -66,7 +71,14 @@ class ClassInfo
         if (is_object($callerClass)) {
             $callerClass = get_class($callerClass);
         }
+
         $this->callerClassName = $callerClass;
+
+        if (isset(static::$callerClassPartsCache[$callerClass])) {
+            $this->callerClassParts = static::$callerClassPartsCache[$callerClass];
+
+            return $this;
+        }
 
         $callerClassParts = [
             static::KEY_BUNDLE => $callerClass,
@@ -79,9 +91,10 @@ class ClassInfo
             }
         }
 
-        $this->callerClassParts = $callerClassParts;
+        $callerClassParts[static::KEY_BUNDLE] = $this->getModuleNameResolver()->resolve($callerClassParts[static::KEY_BUNDLE]);
 
-        $this->callerClassParts[static::KEY_BUNDLE] = $this->getModuleNameResolver()->resolve($this->callerClassParts[static::KEY_BUNDLE]);
+        $this->callerClassParts = $callerClassParts;
+        static::$callerClassPartsCache[$callerClass] = $callerClassParts;
 
         return $this;
     }
