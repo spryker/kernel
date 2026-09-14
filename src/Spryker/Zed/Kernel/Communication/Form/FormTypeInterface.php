@@ -10,7 +10,7 @@ namespace Spryker\Zed\Kernel\Communication\Form;
 interface FormTypeInterface
 {
     /**
-     * @return string
+     * @return class-string<\Symfony\Component\Form\FormTypeInterface>
      */
     public function getType();
 }
