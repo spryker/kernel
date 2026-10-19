@@ -224,10 +224,13 @@ abstract class AbstractTransfer implements TransferInterface, Serializable, Arra
      */
     protected function processArrayObject($elementType, $arrayObject, $ignoreMissingProperty = false): ArrayObject
     {
+        /** @var \ArrayObject<int, \Spryker\Shared\Kernel\Transfer\TransferInterface> $result */
         $result = new ArrayObject();
         foreach ($arrayObject as $key => $arrayElement) {
             if (!is_array($arrayElement)) {
-                $result->offsetSet($key, $arrayElement instanceof TransferInterface ? $arrayElement : new $elementType());
+                /** @var \Spryker\Shared\Kernel\Transfer\TransferInterface $transferObject */
+                $transferObject = $arrayElement instanceof TransferInterface ? $arrayElement : new $elementType();
+                $result->offsetSet($key, $transferObject);
 
                 continue;
             }
