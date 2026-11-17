@@ -40,3 +40,4 @@ parameters:
             identifier: trait.unused
         -
             identifier: missingType.iterableValue
+        - '#PHPDoc tag @SuppressWarnings has invalid value#'

@@ -37,6 +37,8 @@ use ArrayAccess;
 use InvalidArgumentException;
 
 /**
+ * @SuppressWarnings(PHPMD.UndefinedVariable) PHPMD 2.x flags static property reads as undefined variables; fixed in PHPMD 3.x.
+ * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  * @implements \ArrayAccess<string, mixed>
  */
 class ContainerGlobals implements ArrayAccess
@@ -117,11 +119,11 @@ class ContainerGlobals implements ArrayAccess
             throw new InvalidArgumentException('Service definition is not a Closure or invokable object.');
         }
 
-        return function ($c) use ($callable) {
+        return function ($container) use ($callable) {
             static $object;
 
             if ($object === null) {
-                $object = $callable($c);
+                $object = $callable($container);
             }
 
             return $object;
@@ -186,8 +188,8 @@ class ContainerGlobals implements ArrayAccess
 
         $factory = static::$containerGlobals[$id];
 
-        return static::$containerGlobals[$id] = function ($c) use ($callable, $factory) {
-            return $callable($factory($c), $c);
+        return static::$containerGlobals[$id] = function ($container) use ($callable, $factory) {
+            return $callable($factory($container), $container);
         };
     }
 

@@ -11,6 +11,8 @@ use LogicException;
 use Spryker\Shared\Kernel\Locator\LocatorInterface;
 
 /**
+ * @SuppressWarnings(PHPMD.UndefinedVariable) PHPMD 2.x flags static property reads as undefined variables; fixed in PHPMD 3.x.
+ * @SuppressWarnings(PHPMD.UnusedLocalVariable)
  * @method \Spryker\Shared\Kernel\KernelConfig getSharedConfig()
  */
 class BundleProxy
